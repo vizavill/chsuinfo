@@ -45,11 +45,17 @@ class C_Comment extends C_Base {
 					
 					//$insertedComment = new Comment($this->arr);
 					//$htmlComment = $insertedComment->markup();
-					$htmlComment = '<div class="commVk">
+					$htmlComment = '
+						<div class="commVk">
 							<div class="img-comm"><img width="50" src="'.$this->arr['photo'].'"></div>
 							<div class="comm-text">
 								<div class="comm-name">'.$this->arr['full_name'].'</div>
-								<div class="commentVk">'.$this->arr['body'].'</div>
+								<div class="commentVk">'.$this->arr['body'].'<a href="#"></a></div>
+							</div>
+							<div class="commentPanel">
+								<a href="#" id="panLink"><img src="./images/del.png"></a><br>
+								<a href="#" id="panLink"><img src="./images/vk_c.png"></a><br>
+								<a href="#" id="panLink"><img src="./images/ext.png"></a>
 							</div>
 						</div>
 					';
@@ -71,7 +77,7 @@ class C_Comment extends C_Base {
 				//$this->code_msg = '{"status":0,"errors":{"body":"Not post"}}';
 			}
 		}else{
-			$this->code_msg = '{"status":0,"errors":{"body":"Авторизируйтесь для того что бы добавлять новые комментарии."}}';
+			$this->code_msg = '{"status":0,"errors":{"body":"'.iconv("WINDOWS-1251", "UTF-8",'Авторизируйтесь, чтобы добавлять комментарии.').'"}}';
 		}
 	}
 

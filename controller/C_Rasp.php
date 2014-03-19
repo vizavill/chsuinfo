@@ -100,6 +100,11 @@ class C_Rasp extends C_Base {
 														<div class="comm-name">'.$user['first_name'].' '.$user['last_name'].'</div>
 														<div class="commentVk">'.$comment_body.'</div>
 													</div>
+													<div class="commentPanel">
+														<a href="#" id="panLink"><img src="/view'.THEME.'/images/del.png"></a><br>
+														<a href="#" id="panLink"><img src="/view'.THEME.'/images/vk_c.png"></a><br>
+														<a href="#" id="panLink"><img src="/view'.THEME.'/images/ext.png"></a>
+													</div>
 												</div>';
 		}
 		

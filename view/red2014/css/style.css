@@ -69,7 +69,18 @@ body{
 	border-bottom:1px dashed gray;
 }
 
+.commentPanel{
+	float:right;
+	display:inline;
+}
 
+#panLink{
+	opacity:0.8;
+}
+
+#panLink:hover{
+	opacity:1;
+}
 
 .comm-text{
 	margin-left:10px;
@@ -78,18 +89,20 @@ body{
 	border-radius: 5px;
 	box-shadow: 0 0 1px #e3e3e3;
 	vertical-align: top;
-	width: 395px;
+	width: 375px;
 	height:51px;
+	overflow: hidden;
 }
 
 .commVk{
 	margin-bottom:12px;
+	width: 490px;
 }
 
 .comm-name{
 	font-weight:bold;
 }
-/*comments begin*/
+/*comments end*/
 
 .scheduleListButton {
 	width: 36px;
