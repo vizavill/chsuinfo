@@ -1,6 +1,4 @@
 <?php
-
-
 include_once('controller/Controller.php');
 include_once('model/M_Users.php');
 include_once('model/M_Reg.php');
@@ -18,24 +16,26 @@ include_once('model/M_NotifAll.php');
 include_once('model/M_Events.php');
 include_once('model/M_Upload.php');
 include_once('model/M_VK.php');
+include_once('model/M_Comment.php');
+
 //
-// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+// Базовый контроллер сайта.
 //
 abstract class C_Base extends Controller
 {
-	protected $needLogin;	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
-	protected $user;		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-	protected $alertOk;		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-	protected $alertFail;		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-	protected $alertNotif;		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-	protected $mStar;		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-	private $start_time;	// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	protected $needLogin;	// необходимость авторизации 
+	protected $user;		// авторизованный пользователь
+	protected $alertOk;		// оповещение пользователя
+	protected $alertFail;		// оповещение пользователя
+	protected $alertNotif;		// оповещение пользователя
+	protected $mStar;		// оповещение пользователя
+	private $start_time;	// время начала генерации страницы
 	protected $mUsers;
 	protected $mVKSender;
 	protected $_VKMailing;
 	
 	//
-	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+	// Конструктор.
 	//
 	function __construct() 
 	{
@@ -48,16 +48,16 @@ abstract class C_Base extends Controller
 	}
 	
 	//
-	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+	// Виртуальный обработчик запроса.
 	//
 	protected function OnInput()
 	{
-		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+		// Очистка старых сессий и определение текущего пользователя.
 				
 		$this->mUsers->ClearSessions();		
 		$this->user = $this->mUsers->Get();  
 	
-		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+		// Перенаправление на страницу авторизации, если это необходимо.
 		if ($this->user == null && $this->needLogin)
 		{       	
 			header("Location: index.php");
@@ -68,16 +68,16 @@ abstract class C_Base extends Controller
 			$this->mStar = M_Starosta::Instance();
 		}
 		
-		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+		// Засекаем время начала обработки запроса.
 		$this->start_time = microtime(true);
 	}
 	
 	//
-	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ HTML.
+	// Виртуальный генератор HTML.
 	//	
 	protected function OnOutput()
 	{
-	    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+	    // Основной шаблон всех страниц.
 		$vars = array('content' => $this->content,
 					'user'=>$this->user,
 					'_VKMailing'=>$this->mSmsRasp->verVKMailing($user[id_user]),
@@ -85,11 +85,11 @@ abstract class C_Base extends Controller
 			
 		$page = $this->View(THEME.'/tpl_main.php', $vars);
 						
-		// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+		// Время обработки запроса.
         $time = microtime(true) - $this->start_time;        
-        $page .= "<!-- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: $time пїЅпїЅпїЅ.-->";
+        $page .= "<!-- Время генерации страницы: $time сек.-->";
         
-		// пїЅпїЅпїЅпїЅпїЅ HTML.
+		// Вывод HTML.
         echo $page;
 	}
 }

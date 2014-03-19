@@ -1,3 +1,46 @@
+	/* Следующий код выполняется только после загрузки DOM */
+	
+	/* Данный флаг предотвращает отправку нескольких комментариев: */
+var working = false;
+	
+	/* Ловим событие отправки формы: */
+$('#commFieldSubmit').click(function(e){
+
+ 	e.preventDefault();
+	if(working) return false;
+		
+	working = true;
+	$("#commFieldSubmit").val("Загрузка...");
+		//$('span.error').remove();
+		
+		/* Отправляем поля формы в submit.php: */
+	$.post('index.php?c=comment',{comment:$('#commFieldText').val()},function(msg){
+		working = false;
+		$("#commFieldSubmit").val("Отправить");	
+		if(msg.status){
+
+				/* 
+				/	Если вставка была успешной, добавляем комментарий 
+				/	ниже последнего на странице с эффектом slideDown
+				/*/
+
+			$(msg.html).hide().insertBefore('.paginationComms').slideDown();
+				//$('#body').val('');
+		} else {
+				/*
+				/	Если есть ошибки, проходим циклом по объекту
+				/	msg.errors и выводим их на страницу
+				/*/
+			
+				$.each(msg.errors,function(k,v){
+				//	$('label[for='+k+']').append('<span class="error">'+v+'</span>');
+					alert(v);
+				});
+		}
+	},'json');
+
+});
+
 function animate() {
     $(o).eq(curIndex).show().animate({left: '-=50px', opacity: '0'}, 400, function() {
 			$(o).eq(curIndex).attr('style', '').hide();
@@ -20,12 +63,3 @@ $('#prepod').ikSelect({
 	customClass: 'prepod_select_link'
 });
 
-$("#studentSet").click(function(){
-	$("#groupSelectSet").show();
-	$("#prepodSelectSet").hide();
-});
-
-$("#lecturerSet").click(function(){
-	$("#groupSelectSet").hide();
-	$("#prepodSelectSet").show();
-});

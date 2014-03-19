@@ -1,4 +1,3 @@
-
 	<div id="content">
 	
 		<div id="content_c">
@@ -226,27 +225,24 @@
 													</table>
 												</div>
 											</td>
-											<td  style="vertical-align:top">
-												<div class="wrap_schedule" style="box-shadow: none !important; border: 0">
-												<table class="schedule">
-													<tbody>
-														<tr>
-															<td style="border: 0;">
-																<h3 class="no-margin">
-																	<img src="http://placehold.it/78x43">
-																Заголовок</h3>
-																<p>Lorem ipsum dolor sit amet,<br> 
-																consectetur adipisicing elit<br>
-																sed do eiusmod tempor<br>
-																incididunt ut labore et dolore<br></p>
-																<a class="red-link" href="#" target="_blank">Ссылка</a>
-															</td>
-														</tr>
-													</tbody>
-												</table>
+											<td style="vertical-align:top; padding-top:20px;" colspan="2">
+												<?php echo $html_comments;?>
+												<div class="paginationComms">
+													<a href="#">Назад</a>
+													<a href="#">1</a>
+													2
+													<a href="#">3</a>
+													<a href="#">Вперед</a>
 												</div>
+												
+												<div id="commField">
+													<form>
+														<input id="commFieldText" type="text" placeholder="Введите сообщение..."/>
+														<input id="commFieldSubmit" class="customButtonMini" type="button"  value="Отправить"/>
+													</form>
+												</div>
+												
 										    </td>
-											<td></td>
 								</tr>
 				</tbody>
 			</table>

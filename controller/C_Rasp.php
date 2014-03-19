@@ -19,6 +19,7 @@ class C_Rasp extends C_Base {
         parent::__construct();
 		// Подключаем менеджер работы с расписанием.
         $this->mRasp = M_Rasp::Instance();
+		$this->mUsers = M_Users::Instance();	
     }
 
     //
@@ -87,16 +88,33 @@ class C_Rasp extends C_Base {
 		}
 		 
 		$this->mas_rasp=$this->mRasp->rasp($_COOKIE['sel_week'], 'week', $_COOKIE['person'], $type);
-   
+		
+		//Последние 5 комментариев
+		$arrComments = $this->mRasp->get_comments();
+		foreach($arrComments as $comment){
+			$user = $this->mUsers->Get($comment['author_id']);
+			$comment_body = iconv("UTF-8", "WINDOWS-1251", $comment['body']);
+			$htmlComments .= '<div class="commVk">
+													<div class="img-comm"><img width="50" src="'.$user['photo_200'].'"></div>
+													<div class="comm-text">
+														<div class="comm-name">'.$user['first_name'].' '.$user['last_name'].'</div>
+														<div class="commentVk">'.$comment_body.'</div>
+													</div>
+												</div>';
+		}
+		
+		
 		// Генерация содержимого страницы Rasp.
       
     	$vars = array(
+			'html_comments'=>$htmlComments,
+			'comments'=>$this->mRasp->get_comments(),
 			'grup'=>$this->mRasp->all_grup(),
 			'lecturer'=>$this->mRasp->all_lecturer(),
 			'rasp'=>$this->mas_rasp,
             'day1'=>$this->day1,            
 			'week'=>52,
-			'now_week'=>$this->mRasp->get_num_edu_week(date("d-m-Y"))          
+			'now_week'=>$this->mRasp->get_num_edu_week(date("d-m-Y")),
             );
 		
 			$this->content = $this->View(THEME.'/tpl_rasp.php', $vars);
