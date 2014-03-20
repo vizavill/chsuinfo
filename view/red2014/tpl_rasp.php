@@ -171,7 +171,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td>
+									<td style="vertical-align:top">
 										<div class="wrap_schedule">
 										<div class="title_red uppercase">Пятница<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">7 Мар</span></div>
 										<table class="schedule">
@@ -198,7 +198,7 @@
 										</table>
 											</div>
 										</td>
-										<td>
+										<td style="vertical-align:top">
 											<div class="wrap_schedule">
 											<div class="title_red uppercase">Суббота<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">8 Мар</span></div>
 													<table class="schedule">

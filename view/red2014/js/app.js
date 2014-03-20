@@ -1,3 +1,18 @@
+function extComment(obj){
+	var heightComment = $(obj).parents('.commVk').find('.commentVk').height();
+	if(heightComment > 46){
+		$(obj).parents('.commVk').find('.comm-text').animate( { height:heightComment+17 }, { queue:false, duration:500 } );
+		$(obj).hide();
+		$(obj).next().show();
+	}
+}
+
+function extCommentHide(obj){
+	$(obj).parents('.commVk').find('.comm-text').animate( { height:51 }, { queue:false, duration:500 } );
+	$(obj).hide();
+	$(obj).prev().show();
+}
+
 var working = false;
 $('#commFieldSubmit').click(function(e){
  	e.preventDefault();

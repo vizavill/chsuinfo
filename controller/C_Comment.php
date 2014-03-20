@@ -45,6 +45,16 @@ class C_Comment extends C_Base {
 					
 					//$insertedComment = new Comment($this->arr);
 					//$htmlComment = $insertedComment->markup();
+					if(strlen($this->arr['body']) >= 125){
+						$extLinks = '<a href="#" class="panLink" onclick="extComment(this); return false;"><img src="/view'.THEME.'/images/ext.png"></a>
+														<a href="#" class="panLink" onclick="extCommentHide(this); return false;" style="display:none"><img src="/view'.THEME.'/images/extn.png"></a>';
+					}
+					
+					if($this->user['id_role'] == 4)
+						$delOrtw = '<a href="#" class="panLink"><img src="/view'.THEME.'/images/del.png"></a><br>';
+					else
+						$delOrtw = '<a href="#" class="panLink"><img src="/view'.THEME.'/images/tw.png"></a><br>';
+					
 					$htmlComment = '
 						<div class="commVk">
 							<div class="img-comm"><img width="50" src="'.$this->arr['photo'].'"></div>
@@ -53,9 +63,9 @@ class C_Comment extends C_Base {
 								<div class="commentVk">'.$this->arr['body'].'<a href="#"></a></div>
 							</div>
 							<div class="commentPanel">
-								<a href="#" id="panLink"><img src="./images/del.png"></a><br>
-								<a href="#" id="panLink"><img src="./images/vk_c.png"></a><br>
-								<a href="#" id="panLink"><img src="./images/ext.png"></a>
+								'.$delOrtw.'
+								<a href="#" id="panLink"><img src="/view'.THEME.'/images/vk_c.png"></a><br>
+								'.$extLinks.'
 							</div>
 						</div>
 					';

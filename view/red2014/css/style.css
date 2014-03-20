@@ -74,11 +74,11 @@ body{
 	display:inline;
 }
 
-#panLink{
+.panLink{
 	opacity:0.8;
 }
 
-#panLink:hover{
+.panLink:hover{
 	opacity:1;
 }
 

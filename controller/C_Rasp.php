@@ -91,9 +91,23 @@ class C_Rasp extends C_Base {
 		
 		//Последние 5 комментариев
 		$arrComments = $this->mRasp->get_comments();
-		foreach($arrComments as $comment){
+		$reverseAC = array_reverse($arrComments);
+		//$ttest = var_dump($arrComments);
+		foreach($reverseAC as $comment){
 			$user = $this->mUsers->Get($comment['author_id']);
 			$comment_body = iconv("UTF-8", "WINDOWS-1251", $comment['body']);
+			$extLinks = '';
+			if(strlen($comment_body) >= 125){
+				$extLinks = '<a href="#" class="panLink" onclick="extComment(this); return false;"><img src="/view'.THEME.'/images/ext.png"></a>
+							<a href="#" class="panLink" onclick="extCommentHide(this); return false;" style="display:none"><img src="/view'.THEME.'/images/extn.png"></a>';
+			}
+			
+			$this->user = $this->mUsers->Get();
+			if($this->user['id_role'] == 4)
+				$delOrtw = '<a href="#" class="panLink"><img src="/view'.THEME.'/images/del.png"></a><br>';
+			else
+				$delOrtw = '<a href="#" class="panLink"><img src="/view'.THEME.'/images/tw.png"></a><br>';
+				
 			$htmlComments .= '<div class="commVk">
 													<div class="img-comm"><img width="50" src="'.$user['photo_200'].'"></div>
 													<div class="comm-text">
@@ -101,9 +115,9 @@ class C_Rasp extends C_Base {
 														<div class="commentVk">'.$comment_body.'</div>
 													</div>
 													<div class="commentPanel">
-														<a href="#" id="panLink"><img src="/view'.THEME.'/images/del.png"></a><br>
-														<a href="#" id="panLink"><img src="/view'.THEME.'/images/vk_c.png"></a><br>
-														<a href="#" id="panLink"><img src="/view'.THEME.'/images/ext.png"></a>
+														'.$delOrtw.'
+														<a href="#" class="panLink"><img src="/view'.THEME.'/images/vk_c.png"></a><br>
+														'.$extLinks.'
 													</div>
 												</div>';
 		}
