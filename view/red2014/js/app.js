@@ -23,6 +23,9 @@ $('#commFieldSubmit').click(function(e){
 		working = false;
 		$("#commFieldSubmit").val("Отправить");	
 		if(msg.status){
+			$('#commFieldSubmit').parents('td').find('.commVk:first').slideUp(function(){
+				$('#commFieldSubmit').parents('td').find('.commVk:first').remove();
+			});
 			$(msg.html).hide().insertBefore('.paginationComms').slideDown();
 		} else {			
 				$.each(msg.errors,function(k,v){
