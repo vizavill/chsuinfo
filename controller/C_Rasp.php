@@ -1,5 +1,6 @@
 <?php
 include_once('controller/C_Base.php');
+include_once('lib/comment.class.php');
 //
 // Конттроллер страницы показа расписания.
 //
@@ -89,45 +90,39 @@ class C_Rasp extends C_Base {
 		 
 		$this->mas_rasp=$this->mRasp->rasp($_COOKIE['sel_week'], 'week', $_COOKIE['person'], $type);
 		
+		/* Не требуется так как подгрузка будет осуществляться с помощью ajax
+		
 		//Последние 5 комментариев
 		$arrComments = $this->mRasp->get_comments();
+		$this->user =  $this->mUsers->Get();
 		$reverseAC = array_reverse($arrComments);
 		//$ttest = var_dump($arrComments);
+		$insertedComment = new Comment();
 		foreach($reverseAC as $comment){
 			$user = $this->mUsers->Get($comment['author_id']);
 			$comment_body = iconv("UTF-8", "WINDOWS-1251", $comment['body']);
-			$extLinks = '';
-			if(strlen($comment_body) >= 125){
-				$extLinks = '<a href="#" class="panLink" onclick="extComment(this); return false;"><img src="/view'.THEME.'/images/ext.png"></a>
-							<a href="#" class="panLink" onclick="extCommentHide(this); return false;" style="display:none"><img src="/view'.THEME.'/images/extn.png"></a>';
-			}
 			
-			$this->user = $this->mUsers->Get();
-			if($this->user['id_role'] == 4)
-				$delOrtw = '<a href="#" class="panLink"><img src="/view'.THEME.'/images/del.png"></a><br>';
-			else
-				$delOrtw = '<a href="#" class="panLink"><img src="/view'.THEME.'/images/tw.png"></a><br>';
-				
-			$htmlComments .= '<div class="commVk">
-													<div class="img-comm"><img width="50" src="'.$user['photo_200'].'"></div>
-													<div class="comm-text">
-														<div class="comm-name">'.$user['first_name'].' '.$user['last_name'].'</div>
-														<div class="commentVk">'.$comment_body.'</div>
-													</div>
-													<div class="commentPanel">
-														'.$delOrtw.'
-														<a href="#" class="panLink"><img src="/view'.THEME.'/images/vk_c.png"></a><br>
-														'.$extLinks.'
-													</div>
-												</div>';
+			$commentData = array(
+								"body"=>$comment_body,
+								"id"=>$comment['id'],
+								"id_role"=>$this->user['id_role'],
+								"id_vk"=>$user['id_vk'],
+								"photo"=>$user['photo_200'],
+								"full_name"=>$user['first_name'].' '.$user['last_name']
+								);
+			$insertedComment->setData($commentData);		
+			$htmlComments .= $insertedComment->markup();
 		}
+		*/
+			
+	
 		
 		
 		// Генерация содержимого страницы Rasp.
       
     	$vars = array(
-			'html_comments'=>$htmlComments,
-			'comments'=>$this->mRasp->get_comments(),
+			//'html_comments'=>$htmlComments,
+			//'comments'=>$this->mRasp->get_comments(),
 			'grup'=>$this->mRasp->all_grup(),
 			'lecturer'=>$this->mRasp->all_lecturer(),
 			'rasp'=>$this->mas_rasp,

@@ -226,15 +226,7 @@
 												</div>
 											</td>
 											<td style="vertical-align:top; padding-top:20px;" colspan="2">
-												<?php echo $html_comments;?>
-												<div class="paginationComms">
-													<a href="#">Назад</a>
-													<a href="#">1</a>
-													2
-													<a href="#">3</a>
-													<a href="#">Вперед</a>
-												</div>
-												
+												<div class="htmlcomments"></div>
 												<div id="commField">
 													<form>
 														<input id="commFieldText" type="text" placeholder="Введите сообщение..."/>
