@@ -46,6 +46,7 @@ class C_Comment extends C_Base {
 									"body"=>$comment_body,
 									"id"=>$comment['id'],
 									"id_role"=>$this->user['id_role'],
+									"id_role_a"=>$user['id_role'],
 									"id_vk"=>$user['id_vk'],
 									"photo"=>$user['photo_200'],
 									"full_name"=>$user['first_name'].' '.$user['last_name']

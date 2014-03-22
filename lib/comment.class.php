@@ -43,10 +43,12 @@ class Comment
 					
 		if($d['id_role'] == 4){
 			$delOrtw = '<a href="#" onclick="delComment(this,'.$d['id'].'); return false;" class="panLink" title="Удалить комментарий"><img src="/view'.THEME.'/images/del.png"></a><br>';
-			$chAdmin = '<img style="padding-left:5px;vertical-align:middle" src="/view'.THEME.'/images/adm.png">';
 		}else{
 			$delOrtw = '<a href="https://twitter.com/intent/tweet?hashtags=chsuinfo,'.urlencode(iconv("WINDOWS-1251","UTF-8","комментарии")).'&text='.$twitterText.'&url=http://chsuinfo.ru/" target="_blank" class="panLink" title="Запостить в твиттер"><img src="/view'.THEME.'/images/tw.png"></a><br>';
 		}
+		
+		if($d['id_role_a'] == 4)
+			$chAdmin = '<img style="padding-left:5px;vertical-align:middle" src="/view'.THEME.'/images/adm.png">';
 		
 		return '
 				<div class="commVk">
