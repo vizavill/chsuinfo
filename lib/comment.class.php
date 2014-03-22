@@ -59,7 +59,7 @@ class Comment
 					</div>
 					<div class="commentPanel">
 						'.$delOrtw.'
-						<a href="http://vk.com/share.php?title='.urlencode(iconv("WINDOWS-1251","UTF-8","Комментарии на")).' chsuinfo.ru&url=http://chsuinfo.ru&description='.$vkText.'" target="_blank" class="panLink"><img src="/view'.THEME.'/images/vk_c.png"></a><br>
+						<a href="http://vk.com/share.php?title='.urlencode(iconv("WINDOWS-1251","UTF-8","Комментарии на")).' chsuinfo.ru&url=http://chsuinfo.ru&description='.$vkText.'" target="_blank" class="panLink" title="Запостить в вконтакте"><img src="/view'.THEME.'/images/vk_c.png"></a><br>
 						'.$extLinks.'
 					</div>
 				</div>
