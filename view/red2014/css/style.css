@@ -6,6 +6,9 @@ body{
 }
 
 /*comments begin*/
+.commentVk{
+	word-wrap: break-word;
+}
 
 .active {
     display: inline-block;
