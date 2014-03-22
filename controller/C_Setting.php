@@ -1,7 +1,7 @@
 <?php
 include_once('controller/C_Base.php');
 //
-// Êîíòòðîëëåð ñòðàíèöû óïðàâëåíèÿ ïðîôèëåì.
+// ÐšÐ¾Ð½Ñ‚Ñ‚Ñ€Ð¾Ð»Ð»ÐµÑ€ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ ÑƒÐ¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ñ Ð¿Ñ€Ð¾Ñ„Ð¸Ð»ÐµÐ¼.
 //
 class C_Setting extends C_Base {
 	
@@ -10,12 +10,12 @@ class C_Setting extends C_Base {
     protected $mRasp;    	
 
 	//
-    // Êîíñòðóêòîð.
+    // ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€.
     //
     function __construct() {
 		parent::__construct();
-		$this->needLogin = true; // ðàñêîììåíòèðóéòå, ÷òîáû çàêðûòü íåàâòîðèçîâàííûé äîñòóï ê ñòðàíèöå
-		// Ìåíåäæåðû.
+		$this->needLogin = true; // Ñ€Ð°ÑÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð¸Ñ€ÑƒÐ¹Ñ‚Ðµ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð·Ð°ÐºÑ€Ñ‹Ñ‚ÑŒ Ð½ÐµÐ°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð´Ð¾ÑÑ‚ÑƒÐ¿ Ðº ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ
+		// ÐœÐµÐ½ÐµÐ´Ð¶ÐµÑ€Ñ‹.
 		$this->mUsers = M_Users::Instance();	
 		$this->mReg = M_Reg::Instance();
 		$this->mSms = M_Sms::Instance();
@@ -26,7 +26,7 @@ class C_Setting extends C_Base {
 
 	
     //
-    // Âèðòóàëüíûé îáðàáîò÷èê çàïðîñà.
+    // Ð’Ð¸Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ñ‹Ð¹ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸Ðº Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
     //	
     protected function OnInput(){
         
@@ -39,7 +39,7 @@ class C_Setting extends C_Base {
 			if($_REQUEST['code'])
 			{
 			
-				// ïîëó÷àåì access_token
+				// Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ access_token
 				$resp = file_get_contents('https://oauth.vk.com/access_token?client_id='.CLIENT_ID.'&code='.$_REQUEST['code'].'&client_secret='.SECRET.'&redirect_uri='.PATH."index.php?c=setting");
 				$data = json_decode($resp, true);echo $resp;
 				if($data['access_token'])
@@ -51,7 +51,7 @@ class C_Setting extends C_Base {
 				}
 			}
 		}
-        // Îáðàáîòêà îòïðàâêè ôîðìû.
+        // ÐžÐ±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ñ„Ð¾Ñ€Ð¼Ñ‹.
 		if ($this->IsPost())
 		{
 		
@@ -90,11 +90,11 @@ class C_Setting extends C_Base {
 	}
 
     //
-    // Âèðòóàëüíûé ãåíåðàòîð HTML.
+    // Ð’Ð¸Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ñ‹Ð¹ Ð³ÐµÐ½ÐµÑ€Ð°Ñ‚Ð¾Ñ€ HTML.
     //
     protected function OnOutput(){
 			
-        // Ãåíåðàöèÿ ñîäåðæèìîãî ñòðàíèöû
+        // Ð“ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ñ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ð³Ð¾ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹
     	$vars = array('alert'=>$this->alert,
 							'user'=>$this->user,
 							'grup'=>$this->mRasp->all_grup(),

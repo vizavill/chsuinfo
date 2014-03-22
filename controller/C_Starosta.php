@@ -1,7 +1,7 @@
 <?php
 include_once('controller/C_Base.php');
 //
-// Êîíòòğîëëåğ ñòğàíèöû óïğàâëåíèÿ ğàññûëêàìè.
+// ĞšĞ¾Ğ½Ñ‚Ñ‚Ñ€Ğ¾Ğ»Ğ»ĞµÑ€ ÑÑ‚Ñ€Ğ°Ğ½Ğ¸Ñ†Ñ‹ ÑƒĞ¿Ñ€Ğ°Ğ²Ğ»ĞµĞ½Ğ¸Ñ Ñ€Ğ°ÑÑÑ‹Ğ»ĞºĞ°Ğ¼Ğ¸.
 //
 class C_Starosta extends C_Base 
 {
@@ -11,19 +11,19 @@ class C_Starosta extends C_Base
 
 
 	//
-    // Êîíñòğóêòîğ.
+    // ĞšĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€.
     //
     function __construct() 
     {
     	parent::__construct();
-    	$this->needLogin = true; // ğàñêîììåíòèğóéòå, ÷òîáû çàêğûòü íåàâòîğèçîâàííûé äîñòóï ê ñòğàíèöå
+    	$this->needLogin = true; // Ñ€Ğ°ÑĞºĞ¾Ğ¼Ğ¼ĞµĞ½Ñ‚Ğ¸Ñ€ÑƒĞ¹Ñ‚Ğµ, Ñ‡Ñ‚Ğ¾Ğ±Ñ‹ Ğ·Ğ°ĞºÑ€Ñ‹Ñ‚ÑŒ Ğ½ĞµĞ°Ğ²Ñ‚Ğ¾Ñ€Ğ¸Ğ·Ğ¾Ğ²Ğ°Ğ½Ğ½Ñ‹Ğ¹ Ğ´Ğ¾ÑÑ‚ÑƒĞ¿ Ğº ÑÑ‚Ñ€Ğ°Ğ½Ğ¸Ñ†Ğµ
 		$this->mSms = M_Sms::Instance();
 		$this->mStar = M_Starosta::Instance();
 		
     }
 
     //
-    // Âèğòóàëüíûé îáğàáîò÷èê çàïğîñà.
+    // Ğ’Ğ¸Ñ€Ñ‚ÑƒĞ°Ğ»ÑŒĞ½Ñ‹Ğ¹ Ğ¾Ğ±Ñ€Ğ°Ğ±Ğ¾Ñ‚Ñ‡Ğ¸Ğº Ğ·Ğ°Ğ¿Ñ€Ğ¾ÑĞ°.
     //
     protected function OnInput(){
 		
@@ -32,26 +32,26 @@ class C_Starosta extends C_Base
 			if($this->mUsers->Can('send_sms_group')){	
 			$this->all_odnogrup=$this->mStar->all_odnogrup($this->user[starosta]);
 			if ((15-($this->mStar->count_not($this->user[starosta])))<=0){
-						$this->alert="Âû èñ÷åğïàëè ìåñÿ÷íûé ëèìèò îòïğàâêè îïîâåùåíèé";
+						$this->alert="Ğ’Ñ‹ Ğ¸ÑÑ‡ĞµÑ€Ğ¿Ğ°Ğ»Ğ¸ Ğ¼ĞµÑÑÑ‡Ğ½Ñ‹Ğ¹ Ğ»Ğ¸Ğ¼Ğ¸Ñ‚ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²ĞºĞ¸ Ğ¾Ğ¿Ğ¾Ğ²ĞµÑ‰ĞµĞ½Ğ¸Ğ¹";
 						return false;
 					}
 				
-			// Îáğàáîòêà îòïğàâêè ôîğìû.
+			// ĞĞ±Ñ€Ğ°Ğ±Ğ¾Ñ‚ĞºĞ° Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²ĞºĞ¸ Ñ„Ğ¾Ñ€Ğ¼Ñ‹.
 			if ($this->IsPost()){
 					
 					
-					$text=$_POST[text]."\nÑòàğîñòà ".$this->user[starosta];
+					$text=$_POST[text]."\nĞ¡Ñ‚Ğ°Ñ€Ğ¾ÑÑ‚Ğ° ".$this->user[starosta];
 					$sendAll=$_POST[sendAll];
 					$mas_number=$_POST[mas_number];
 					
 					if (($sendAll!="true") && !isset($mas_number)){
-						$this->alert="Âûáèğèòå ñïîñîá îòïğàâêè";
+						$this->alert="Ğ’Ñ‹Ğ±Ğ¸Ñ€Ğ¸Ñ‚Ğµ ÑĞ¿Ğ¾ÑĞ¾Ğ± Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²ĞºĞ¸";
 						return;
 					}
 				
 					
 					
-					//ôîğìèğóåì ìàññèâ äëÿ îòïğàâêè	
+					//Ñ„Ğ¾Ñ€Ğ¼Ğ¸Ñ€ÑƒĞµĞ¼ Ğ¼Ğ°ÑÑĞ¸Ğ² Ğ´Ğ»Ñ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²ĞºĞ¸	
 					if (isset($sendAll) && ($sendAll=="true")){
 						foreach ($this->all_odnogrup as $value){
 							$arraySms[] = array('to' =>"7".$value[phone_number], 'text' => iconv("CP1251","utf8",$text));
@@ -75,17 +75,17 @@ class C_Starosta extends C_Base
 					
 					
 					if (!$this->mSms->sendArraySms($arraySms)){
-						$this->alert="Ïğè îòïğàâêå ïğîèçîøëà îøèáêà, ïîïğîáóéòå îòïğàâèòü åùå ğàç.";
+						$this->alert="ĞŸÑ€Ğ¸ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²ĞºĞµ Ğ¿Ñ€Ğ¾Ğ¸Ğ·Ğ¾ÑˆĞ»Ğ° Ğ¾ÑˆĞ¸Ğ±ĞºĞ°, Ğ¿Ğ¾Ğ¿Ñ€Ğ¾Ğ±ÑƒĞ¹Ñ‚Ğµ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²Ğ¸Ñ‚ÑŒ ĞµÑ‰Ğµ Ñ€Ğ°Ğ·.";
 						return false;
 					}
 					
 					
 					if (!$this->mStar->add_notif($vars)){
-						$this->alert="Ïğè îòïğàâêå ïğîèçîøëà îøèáêà, ïîïğîáóéòå îòïğàâèòü åùå ğàç.";
+						$this->alert="ĞŸÑ€Ğ¸ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²ĞºĞµ Ğ¿Ñ€Ğ¾Ğ¸Ğ·Ğ¾ÑˆĞ»Ğ° Ğ¾ÑˆĞ¸Ğ±ĞºĞ°, Ğ¿Ğ¾Ğ¿Ñ€Ğ¾Ğ±ÑƒĞ¹Ñ‚Ğµ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²Ğ¸Ñ‚ÑŒ ĞµÑ‰Ğµ Ñ€Ğ°Ğ·.";
 						return false;
 					}
 							
-					$this->alert="SMS óñïåøíî îòïğàâëåíû";	
+					$this->alert="SMS ÑƒÑĞ¿ĞµÑˆĞ½Ğ¾ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²Ğ»ĞµĞ½Ñ‹";	
 						
 					
 				
@@ -97,7 +97,7 @@ class C_Starosta extends C_Base
 }
 }
     //
-    // Âèğòóàëüíûé ãåíåğàòîğ HTML.
+    // Ğ’Ğ¸Ñ€Ñ‚ÑƒĞ°Ğ»ÑŒĞ½Ñ‹Ğ¹ Ğ³ĞµĞ½ĞµÑ€Ğ°Ñ‚Ğ¾Ñ€ HTML.
     //
     protected function OnOutput() {
 		
@@ -106,7 +106,7 @@ class C_Starosta extends C_Base
 				
 		
 		
-     // Ãåíåğàöèÿ ñîäåğæèìîãî ñòğàíèöû.
+     // Ğ“ĞµĞ½ĞµÑ€Ğ°Ñ†Ğ¸Ñ ÑĞ¾Ğ´ĞµÑ€Ğ¶Ğ¸Ğ¼Ğ¾Ğ³Ğ¾ ÑÑ‚Ñ€Ğ°Ğ½Ğ¸Ñ†Ñ‹.
     	$vars = array(
 					'all_notif'=>$this->mStar->all_notif($this->user[starosta]),
 					'count_not'=>15-$this->mStar->count_not($this->user[starosta]),

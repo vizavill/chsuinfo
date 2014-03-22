@@ -1,3 +1,32 @@
+//ajax pagination comments begin
+function loading_show(){
+	$('.loader').fadeIn();
+}
+
+function loading_hide()	{
+	$('.loader').fadeOut();
+} 
+
+loading_hide();
+
+function loadData(page){
+	loading_show(); 
+	$.ajax
+	({
+		type: "POST",
+		url: "index.php?c=comment",
+		data: "page="+page,
+		success: function(msg)
+		{
+			$(".htmlcomments").ajaxComplete(function(event, request, settings){
+				$(".htmlcomments").html(msg);
+				loading_hide();
+			});
+		}
+	});
+}
+
+//Развернуть комментарий
 function extComment(obj){
 	var heightComment = $(obj).parents('.commVk').find('.commentVk').height();
 	if(heightComment > 46){
@@ -7,12 +36,36 @@ function extComment(obj){
 	}
 }
 
+//Свернуть комментарий
 function extCommentHide(obj){
 	$(obj).parents('.commVk').find('.comm-text').animate( { height:51 }, { queue:false, duration:500 } );
 	$(obj).hide();
 	$(obj).prev().show();
 }
 
+//Удалить комментарий
+function delComment(obj,id){
+	if(confirm("Удалить комментарий?")){
+		$.post('index.php?c=comment',{delete:id},function(msg){
+			loadData($('.htmlcomments span').text());
+		});
+	}
+}
+
+
+
+//Загрузить первую страницу комментариев
+loadData(1); 
+
+$('.paginationComms a.active').live('click',function(){
+	var page = $(this).attr('p');
+	loadData(page);
+	return false;
+}); 
+//ajax pagination comments end
+
+
+//ajax отправка комментария
 var working = false;
 $('#commFieldSubmit').click(function(e){
  	e.preventDefault();
@@ -23,10 +76,8 @@ $('#commFieldSubmit').click(function(e){
 		working = false;
 		$("#commFieldSubmit").val("Отправить");	
 		if(msg.status){
-			$('#commFieldSubmit').parents('td').find('.commVk:first').slideUp(function(){
-				$('#commFieldSubmit').parents('td').find('.commVk:first').remove();
-			});
-			$(msg.html).hide().insertBefore('.paginationComms').slideDown();
+			loadData(1); 
+			$('#commFieldText').val('');
 		} else {			
 				$.each(msg.errors,function(k,v){
 					alert(v);
@@ -36,6 +87,7 @@ $('#commFieldSubmit').click(function(e){
 
 });
 
+//анимация слайдера последних новостей
 function animate() {
     $(o).eq(curIndex).show().animate({left: '-=50px', opacity: '0'}, 400, function() {
 			$(o).eq(curIndex).attr('style', '').hide();
@@ -49,6 +101,7 @@ var numberOfTeaser  = o.length;
 var curIndex = 0;
 setInterval(animate, 7000);          
 
+//Инициализация селектов
 $('#group').ikSelect();
 $('#week').ikSelect({
 	customClass: 'week_select_link'

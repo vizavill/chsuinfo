@@ -5,36 +5,36 @@
 					<img src="<?=$user[photo_200]?>">
 				</div>
 				<form action='index.php?c=login' method='post'>
-					<input class="customButton" type='submit' name='logout' value="Выйти из профиля"/>
+					<input class="customButton" type='submit' name='logout' value="Р’С‹Р№С‚Рё РёР· РїСЂРѕС„РёР»СЏ"/>
 				</form>
 				
 			</div>
 			<form action="index.php?c=setting"  method="post">
 			<div class="profile-data">
-				<div class="lineProfile">Ваше имя: <b><?=$user[first_name]." ".$user[last_name]?></b></div>
-				<div class="lineProfile">Ваш номер телефона: <b><?=$user[phone_number]?></b></div>
-				<div class="lineProfile">Вы студент (преподаватель): <b><?=$user[person]?></b></div>
+				<div class="lineProfile">Р’Р°С€Рµ РёРјСЏ: <b><?=$user[first_name]." ".$user[last_name]?></b></div>
+				<div class="lineProfile">Р’Р°С€ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°: <b><?=$user[phone_number]?></b></div>
+				<div class="lineProfile">Р’С‹ СЃС‚СѓРґРµРЅС‚ (РїСЂРµРїРѕРґР°РІР°С‚РµР»СЊ): <b><?=$user[person]?></b></div>
 				<br>
-				<a href="<?=$linkAuthVk?>" class="dot-link">Загрузить данные из профиля ВКонтакте</a>
-				<div class="message-grey" style="margin-top: 20px;">Если вы желаете получать оповещения от старосты вашей группы, укажите ваше имя (фамилию) и группу в которой вы обучаетесь. </div>
+				<a href="<?=$linkAuthVk?>" class="dot-link">Р—Р°РіСЂСѓР·РёС‚СЊ РґР°РЅРЅС‹Рµ РёР· РїСЂРѕС„РёР»СЏ Р’РљРѕРЅС‚Р°РєС‚Рµ</a>
+				<div class="message-grey" style="margin-top: 20px;">Р•СЃР»Рё РІС‹ Р¶РµР»Р°РµС‚Рµ РїРѕР»СѓС‡Р°С‚СЊ РѕРїРѕРІРµС‰РµРЅРёСЏ РѕС‚ СЃС‚Р°СЂРѕСЃС‚С‹ РІР°С€РµР№ РіСЂСѓРїРїС‹, СѓРєР°Р¶РёС‚Рµ РІР°С€Рµ РёРјСЏ (С„Р°РјРёР»РёСЋ) Рё РіСЂСѓРїРїСѓ РІ РєРѕС‚РѕСЂРѕР№ РІС‹ РѕР±СѓС‡Р°РµС‚РµСЃСЊ. </div>
 				<div class="stInput">
 					<div class="lineInput">
-						<span>Имя</span>
+						<span>РРјСЏ</span>
 						<input name='firstName' type="text" value='<?=$user[first_name]?>'>
 					</div> 
 					
 					<div class="lineInput">
-						<span>Фамилия</span>
+						<span>Р¤Р°РјРёР»РёСЏ</span>
 						<input name='lastName' type="text" value='<?=$user[last_name]?>'>
 					</div>
 					
 					<div class="lineInput">
-						<span>Номер телефона</span>
+						<span>РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°</span>
 						<input name='phoneNumber' type="text" value='<?=$user[phone_number]?>'>
 					</div>
 					
 					<div class="lineInput" id="prepodSelectSet" style="display:none">
-						<span>Имя</span><br>
+						<span>РРјСЏ</span><br>
 						<select name='lecturer'>
 							 <? foreach ($lecturer as $value)
 							 {		
@@ -52,7 +52,7 @@
 					</div>
 					
 					<div class="lineInput" id="groupSelectSet">
-						<span>Группа</span><br>
+						<span>Р“СЂСѓРїРїР°</span><br>
 						<select name='grup'>
 							 <? foreach ($grup as $value)
 							 {
@@ -69,10 +69,10 @@
 						</select>
 					</div>
 					<div class="lineInput">
-						<input name="type" id="lecturerSet" type="radio" value="lecturer"> Я преподаватель <br> 
-						<input name="type" id="studentSet" type="radio" value="grup" checked> Я студент
+						<input name="type" id="lecturerSet" type="radio" value="lecturer"> РЇ РїСЂРµРїРѕРґР°РІР°С‚РµР»СЊ <br> 
+						<input name="type" id="studentSet" type="radio" value="grup" checked> РЇ СЃС‚СѓРґРµРЅС‚
 					</div>
-					<input class="customButton" type="submit" value="Сохранить"></a>
+					<input class="customButton" type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ"></a>
 				</div>
 			</div>
 			</form>

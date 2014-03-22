@@ -19,23 +19,23 @@ include_once('model/M_VK.php');
 include_once('model/M_Comment.php');
 
 //
-// Базовый контроллер сайта.
+// Р‘Р°Р·РѕРІС‹Р№ РєРѕРЅС‚СЂРѕР»Р»РµСЂ СЃР°Р№С‚Р°.
 //
 abstract class C_Base extends Controller
 {
-	protected $needLogin;	// необходимость авторизации 
-	protected $user;		// авторизованный пользователь
-	protected $alertOk;		// оповещение пользователя
-	protected $alertFail;		// оповещение пользователя
-	protected $alertNotif;		// оповещение пользователя
-	protected $mStar;		// оповещение пользователя
-	private $start_time;	// время начала генерации страницы
+	protected $needLogin;	// РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р°РІС‚РѕСЂРёР·Р°С†РёРё 
+	protected $user;		// Р°РІС‚РѕСЂРёР·РѕРІР°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
+	protected $alertOk;		// РѕРїРѕРІРµС‰РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	protected $alertFail;		// РѕРїРѕРІРµС‰РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	protected $alertNotif;		// РѕРїРѕРІРµС‰РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	protected $mStar;		// РѕРїРѕРІРµС‰РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	private $start_time;	// РІСЂРµРјСЏ РЅР°С‡Р°Р»Р° РіРµРЅРµСЂР°С†РёРё СЃС‚СЂР°РЅРёС†С‹
 	protected $mUsers;
 	protected $mVKSender;
 	protected $_VKMailing;
 	
 	//
-	// Конструктор.
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
 	//
 	function __construct() 
 	{
@@ -48,16 +48,16 @@ abstract class C_Base extends Controller
 	}
 	
 	//
-	// Виртуальный обработчик запроса.
+	// Р’РёСЂС‚СѓР°Р»СЊРЅС‹Р№ РѕР±СЂР°Р±РѕС‚С‡РёРє Р·Р°РїСЂРѕСЃР°.
 	//
 	protected function OnInput()
 	{
-		// Очистка старых сессий и определение текущего пользователя.
+		// РћС‡РёСЃС‚РєР° СЃС‚Р°СЂС‹С… СЃРµСЃСЃРёР№ Рё РѕРїСЂРµРґРµР»РµРЅРёРµ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 				
 		$this->mUsers->ClearSessions();		
 		$this->user = $this->mUsers->Get();  
 	
-		// Перенаправление на страницу авторизации, если это необходимо.
+		// РџРµСЂРµРЅР°РїСЂР°РІР»РµРЅРёРµ РЅР° СЃС‚СЂР°РЅРёС†Сѓ Р°РІС‚РѕСЂРёР·Р°С†РёРё, РµСЃР»Рё СЌС‚Рѕ РЅРµРѕР±С…РѕРґРёРјРѕ.
 		if ($this->user == null && $this->needLogin)
 		{       	
 			header("Location: index.php");
@@ -68,16 +68,16 @@ abstract class C_Base extends Controller
 			$this->mStar = M_Starosta::Instance();
 		}
 		
-		// Засекаем время начала обработки запроса.
+		// Р—Р°СЃРµРєР°РµРј РІСЂРµРјСЏ РЅР°С‡Р°Р»Р° РѕР±СЂР°Р±РѕС‚РєРё Р·Р°РїСЂРѕСЃР°.
 		$this->start_time = microtime(true);
 	}
 	
 	//
-	// Виртуальный генератор HTML.
+	// Р’РёСЂС‚СѓР°Р»СЊРЅС‹Р№ РіРµРЅРµСЂР°С‚РѕСЂ HTML.
 	//	
 	protected function OnOutput()
 	{
-	    // Основной шаблон всех страниц.
+	    // РћСЃРЅРѕРІРЅРѕР№ С€Р°Р±Р»РѕРЅ РІСЃРµС… СЃС‚СЂР°РЅРёС†.
 		$vars = array('content' => $this->content,
 					'user'=>$this->user,
 					'_VKMailing'=>$this->mSmsRasp->verVKMailing($user[id_user]),
@@ -85,11 +85,11 @@ abstract class C_Base extends Controller
 			
 		$page = $this->View(THEME.'/tpl_main.php', $vars);
 						
-		// Время обработки запроса.
+		// Р’СЂРµРјСЏ РѕР±СЂР°Р±РѕС‚РєРё Р·Р°РїСЂРѕСЃР°.
         $time = microtime(true) - $this->start_time;        
-        $page .= "<!-- Время генерации страницы: $time сек.-->";
+        $page .= "<!-- Р’СЂРµРјСЏ РіРµРЅРµСЂР°С†РёРё СЃС‚СЂР°РЅРёС†С‹: $time СЃРµРє.-->";
         
-		// Вывод HTML.
+		// Р’С‹РІРѕРґ HTML.
         echo $page;
 	}
 }

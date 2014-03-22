@@ -1,48 +1,48 @@
 <?php
 include_once('controller/C_Base.php');
 //
-// Конттроллер страницы-примера.
+// РљРѕРЅС‚С‚СЂРѕР»Р»РµСЂ СЃС‚СЂР°РЅРёС†С‹-РїСЂРёРјРµСЂР°.
 //
 class C_Inc_mes extends C_Base {
-	private $num;		       // сервисный номер
-	private $phoneNumber;            // номер абонента
-	private $message;          // собственно сообшение (в кодировке UTF-8)
+	private $num;		       // СЃРµСЂРІРёСЃРЅС‹Р№ РЅРѕРјРµСЂ
+	private $phoneNumber;            // РЅРѕРјРµСЂ Р°Р±РѕРЅРµРЅС‚Р°
+	private $message;          // СЃРѕР±СЃС‚РІРµРЅРЅРѕ СЃРѕРѕР±С€РµРЅРёРµ (РІ РєРѕРґРёСЂРѕРІРєРµ UTF-8)
 
 	protected $mRasp;              //
 
 	//
-    // Конструктор.
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
     //
     function __construct() {
         
         parent::__construct();
-		// Менеджеры.
+		// РњРµРЅРµРґР¶РµСЂС‹.
         $this->mInc_mes = M_Inc_mes::Instance();
 		$this->mStar = M_Starosta::Instance();
 		$this->mSms = M_Sms::Instance();
     }
 
     //
-    // Виртуальный обработчик запроса.
+    // Р’РёСЂС‚СѓР°Р»СЊРЅС‹Р№ РѕР±СЂР°Р±РѕС‚С‡РёРє Р·Р°РїСЂРѕСЃР°.
     //
     protected function OnInput(){
         
 		// C_Base.
 		parent::OnInput();
 		
-        // Обработка отправки формы.
+        // РћР±СЂР°Р±РѕС‚РєР° РѕС‚РїСЂР°РІРєРё С„РѕСЂРјС‹.
 		if ($this->IsPost()){
 		  
 			$this->num = $_POST['num'];
 			$this->phoneNumber = substr($_POST['phone'],1);
 			$this->message = $_POST['message'];
 			
-			//Проверяем зарегистрирован номер или нет
+			//РџСЂРѕРІРµСЂСЏРµРј Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ РЅРѕРјРµСЂ РёР»Рё РЅРµС‚
 			if (!$this->mInc_mes->getRegisterPhone($this->phoneNumber)){
 				return;
 			}
 			
-			//Смотрим что хочет пользователь
+			//РЎРјРѕС‚СЂРёРј С‡С‚Рѕ С…РѕС‡РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
 			$this->mSms->send( 9535231282, ($this->mInc_mes->verifySms($this->message)));
 		}
 		//if($this->mInc_mes->phone_starosta($_POST['phone']))
@@ -50,13 +50,13 @@ class C_Inc_mes extends C_Base {
 	}
 
     //
-    // Виртуальный генератор HTML.
+    // Р’РёСЂС‚СѓР°Р»СЊРЅС‹Р№ РіРµРЅРµСЂР°С‚РѕСЂ HTML.
     //
     protected function OnOutput() {
 	
 	
     
-    // Генерация содержимого страницы Rasp.
+    // Р“РµРЅРµСЂР°С†РёСЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ СЃС‚СЂР°РЅРёС†С‹ Rasp.
       
     	
  parent::OnOutput();

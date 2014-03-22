@@ -2,17 +2,17 @@
 include_once('MSQL.php');
 
 //
-// Менеджер для примера
+// РњРµРЅРµРґР¶РµСЂ РґР»СЏ РїСЂРёРјРµСЂР°
 //
 class M_VK
 {
-	private static $instance; 	// ссылка на экземпляр класса
-	private $msql; 				// драйвер БД
+	private static $instance; 	// СЃСЃС‹Р»РєР° РЅР° СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР°
+	private $msql; 				// РґСЂР°Р№РІРµСЂ Р‘Р”
 	public $link;
 	public	$token;
  	
 	//
-	// Получение единственного экземпляра (одиночка)
+	// РџРѕР»СѓС‡РµРЅРёРµ РµРґРёРЅСЃС‚РІРµРЅРЅРѕРіРѕ СЌРєР·РµРјРїР»СЏСЂР° (РѕРґРёРЅРѕС‡РєР°)
 	//
 	public static function Instance()
 	{
@@ -23,19 +23,19 @@ class M_VK
 	}
 
 	//
-	// Конструктор
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	//
 	public function __construct()
 	{
 		$this->msql   = MSQL::Instance();
-		//логинимся
+		//Р»РѕРіРёРЅРёРјСЃСЏ
 		$this->token = $this->OAuth(LOGIN, PASSWORD);
 	}
 	
 	
 	
 	
-	// Функция авторизации пользователя
+	// Р¤СѓРЅРєС†РёСЏ Р°РІС‚РѕСЂРёР·Р°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     function OAuth($login, $password, $key = "", $sid = "") {
         $link = "https://oauth.vk.com/token?grant_type=password&client_id=2274003&client_secret=hHbZxrka2uZ6jB1inYsH&username=" . $login . "&password=" . $password;
         if ($key != "") {
@@ -44,18 +44,18 @@ class M_VK
         $res = $this->send($link);
         $decres = json_decode($res);
         if (isset($decres->access_token)) {
-            // При успешной авторизации
+            // РџСЂРё СѓСЃРїРµС€РЅРѕР№ Р°РІС‚РѕСЂРёР·Р°С†РёРё
             return $decres->access_token;
         }
         if (isset($decres->captcha_sid)) {
-            // При появлении каптчи
+            // РџСЂРё РїРѕСЏРІР»РµРЅРёРё РєР°РїС‚С‡Рё
             return $decres->captcha_sid;
         } elseif (isset($decres->error)) {
-            // Обработка всех остальных ошибок
+            // РћР±СЂР°Р±РѕС‚РєР° РІСЃРµС… РѕСЃС‚Р°Р»СЊРЅС‹С… РѕС€РёР±РѕРє
             return $decres->error;
         }
     }
-    // Функция получения информации по пользователе
+    // Р¤СѓРЅРєС†РёСЏ РїРѕР»СѓС‡РµРЅРёСЏ РёРЅС„РѕСЂРјР°С†РёРё РїРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
     function UserGetInfo($token, $id = "") {
         if ($id == "") {
             $link = "https://api.vk.com/method/users.get?fields=sex,bdate,city,country,photo_50,photo_100,photo_200,photo_400_orig,photo_max_orig,education,universities,schools&access_token=" . $token;
@@ -70,7 +70,7 @@ class M_VK
             return $decres;
         }
     }
-    // Получение друзей пользователя
+    // РџРѕР»СѓС‡РµРЅРёРµ РґСЂСѓР·РµР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     function FriendGet($token, $id = "") {
         if ($id == "") {
             $link = "https://api.vk.com/method/friends.get?access_token=" . $token;
@@ -85,7 +85,7 @@ class M_VK
             return $decres;
         }
     }
-    // Получение записей пользователя
+    // РџРѕР»СѓС‡РµРЅРёРµ Р·Р°РїРёСЃРµР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     function WallGet($token, $id = "") {
         if ($id == "") {
             $link = "https://api.vk.com/method/wall.get?filter=owner&access_token=" . $token;
@@ -100,7 +100,7 @@ class M_VK
             return $decres;
         }
     }
-    // Установка статуса
+    // РЈСЃС‚Р°РЅРѕРІРєР° СЃС‚Р°С‚СѓСЃР°
     function StatusSet($token, $text) {
         $link = "https://api.vk.com/method/status.set?text=" . urlencode($text) . "&access_token=" . $token;
         $res = $this->send($link);
@@ -111,7 +111,7 @@ class M_VK
             return 'error';
         }
     }
-    // Получение статуса
+    // РџРѕР»СѓС‡РµРЅРёРµ СЃС‚Р°С‚СѓСЃР°
     function StatusGet($token, $id = "") {
         if ($id == "") {
             $link = "https://api.vk.com/method/status.get?access_token=" . $token;
@@ -127,7 +127,7 @@ class M_VK
 			return 'error';
 		}
     }
-    // Установка онлайна
+    // РЈСЃС‚Р°РЅРѕРІРєР° РѕРЅР»Р°Р№РЅР°
     function SetOnline($token) {
         $link = "https://api.vk.com/method/account.setOnline?access_token=" . $token;
         $res = $this->send($link);
@@ -138,7 +138,7 @@ class M_VK
             return 'error';
         }
     }
-    // Функция отправки сообщения
+    // Р¤СѓРЅРєС†РёСЏ РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ
     function MsgToUser($user_id, $message, $attachment = "",$title, $token) {
         $link = "https://api.vk.com/method/messages.send?user_id=" . $user_id . "&message=" . urlencode(iconv("CP1251","utf8",$message)) . "&attachment=" . $attachment . "&access_token=" . $token . "&title=".iconv("CP1251","utf8",$title);
         $res = $this->send($link);
@@ -150,7 +150,7 @@ class M_VK
             return 'error';
         }
     }
-    // Функция отправки сообщения в конференцию
+    // Р¤СѓРЅРєС†РёСЏ РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ РІ РєРѕРЅС„РµСЂРµРЅС†РёСЋ
     function MsgToConferense($chat_id, $message, $attachment = "", $token) {
         $link = "https://api.vk.com/method/messages.send?chat_id=" . $chat_id . "&message=" . urlencode($message) . "&attachment=" . $attachment . "&access_token=" . $token;
         $res = $this->send($link);
@@ -161,7 +161,7 @@ class M_VK
             return 'error';
         }
     }
-    // Функция отправки сообщения на стену
+    // Р¤СѓРЅРєС†РёСЏ РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ РЅР° СЃС‚РµРЅСѓ
     function WallPost($owner_id = "", $friends_only = "0", $from_group = "0", $message, $attachments, $token) {
         if ($owner_id != "") {
             $group = strpos($owner_id, '-');
@@ -183,7 +183,7 @@ class M_VK
 		}
         
     }
-    // Функция добавления пользователя в друзья
+    // Р¤СѓРЅРєС†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ РґСЂСѓР·СЊСЏ
     function FriendsAdd($user_id, $text = "", $token) {
         $link = "https://api.vk.com/method/friends.add?&user_id=" . $user_id . "&text=" . Urlencode($text) . "&access_token=" . $token;
         $res = $this->send($link);
@@ -194,14 +194,14 @@ class M_VK
             return 'error';
         }
     }
-    // Функция проверки ссылки на забаненость Vk
+    // Р¤СѓРЅРєС†РёСЏ РїСЂРѕРІРµСЂРєРё СЃСЃС‹Р»РєРё РЅР° Р·Р°Р±Р°РЅРµРЅРѕСЃС‚СЊ Vk
     function TestLink($vklink) {
         $link = "https://api.vk.com/method/utils.checkLink?url=" . $vklink;
         $res = $this->send($link);
         $recres = json_decode($res);
         return $recres->response->status;
     }
-	// Функция для отправки универсального запроса
+	// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕС‚РїСЂР°РІРєРё СѓРЅРёРІРµСЂСЃР°Р»СЊРЅРѕРіРѕ Р·Р°РїСЂРѕСЃР°
 	function ApiVkSend($method, $params, $result = "response") {
 		$link = "https://api.vk.com/method/".$method."?".urlencode($params);
 		$res = $this->send($link);
@@ -212,7 +212,7 @@ class M_VK
 		return json_decode($res, TRUE);
 	}
 	}
-    // Ф-я отправки запроса
+    // Р¤-СЏ РѕС‚РїСЂР°РІРєРё Р·Р°РїСЂРѕСЃР°
     function send($link, $params = "", $useragent = "VKAndroidApp/3.0.1-10 (Android 4.0.4; SDK 13; armeabi-v7a; HTC Supersonic; ru)") {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $link);
@@ -250,7 +250,7 @@ class M_VK
 
 	
     //
-    //Получает список подписчиков для рассылки на текущий час 
+    //РџРѕР»СѓС‡Р°РµС‚ СЃРїРёСЃРѕРє РїРѕРґРїРёСЃС‡РёРєРѕРІ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё РЅР° С‚РµРєСѓС‰РёР№ С‡Р°СЃ 
     //
     public function getMessage()
 	{
@@ -261,7 +261,7 @@ class M_VK
     }
 	
 	 //
-    //Функция удаления пользователей из рассылки у которых кончился срок рассылки
+    //Р¤СѓРЅРєС†РёСЏ СѓРґР°Р»РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РёР· СЂР°СЃСЃС‹Р»РєРё Сѓ РєРѕС‚РѕСЂС‹С… РєРѕРЅС‡РёР»СЃСЏ СЃСЂРѕРє СЂР°СЃСЃС‹Р»РєРё
     //
     function SetStatusSend($id)
 	{
@@ -278,7 +278,7 @@ class M_VK
 	
     
     //
-    //Функция разбиения названия предмета на отдельные слова
+    //Р¤СѓРЅРєС†РёСЏ СЂР°Р·Р±РёРµРЅРёСЏ РЅР°Р·РІР°РЅРёСЏ РїСЂРµРґРјРµС‚Р° РЅР° РѕС‚РґРµР»СЊРЅС‹Рµ СЃР»РѕРІР°
     //
 	public function dali($string){
 		$i=1;
@@ -291,11 +291,11 @@ class M_VK
 		return $mas;
 	}
 	//
-    //Функция сокращения слова
+    //Р¤СѓРЅРєС†РёСЏ СЃРѕРєСЂР°С‰РµРЅРёСЏ СЃР»РѕРІР°
     //
 	public function sokrat($mas){
 		$len=4;
-		$vowel=array('а','у','о','ы','и','э','я','ю','ё','е','ь','ъ');
+		$vowel=array('Р°','Сѓ','Рѕ','С‹','Рё','СЌ','СЏ','СЋ','С‘','Рµ','СЊ','СЉ');
 		$out_string='';
 		foreach($mas as $string){
 			$len_str=strlen($string);

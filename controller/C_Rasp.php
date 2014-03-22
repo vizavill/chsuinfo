@@ -2,29 +2,29 @@
 include_once('controller/C_Base.php');
 include_once('lib/comment.class.php');
 //
-// Êîíòòðîëëåð ñòðàíèöû ïîêàçà ðàñïèñàíèÿ.
+// ÐšÐ¾Ð½Ñ‚Ñ‚Ñ€Ð¾Ð»Ð»ÐµÑ€ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ð¿Ð¾ÐºÐ°Ð·Ð° Ñ€Ð°ÑÐ¿Ð¸ÑÐ°Ð½Ð¸Ñ.
 //
 class C_Rasp extends C_Base {
-	private $sel_week;             // âûáðàííàÿ íåäåëÿ
-	private $sel_grup;             // âûáðàííàÿ ãðóïïà
-	private $sel_lecturer;         // âûáðàííûé ïðåïîäàâàòåëü
-	private $person;           		// (ïðåïîäàâàòåëü èëè ãðóïïà)
-	private $mas_rasp;	           // ðåçóëüòàò
+	private $sel_week;             // Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ð°Ñ Ð½ÐµÐ´ÐµÐ»Ñ
+	private $sel_grup;             // Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ð°Ñ Ð³Ñ€ÑƒÐ¿Ð¿Ð°
+	private $sel_lecturer;         // Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ñ‹Ð¹ Ð¿Ñ€ÐµÐ¿Ð¾Ð´Ð°Ð²Ð°Ñ‚ÐµÐ»ÑŒ
+	private $person;           		// (Ð¿Ñ€ÐµÐ¿Ð¾Ð´Ð°Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð¸Ð»Ð¸ Ð³Ñ€ÑƒÐ¿Ð¿Ð°)
+	private $mas_rasp;	           // Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚
 	protected $mRasp;              //
 
 	//
-    // Êîíñòðóêòîð.
+    // ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€.
     //
     function __construct()
 	{        
         parent::__construct();
-		// Ïîäêëþ÷àåì ìåíåäæåð ðàáîòû ñ ðàñïèñàíèåì.
+		// ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ð¼ÐµÐ½ÐµÐ´Ð¶ÐµÑ€ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ñ€Ð°ÑÐ¿Ð¸ÑÐ°Ð½Ð¸ÐµÐ¼.
         $this->mRasp = M_Rasp::Instance();
 		$this->mUsers = M_Users::Instance();	
     }
 
     //
-    // Âèðòóàëüíûé îáðàáîò÷èê çàïðîñà.
+    // Ð’Ð¸Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ñ‹Ð¹ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸Ðº Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
     //
     protected function OnInput()
 	{
@@ -32,7 +32,7 @@ class C_Rasp extends C_Base {
 		// C_Base.
 		parent::OnInput();
 		
-        // Îáðàáîòêà îòïðàâêè ôîðìû.
+        // ÐžÐ±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ñ„Ð¾Ñ€Ð¼Ñ‹.
 		if (($this->IsGet()))
 		{
 			if($_GET[week]=='forward')
@@ -75,7 +75,7 @@ class C_Rasp extends C_Base {
 	}
 
     //
-    // Âèðòóàëüíûé ãåíåðàòîð HTML.
+    // Ð’Ð¸Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ñ‹Ð¹ Ð³ÐµÐ½ÐµÑ€Ð°Ñ‚Ð¾Ñ€ HTML.
     //
     protected function OnOutput()
 	{
@@ -90,9 +90,9 @@ class C_Rasp extends C_Base {
 		 
 		$this->mas_rasp=$this->mRasp->rasp($_COOKIE['sel_week'], 'week', $_COOKIE['person'], $type);
 		
-		/* Íå òðåáóåòñÿ òàê êàê ïîäãðóçêà áóäåò îñóùåñòâëÿòüñÿ ñ ïîìîùüþ ajax
+		/* ÐÐµ Ñ‚Ñ€ÐµÐ±ÑƒÐµÑ‚ÑÑ Ñ‚Ð°Ðº ÐºÐ°Ðº Ð¿Ð¾Ð´Ð³Ñ€ÑƒÐ·ÐºÐ° Ð±ÑƒÐ´ÐµÑ‚ Ð¾ÑÑƒÑ‰ÐµÑÑ‚Ð²Ð»ÑÑ‚ÑŒÑÑ Ñ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ ajax
 		
-		//Ïîñëåäíèå 5 êîììåíòàðèåâ
+		//ÐŸÐ¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ 5 ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ²
 		$arrComments = $this->mRasp->get_comments();
 		$this->user =  $this->mUsers->Get();
 		$reverseAC = array_reverse($arrComments);
@@ -118,7 +118,7 @@ class C_Rasp extends C_Base {
 	
 		
 		
-		// Ãåíåðàöèÿ ñîäåðæèìîãî ñòðàíèöû Rasp.
+		// Ð“ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ñ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ð³Ð¾ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Rasp.
       
     	$vars = array(
 			//'html_comments'=>$htmlComments,

@@ -2,46 +2,46 @@
 include_once('controller/C_Base.php');
 
 //
-// Êîíòðîëëåð ñòðàíèöû àâòîðèçàöèè
+// ÐšÐ¾Ð½Ñ‚Ñ€Ð¾Ð»Ð»ÐµÑ€ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ð¸
 //
 class C_Login extends C_Base
 {
-	private $phoneNumber;	// òåëåôîí ïîëüçîâàòåëÿ
+	private $phoneNumber;	// Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
 	
 	//
-	// Êîíñòðóêòîð.
+	// ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€.
 	//
 	public function __construct() 
 	{
 		parent::__construct();			
 		$this->phoneNumber = '';
-		//Ìåíåäæåðû
+		//ÐœÐµÐ½ÐµÐ´Ð¶ÐµÑ€Ñ‹
 		$this->mReg = M_Reg::Instance(); 
 	}
 	
 	//
-    // Âèðòóàëüíûé îáðàáîò÷èê çàïðîñà.
+    // Ð’Ð¸Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ñ‹Ð¹ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸Ðº Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
     //
     protected function OnInput() 
     {
-		// Âûõîä èç ñèñòåìû ïîëüçîâàòåëÿ.        
+		// Ð’Ñ‹Ñ…Ð¾Ð´ Ð¸Ð· ÑÐ¸ÑÑ‚ÐµÐ¼Ñ‹ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ.        
 		$this->mUsers->Logout();
         
 		// C_Base.
         parent::OnInput();
         
-		// Îáðàáîòêà îòïðàâêè ôîðìû.
+		// ÐžÐ±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ñ„Ð¾Ñ€Ð¼Ñ‹.
 		if ($this->IsGet()){
 			
-			// ïîëó÷èëè ïàðàìåòð code, çíà÷èò âõîä ÷åðåç Âêîíòàêòå
+			// Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ð»Ð¸ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€ code, Ð·Ð½Ð°Ñ‡Ð¸Ñ‚ Ð²Ñ…Ð¾Ð´ Ñ‡ÐµÑ€ÐµÐ· Ð’ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ðµ
 			if($_REQUEST['code'])
 			{			
-				// ïîëó÷àåì access_token
+				// Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ access_token
 				$resp = file_get_contents('https://oauth.vk.com/access_token?client_id='.CLIENT_ID.'&code='.$_REQUEST['code'].'&client_secret='.SECRET.'&redirect_uri='.PATH.OAUTH_CALLBACK);
 				$data = json_decode($resp, true);
 				if($data['access_token'])
 				{				
-					//Ïðîâåðÿåì åñòü ëè áàçå ïîëüçîâàòåëü
+					//ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÐµÑÑ‚ÑŒ Ð»Ð¸ Ð±Ð°Ð·Ðµ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ
 					if($this->mUsers->GetByidVk($data['user_id']))
 					{
 						if ($this->mUsers->LoginVk($data['user_id'], true))
@@ -54,9 +54,9 @@ class C_Login extends C_Base
 					}
 					else
 					{
-						$this->alert="Ê ýòîìó àêêàóíòó íå ïðèâÿçàíà íè îäíà ó÷åòíàÿ çàïèñü";
+						$this->alert="Ðš ÑÑ‚Ð¾Ð¼Ñƒ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ñƒ Ð½Ðµ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½Ð° Ð½Ð¸ Ð¾Ð´Ð½Ð° ÑƒÑ‡ÐµÑ‚Ð½Ð°Ñ Ð·Ð°Ð¿Ð¸ÑÑŒ";
 					}
-					//Ëîãèíèìñÿ
+					//Ð›Ð¾Ð³Ð¸Ð½Ð¸Ð¼ÑÑ
 				
 				}
     }
@@ -83,7 +83,7 @@ class C_Login extends C_Base
 			}
 			else
 			{
-				$this->alert="Âû ââåëè íåïðàâèëüíóþ êîìáèíàöèþ ëîãèí èëè ïàðîëü. Âû ìîæåòå âîññòàíîâèòü çàáûòûé ïàðîëü â ôîðìå íèæå";
+				$this->alert="Ð’Ñ‹ Ð²Ð²ÐµÐ»Ð¸ Ð½ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½ÑƒÑŽ ÐºÐ¾Ð¼Ð±Ð¸Ð½Ð°Ñ†Ð¸ÑŽ Ð»Ð¾Ð³Ð¸Ð½ Ð¸Ð»Ð¸ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ. Ð’Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð²Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð·Ð°Ð±Ñ‹Ñ‚Ñ‹Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð² Ñ„Ð¾Ñ€Ð¼Ðµ Ð½Ð¸Ð¶Ðµ";
 				sleep(5);
 			}
 			
@@ -92,11 +92,11 @@ class C_Login extends C_Base
     }
 
     //
-    // Âèðòóàëüíûé ãåíåðàòîð HTML.
+    // Ð’Ð¸Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ñ‹Ð¹ Ð³ÐµÐ½ÐµÑ€Ð°Ñ‚Ð¾Ñ€ HTML.
     //
     protected function OnOutput() 
     {    
-		// Ãåíåðàöèÿ ñîäåðæèìîãî ôîðìû âõîäà.
+		// Ð“ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ñ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ð³Ð¾ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ð²Ñ…Ð¾Ð´Ð°.
         $vars = array('phoneNumber' => $this->phoneNumber,
 					 'alert' =>$this->alert);        
     	$this->content = $this->View('tpl_restore.php', $vars);

@@ -1,3 +1,3 @@
 	<div class="message-green">
-				<b>Внимание!:</b> <?=$alertFail?>
+				<b>Р’РЅРёРјР°РЅРёРµ!:</b> <?=$alertFail?>
 			</div>

@@ -30,15 +30,15 @@
 							{
 								if (isset($_COOKIE['sel_week']) && ($_COOKIE['sel_week']==$i))
 								{		
-									echo "<option value=".$i." selected>   ".$i." Неделя</option>";
+									echo "<option value=".$i." selected>   ".$i." РќРµРґРµР»СЏ</option>";
 								}
 								elseif($i==$now_week)
 								{
-									echo "<option value=".$i." selected>   ".$i." Неделя</option>";
+									echo "<option value=".$i." selected>   ".$i." РќРµРґРµР»СЏ</option>";
 								}
 								else
 								{
-									echo "<option value=".$i." >   ".$i." Неделя</option>";
+									echo "<option value=".$i." >   ".$i." РќРµРґРµР»СЏ</option>";
 								}
 							}
 							?>		
@@ -48,13 +48,13 @@
 					</div>
 				</div>
 				<div class="inline" style="position:relative; bottom:12px;">
-					<input class="customButton" type="submit" name="submit" value="Отобразить">
+					<input class="customButton" type="submit" name="submit" value="РћС‚РѕР±СЂР°Р·РёС‚СЊ">
 				</div>
 				
 			</div>
 			</form>	
 			<div class="share valign-middle inline-block">
-				<span>Запостить в</span> <a href="http://vk.com/share.php?url=http://chsuinfo.ru/" target="_blank"><i class="i vk"></i></a> <a href="https://twitter.com/share?url=http://chsuinfo.ru/" target="_blank"><i class="i tw"></i></a> <a href="https://www.facebook.com/sharer/sharer.php?u=http://chsuinfo.ru/" target="_blank"><i class="i fb"></i></a>
+				<span>Р—Р°РїРѕСЃС‚РёС‚СЊ РІ</span> <a href="http://vk.com/share.php?title=Р Р°СЃРїРёСЃР°РЅРёРµ Р§Р“РЈ&url=http://chsuinfo.ru/&description=РћР±РЅРѕРІР»РµРЅРЅР°СЏ РІРµСЂСЃРёСЏ СЂР°СЃРїРёСЃР°РЅРёСЏ" target="_blank"><i class="i vk"></i></a> <a href="https://twitter.com/share?hashtags=chsuinfo&url=http://chsuinfo.ru/&text=РћР±РЅРѕРІР»РµРЅРЅР°СЏ РІРµСЂСЃРёСЏ СЂР°СЃРїРёСЃР°РЅРёСЏ" target="_blank"><i class="i tw"></i></a> <a href="https://www.facebook.com/sharer/sharer.php?u=http://chsuinfo.ru/" target="_blank"><i class="i fb"></i></a>
 			</div>
 			
 			<table class="rasp">
@@ -62,7 +62,7 @@
 					<tr>
 						<td>
 							<div class="wrap_schedule">
-								<div class="title_red uppercase">Понедельник<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">3 Мар</span></div>
+								<div class="title_red uppercase">РџРѕРЅРµРґРµР»СЊРЅРёРє<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">3 РњР°СЂ</span></div>
 								<table class="schedule">
 									<tbody>							
 									<?for($k=1;$k<=$rasp[max];$k++)
@@ -89,7 +89,7 @@
 						</td>
 						<td>
 							<div class="wrap_schedule">
-							<div class="title_red uppercase">Вторник<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">4 Мар</span></div>
+							<div class="title_red uppercase">Р’С‚РѕСЂРЅРёРє<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">4 РњР°СЂ</span></div>
 								<table class="schedule">
 									<tbody>
 									<?for($k=1;$k<=$rasp[max];$k++)
@@ -117,7 +117,7 @@
 							<td>
 							
 								<div class="wrap_schedule">
-								<div class="title_red uppercase">Среда<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">5 Мар</span></div>
+								<div class="title_red uppercase">РЎСЂРµРґР°<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">5 РњР°СЂ</span></div>
 								<table class="schedule">
 									<tbody>
 									<?for($k=1;$k<=$rasp[max];$k++)
@@ -144,7 +144,7 @@
 								</td>
 								<td>
 									<div class="wrap_schedule">
-									<div class="title_red uppercase">Четверг<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">6 Мар</span></div>
+									<div class="title_red uppercase">Р§РµС‚РІРµСЂРі<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">6 РњР°СЂ</span></div>
 									<table class="schedule">
 										<tbody>
 									<?for($k=1;$k<=$rasp[max];$k++)
@@ -173,7 +173,7 @@
 								<tr>
 									<td style="vertical-align:top">
 										<div class="wrap_schedule">
-										<div class="title_red uppercase">Пятница<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">7 Мар</span></div>
+										<div class="title_red uppercase">РџСЏС‚РЅРёС†Р°<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">7 РњР°СЂ</span></div>
 										<table class="schedule">
 											<tbody>
 									<?for($k=1;$k<=$rasp[max];$k++)
@@ -200,7 +200,7 @@
 										</td>
 										<td style="vertical-align:top">
 											<div class="wrap_schedule">
-											<div class="title_red uppercase">Суббота<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">8 Мар</span></div>
+											<div class="title_red uppercase">РЎСѓР±Р±РѕС‚Р°<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right">8 РњР°СЂ</span></div>
 													<table class="schedule">
 														<tbody>
 									<?for($k=1;$k<=$rasp[max];$k++)
@@ -229,8 +229,8 @@
 												<div class="htmlcomments"></div>
 												<div id="commField">
 													<form>
-														<input id="commFieldText" type="text" placeholder="Введите сообщение..."/>
-														<input id="commFieldSubmit" class="customButtonMini" type="button"  value="Отправить"/>
+														<input id="commFieldText" type="text" placeholder="Р’РІРµРґРёС‚Рµ СЃРѕРѕР±С‰РµРЅРёРµ..."/>
+														<input id="commFieldSubmit" class="customButtonMini" type="button"  value="РћС‚РїСЂР°РІРёС‚СЊ"/>
 													</form>
 												</div>
 												

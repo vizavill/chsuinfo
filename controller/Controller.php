@@ -1,18 +1,18 @@
 <?php
 //
-// Áàçîâûé êëàññ êîíòðîëëåðà.
+// Ð‘Ð°Ð·Ð¾Ð²Ñ‹Ð¹ ÐºÐ»Ð°ÑÑ ÐºÐ¾Ð½Ñ‚Ñ€Ð¾Ð»Ð»ÐµÑ€Ð°.
 //
 abstract class Controller
 {
 	//
-	// Êîíñòðóêòîð.
+	// ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€.
 	//
 	function __construct()
 	{		
 	}
 	
 	//
-	// Ïîëíàÿ îáðàáîòêà HTTP çàïðîñà.
+	// ÐŸÐ¾Ð»Ð½Ð°Ñ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° HTTP Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
 	//
 	public function Request()
 	{
@@ -21,21 +21,21 @@ abstract class Controller
 	}
 	
 	//
-	// Âèðòóàëüíûé îáðàáîò÷èê çàïðîñà.
+	// Ð’Ð¸Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ñ‹Ð¹ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸Ðº Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
 	//
 	protected function OnInput()
 	{
 	}
 	
 	//
-	// Âèðòóàëüíûé ãåíåðàòîð HTML.
+	// Ð’Ð¸Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ñ‹Ð¹ Ð³ÐµÐ½ÐµÑ€Ð°Ñ‚Ð¾Ñ€ HTML.
 	//	
 	protected function OnOutput()
 	{
 	}
 	
 	//
-	// Çàïðîñ ïðîèçâåäåí ìåòîäîì GET?
+	// Ð—Ð°Ð¿Ñ€Ð¾Ñ Ð¿Ñ€Ð¾Ð¸Ð·Ð²ÐµÐ´ÐµÐ½ Ð¼ÐµÑ‚Ð¾Ð´Ð¾Ð¼ GET?
 	//
 	protected function IsGet()
 	{
@@ -43,7 +43,7 @@ abstract class Controller
 	}
 
 	//
-	// Çàïðîñ ïðîèçâåäåí ìåòîäîì POST?
+	// Ð—Ð°Ð¿Ñ€Ð¾Ñ Ð¿Ñ€Ð¾Ð¸Ð·Ð²ÐµÐ´ÐµÐ½ Ð¼ÐµÑ‚Ð¾Ð´Ð¾Ð¼ POST?
 	//
 	protected function IsPost()
 	{
@@ -51,7 +51,7 @@ abstract class Controller
 	}
 
 	//
-	// Ãåíåðàöèÿ HTML øàáëîíà â ñòðîêó.
+	// Ð“ÐµÐ½ÐµÑ€Ð°Ñ†Ð¸Ñ HTML ÑˆÐ°Ð±Ð»Ð¾Ð½Ð° Ð² ÑÑ‚Ñ€Ð¾ÐºÑƒ.
 	//
 	protected function View($fileName, $vars = array())
 	{

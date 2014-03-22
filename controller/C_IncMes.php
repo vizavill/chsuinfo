@@ -1,24 +1,24 @@
 <?php
 include_once('controller/C_Base.php');
 //
-// Конттроллер страницы-примера.
+// РљРѕРЅС‚С‚СЂРѕР»Р»РµСЂ СЃС‚СЂР°РЅРёС†С‹-РїСЂРёРјРµСЂР°.
 //
 class C_IncMes extends C_Base {
-	private $num;		       // сервисный номер
-	private $phoneNumber;            // номер абонента
-	protected $mRasp;          // собственно сообшение (в кодировке UTF-8)
+	private $num;		       // СЃРµСЂРІРёСЃРЅС‹Р№ РЅРѕРјРµСЂ
+	private $phoneNumber;            // РЅРѕРјРµСЂ Р°Р±РѕРЅРµРЅС‚Р°
+	protected $mRasp;          // СЃРѕР±СЃС‚РІРµРЅРЅРѕ СЃРѕРѕР±С€РµРЅРёРµ (РІ РєРѕРґРёСЂРѕРІРєРµ UTF-8)
 	private $message; 
 	
 
 	             //
 
 	//
-    // Конструктор.
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
     //
     function __construct() {
         
         parent::__construct();
-		// Менеджеры.
+		// РњРµРЅРµРґР¶РµСЂС‹.
         $this->mIncMes = M_IncMes::Instance();
 		$this->mStar = M_Starosta::Instance();
 		$this->mSms = M_Sms::Instance();
@@ -28,43 +28,43 @@ class C_IncMes extends C_Base {
     }
 
     //
-    // Виртуальный обработчик запроса.
+    // Р’РёСЂС‚СѓР°Р»СЊРЅС‹Р№ РѕР±СЂР°Р±РѕС‚С‡РёРє Р·Р°РїСЂРѕСЃР°.
     //
     protected function OnInput(){
         
 		// C_Base.
 		parent::OnInput();
 		
-        // Обработка отправки формы.
+        // РћР±СЂР°Р±РѕС‚РєР° РѕС‚РїСЂР°РІРєРё С„РѕСЂРјС‹.
 		if ($this->IsPost()){
 		  
 			$this->num = $_POST['num'];
 			$this->phoneNumber = substr($_POST['phone'],1);
 			$this->message = $_POST['message'];
 			
-			//Проверяем зарегистрирован номер или нет
+			//РџСЂРѕРІРµСЂСЏРµРј Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ РЅРѕРјРµСЂ РёР»Рё РЅРµС‚
 			if (!$this->mIncMes->getRegisterPhone($this->phoneNumber)){
 				return;
 			}
 			
-			//Смотрим что хочет пользователь
+			//РЎРјРѕС‚СЂРёРј С‡С‚Рѕ С…РѕС‡РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
 			$day=$this->mIncMes->verifySms($this->message);
 			
 			if($day=="sg"){
 				$date=date("d-m-Y");
-				$mas_rasp=$this->mRasp->rasp($date, "date", "grup", "1ПИ-311");
+				$mas_rasp=$this->mRasp->rasp($date, "date", "grup", "1РџР-311");
 			}
 			if($day=="zv"){
 				$date=date('Y-m-d',mktime(0, 0, 0, date("m"), date("d")+1, date("Y")));
-				$mas_rasp=$this->mRasp->rasp($date, "date", "grup", "1ПИ-311");
+				$mas_rasp=$this->mRasp->rasp($date, "date", "grup", "1РџР-311");
 			}
 			if($day="pz"){
 				$date=date('Y-m-d',mktime(0, 0, 0, date("m"), date("d")+2, date("Y")));
-				$mas_rasp=$this->mRasp->rasp($date, "date", "grup", "1ПИ-311");
+				$mas_rasp=$this->mRasp->rasp($date, "date", "grup", "1РџР-311");
 			}
 			
 			if(count($mas_rasp)!=0){
-				$sms="Занятия на ".$date." число, ".$value[person]."\n"; 
+				$sms="Р—Р°РЅСЏС‚РёСЏ РЅР° ".$date." С‡РёСЃР»Рѕ, ".$value[person]."\n"; 
 				foreach($mas_rasp as $value2){
 					$mas_word=$this->mSender->dali($value2[discip]);
 					$discip=$this->mSender->sokrat($mas_word);
@@ -75,10 +75,10 @@ class C_IncMes extends C_Base {
 			}
 			else{
 				
-				//$sms= "Занятий на ".date('j',mktime(0, 0, 0, date("m"), date("d")+1, date("Y")))." число не найдено\n";
+				//$sms= "Р—Р°РЅСЏС‚РёР№ РЅР° ".date('j',mktime(0, 0, 0, date("m"), date("d")+1, date("Y")))." С‡РёСЃР»Рѕ РЅРµ РЅР°Р№РґРµРЅРѕ\n";
 			}
 			$arr[] = array( 'to' => "7".$this->phoneNumber, 'text' =>iconv("CP1251","utf8",$sms));
-			//Отправляем СМС сообщение
+			//РћС‚РїСЂР°РІР»СЏРµРј РЎРњРЎ СЃРѕРѕР±С‰РµРЅРёРµ
 			$this->mSms->sendArraySms( $arr);
 			
 		}
@@ -87,14 +87,14 @@ class C_IncMes extends C_Base {
 	}
 
     //
-    // Виртуальный генератор HTML.
+    // Р’РёСЂС‚СѓР°Р»СЊРЅС‹Р№ РіРµРЅРµСЂР°С‚РѕСЂ HTML.
     //
     protected function OnOutput() {
 	
-		print_r($this->mRasp->rasp(date("d-m-Y"), "date", "grup", "1ПИ-311"));
+		print_r($this->mRasp->rasp(date("d-m-Y"), "date", "grup", "1РџР-311"));
 			
     
-    // Генерация содержимого страницы Rasp.
+    // Р“РµРЅРµСЂР°С†РёСЏ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ СЃС‚СЂР°РЅРёС†С‹ Rasp.
       
     	
 //parent::OnOutput();

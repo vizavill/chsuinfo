@@ -2,36 +2,36 @@
 
 function startup()
 {
-	// Настройки подключения к БД.
-	$hostname = 'a53069.mysql.mchost.ru';	
+	// РќР°СЃС‚СЂРѕР№РєРё РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє Р‘Р”.
+	$hostname = 'localhost';	
 	$username = 'a53069_study'; 
 	$password = 'studypas';
 	$dbName   = 'a53069_study';
 	
-	// Языковая настройка.
-	setlocale(LC_ALL, 'ru_RU.CP1251');	
+	// РЇР·С‹РєРѕРІР°СЏ РЅР°СЃС‚СЂРѕР№РєР°.
+	setlocale(LC_ALL, 'ru_RU.utf8');	
 	
-	// Подключение к БД.
+	// РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”.
 	mysql_connect($hostname, $username, $password) or die('No connect with data base'); 
-	mysql_query('SET NAMES cp1251');
+	mysql_query('SET NAMES utf8');
 	mysql_select_db($dbName) or die('No data base');
 	
 	
 	
-	//Параметры авторизации в контакте
-	// id приложения
+	//РџР°СЂР°РјРµС‚СЂС‹ Р°РІС‚РѕСЂРёР·Р°С†РёРё РІ РєРѕРЅС‚Р°РєС‚Рµ
+	// id РїСЂРёР»РѕР¶РµРЅРёСЏ
 	define("LOGIN", "79517498329");
-	// защищенный ключ
+	// Р·Р°С‰РёС‰РµРЅРЅС‹Р№ РєР»СЋС‡
 	define("PASSWORD", "4780sd");
-	// id приложения
+	// id РїСЂРёР»РѕР¶РµРЅРёСЏ
 	define("CLIENT_ID", "4242336");
-	// защищенный ключ
+	// Р·Р°С‰РёС‰РµРЅРЅС‹Р№ РєР»СЋС‡
 	define("SECRET", "s8AbTjmmbw7vostF77v4");
-	// куда перенаправим пользователя после авторизации
+	// РєСѓРґР° РїРµСЂРµРЅР°РїСЂР°РІРёРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕСЃР»Рµ Р°РІС‚РѕСЂРёР·Р°С†РёРё
 	define("OAUTH_CALLBACK", "index.php?c=login");
-	// настройки доступа
+	// РЅР°СЃС‚СЂРѕР№РєРё РґРѕСЃС‚СѓРїР°
 	define("SCOPE", "friends");
-	// путь к папке со скриптами
+	// РїСѓС‚СЊ Рє РїР°РїРєРµ СЃРѕ СЃРєСЂРёРїС‚Р°РјРё
 	define("PATH", "http://new.chsuinfo.ru/");
 	
 	
@@ -39,7 +39,7 @@ function startup()
 	
 	
 
-	// Открытие сессии.
+	// РћС‚РєСЂС‹С‚РёРµ СЃРµСЃСЃРёРё.
 	
 	session_start();		
 }

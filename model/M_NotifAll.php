@@ -3,15 +3,15 @@ include_once('MSQL.php');
 
 
 //
-// Менеджер управления кабинетом старосты
+// РњРµРЅРµРґР¶РµСЂ СѓРїСЂР°РІР»РµРЅРёСЏ РєР°Р±РёРЅРµС‚РѕРј СЃС‚Р°СЂРѕСЃС‚С‹
 //
 class M_NotifAll
 {
-	private static $instance; 	// ссылка на экземпляр класса
-	private $msql; 				// драйвер БД	
+	private static $instance; 	// СЃСЃС‹Р»РєР° РЅР° СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР°
+	private $msql; 				// РґСЂР°Р№РІРµСЂ Р‘Р”	
 		
 	//
-	// Получение единственного экземпляра (одиночка)
+	// РџРѕР»СѓС‡РµРЅРёРµ РµРґРёРЅСЃС‚РІРµРЅРЅРѕРіРѕ СЌРєР·РµРјРїР»СЏСЂР° (РѕРґРёРЅРѕС‡РєР°)
 	//
 	public static function Instance()
 	{
@@ -22,7 +22,7 @@ class M_NotifAll
 	}
 
 	//
-	// Конструктор
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	//
 	public function __construct()
 	{
@@ -30,21 +30,21 @@ class M_NotifAll
 	}
 	
 	//
-	// Функция выборки одногруппников
+	// Р¤СѓРЅРєС†РёСЏ РІС‹Р±РѕСЂРєРё РѕРґРЅРѕРіСЂСѓРїРїРЅРёРєРѕРІ
 	//
 	public function all_odnogrup($starosta){
 		return  $this->msql->Select("SELECT * FROM users WHERE person='$starosta'");
 	}
 	
 	//
-	// Функция подсчета количества отправленных оповещений
+	// Р¤СѓРЅРєС†РёСЏ РїРѕРґСЃС‡РµС‚Р° РєРѕР»РёС‡РµСЃС‚РІР° РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… РѕРїРѕРІРµС‰РµРЅРёР№
 	//
 	public function count_not($grup){
 		return  count($this->msql->Select("SELECT * FROM starosta_notification WHERE grup='$grup'"));
 	}
   
 	//
-	// Функция выборки всеx отправленных сообщений
+	// Р¤СѓРЅРєС†РёСЏ РІС‹Р±РѕСЂРєРё РІСЃРµx РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СЃРѕРѕР±С‰РµРЅРёР№
 	//
 	public function all_notif($grup){
 		return  $this->msql->Select("SELECT * FROM starosta_notification WHERE grup='$grup'");
@@ -52,7 +52,7 @@ class M_NotifAll
 	}
 	
     //
-	// Функция добавления рассылки в БД.
+	// Р¤СѓРЅРєС†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ СЂР°СЃСЃС‹Р»РєРё РІ Р‘Р”.
 	//
 	public function add_notif($object) {
 	  

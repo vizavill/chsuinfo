@@ -2,15 +2,15 @@
 include_once('MSQL.php');
 
 //
-// Менеджер отправки смс сообщений
+// РњРµРЅРµРґР¶РµСЂ РѕС‚РїСЂР°РІРєРё СЃРјСЃ СЃРѕРѕР±С‰РµРЅРёР№
 //
 class M_Sms
 {
-	private static $instance; 	// ссылка на экземпляр класса
-	private $msql; 				// драйвер БД
+	private static $instance; 	// СЃСЃС‹Р»РєР° РЅР° СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР°
+	private $msql; 				// РґСЂР°Р№РІРµСЂ Р‘Р”
 	
 	//
-	// Получение единственного экземпляра (одиночка)
+	// РџРѕР»СѓС‡РµРЅРёРµ РµРґРёРЅСЃС‚РІРµРЅРЅРѕРіРѕ СЌРєР·РµРјРїР»СЏСЂР° (РѕРґРёРЅРѕС‡РєР°)
 	//
 	public static function Instance()
 	{
@@ -21,17 +21,17 @@ class M_Sms
 	}
 
 	//
-	// Конструктор
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	//
 	public function __construct(){
 		$this->msql   = MSQL::Instance();
 	}
     
 	//
-	// Функция массива смс
+	// Р¤СѓРЅРєС†РёСЏ РјР°СЃСЃРёРІР° СЃРјСЃ
 	///
 	public function sendArraySms($arraySms){
-		$apikey = 'V5MT4Y7HF55N5SJ2QV926QT8JKE7RI02K8SR1U2X1NFAU995JQ345LXJQI1TS89A'; // заменить на свой!
+		$apikey = 'V5MT4Y7HF55N5SJ2QV926QT8JKE7RI02K8SR1U2X1NFAU995JQ345LXJQI1TS89A'; // Р·Р°РјРµРЅРёС‚СЊ РЅР° СЃРІРѕР№!
 		$send = array(
 				'apikey' => $apikey,
 				'send' => $arraySms
@@ -73,7 +73,7 @@ class M_Sms
 	}
 	
 	//
-	// Функция возвращает количество переданных смс на дату
+	// Р¤СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРµСЂРµРґР°РЅРЅС‹С… СЃРјСЃ РЅР° РґР°С‚Сѓ
 	//
 	
 	public function getCountSmsDate($date, $phone_number){
@@ -86,7 +86,7 @@ class M_Sms
 	
 	
 	//
-	// Функция добавления ответа сервера в БД.
+	// Р¤СѓРЅРєС†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ РѕС‚РІРµС‚Р° СЃРµСЂРІРµСЂР° РІ Р‘Р”.
 	//
 	private function addReport($object){
 

@@ -15,34 +15,34 @@ include_once('controller/C_NotifAll.php');
 include_once('controller/C_Events.php');
 include_once('controller/C_VK.php');
 include_once('controller/C_Comment.php');
-error_reporting(0);
-// Èíèöèàëèçàöèÿ.
+error_reporting(E_ALL);
+// Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ.
 startup();
 
-// Âûáîð êîíòðîëëåðà.
+// Ð’Ñ‹Ð±Ð¾Ñ€ ÐºÐ¾Ð½Ñ‚Ñ€Ð¾Ð»Ð»ÐµÑ€Ð°.
 switch ($_GET['c'])
 {
-//Àâòîðèçàöèÿ ïîëüçîâàòåëÿ
+//ÐÐ²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
 case 'login':
 	$controller = new C_Login();
 	break;
-//Ðåãèñòðàöèÿ ïîëüçîâàòåëÿ
+//Ð ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
 case 'reg':
 	$controller = new C_Reg();
 	break;
-//Ðàñïèñàíèå çàíÿòèé
+//Ð Ð°ÑÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ Ð·Ð°Ð½ÑÑ‚Ð¸Ð¹
 case 'rasp':
 	$controller = new C_Rasp();
 	break;
-//Âîñòàíîâëåíèå ïàðîëÿ
+//Ð’Ð¾ÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ Ð¿Ð°Ñ€Ð¾Ð»Ñ
 case 'restore':
 	$controller = new C_Restore();
 	break;
-//Ïðîôèëü ïîëüçîâàòåëÿ
+//ÐŸÑ€Ð¾Ñ„Ð¸Ð»ÑŒ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
 case 'setting':
 	$controller = new C_Setting();
 	break;
-	//Ïðîôèëü ïîëüçîâàòåëÿ
+	//ÐŸÑ€Ð¾Ñ„Ð¸Ð»ÑŒ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
 case 'starosta':
 	$controller = new C_Starosta();
 	break;
@@ -77,5 +77,5 @@ default:
 	$controller = new C_Rasp();
 }
 
-// Îáðàáîòêà çàïðîñà.
+// ÐžÐ±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
 $controller->Request();

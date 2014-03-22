@@ -1,3 +1,3 @@
 	<div class="message-green">
-				<b>Внимание!:</b> <?=$alertNotif?>
+				<b>В¬РЅРёРјР°РЅРёРµ!:</b> <?=$alertNotif?>
 			</div>

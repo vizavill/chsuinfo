@@ -8,12 +8,12 @@ class C_VK extends C_Base {
 	
 	
 	//
-    // Êîíñòðóêòîð.
+    // ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€.
     //
     function __construct()
 	{
 		parent::__construct();
-		// Ìåíåäæåðû.
+		// ÐœÐµÐ½ÐµÐ´Ð¶ÐµÑ€Ñ‹.
         $this->mVK = M_VK::Instance();
 		$this->token = $this->mVK->OAuth(LOGIN, PASSWORD);
 		
@@ -21,11 +21,11 @@ class C_VK extends C_Base {
 
 	
     //
-    // Âèðòóàëüíûé ãåíåðàòîð HTML.
+    // Ð’Ð¸Ñ€Ñ‚ÑƒÐ°Ð»ÑŒÐ½Ñ‹Ð¹ Ð³ÐµÐ½ÐµÑ€Ð°Ñ‚Ð¾Ñ€ HTML.
     //
     protected function OnOutput()
 	{	
-		//ïîëó÷àåì äðóçåé ó÷èêà
+		//Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð´Ñ€ÑƒÐ·ÐµÐ¹ ÑƒÑ‡Ð¸ÐºÐ°
 		$friend=$this->mVK->FriendGet($this->token);
 		
 		$message=$this->mVK->getMessage();
@@ -49,8 +49,8 @@ class C_VK extends C_Base {
 		if ($f)
 			{
 			
-				//îòïðàâëÿåì ñîîáùåíèå
-				 echo $response = $this->mVK->MsgToUser($message[$i][id_vk], $message[$i][message].  $this->mVK->link, '',"Ðàñïèñàíèå_íà_çàâòðà", $this->token);
+				//Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÐ¼ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ
+				 echo $response = $this->mVK->MsgToUser($message[$i][id_vk], $message[$i][message].  $this->mVK->link, '',"Ð Ð°ÑÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ_Ð½Ð°_Ð·Ð°Ð²Ñ‚Ñ€Ð°", $this->token);
 				if ($response == "ok")
 				{
 					$this->mVK->SetStatusSend($message[$i][id]);
@@ -66,7 +66,7 @@ class C_VK extends C_Base {
 			}
 			else
 			{
-				$response = $this->mVK->MsgToUser($message[$i][id_vk], "×òî áû ïîëó÷àòü ðàñïèñàíèå â ñîîáùåíèå äîáàâòå ìåíÿ â äðóçüÿ, ýòî ñâÿçàíî ñ òåì ÷òî ÂÊîíòàêòå îãðàíè÷èëî ÷èñëî ñîîáùåíèé îòïðàâëÿåìûõ ëþäÿì, êîòîðûå íå íàõîäÿòñÿ â ñïèñêå äðóçåé".  $this->mVK->link, '',"Îøèáêà_ðàññûëêè", $this->token);
+				$response = $this->mVK->MsgToUser($message[$i][id_vk], "Ð§Ñ‚Ð¾ Ð±Ñ‹ Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ÑŒ Ñ€Ð°ÑÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ Ð² ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð´Ð¾Ð±Ð°Ð²Ñ‚Ðµ Ð¼ÐµÐ½Ñ Ð² Ð´Ñ€ÑƒÐ·ÑŒÑ, ÑÑ‚Ð¾ ÑÐ²ÑÐ·Ð°Ð½Ð¾ Ñ Ñ‚ÐµÐ¼ Ñ‡Ñ‚Ð¾ Ð’ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ðµ Ð¾Ð³Ñ€Ð°Ð½Ð¸Ñ‡Ð¸Ð»Ð¾ Ñ‡Ð¸ÑÐ»Ð¾ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÐ¼Ñ‹Ñ… Ð»ÑŽÐ´ÑÐ¼, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð½Ðµ Ð½Ð°Ñ…Ð¾Ð´ÑÑ‚ÑÑ Ð² ÑÐ¿Ð¸ÑÐºÐµ Ð´Ñ€ÑƒÐ·ÐµÐ¹".  $this->mVK->link, '',"ÐžÑˆÐ¸Ð±ÐºÐ°_Ñ€Ð°ÑÑÑ‹Ð»ÐºÐ¸", $this->token);
 				
 				if ($response == "ok")
 				{

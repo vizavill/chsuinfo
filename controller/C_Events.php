@@ -1,33 +1,33 @@
 <?php
 include_once('controller/C_Base.php');
 //
-// Êîíòòğîëëåğ ñòğàíèöû ìåğîïğèÿòèé.
+// ĞšĞ¾Ğ½Ñ‚Ñ‚Ñ€Ğ¾Ğ»Ğ»ĞµÑ€ ÑÑ‚Ñ€Ğ°Ğ½Ğ¸Ñ†Ñ‹ Ğ¼ĞµÑ€Ğ¾Ğ¿Ñ€Ğ¸ÑÑ‚Ğ¸Ğ¹.
 //
 class C_Events extends C_Base 
 {
-	private $title;		// òåêñò äëÿ ïğåîáğàçîâàíèÿ
-	private $text;		// òåêñò äëÿ ïğåîáğàçîâàíèÿ
-	private $author;		// òåêñò äëÿ ïğåîáğàçîâàíèÿ
-	private $date_post;		// òåêñò äëÿ ïğåîáğàçîâàíèÿ
+	private $title;		// Ñ‚ĞµĞºÑÑ‚ Ğ´Ğ»Ñ Ğ¿Ñ€ĞµĞ¾Ğ±Ñ€Ğ°Ğ·Ğ¾Ğ²Ğ°Ğ½Ğ¸Ñ
+	private $text;		// Ñ‚ĞµĞºÑÑ‚ Ğ´Ğ»Ñ Ğ¿Ñ€ĞµĞ¾Ğ±Ñ€Ğ°Ğ·Ğ¾Ğ²Ğ°Ğ½Ğ¸Ñ
+	private $author;		// Ñ‚ĞµĞºÑÑ‚ Ğ´Ğ»Ñ Ğ¿Ñ€ĞµĞ¾Ğ±Ñ€Ğ°Ğ·Ğ¾Ğ²Ğ°Ğ½Ğ¸Ñ
+	private $date_post;		// Ñ‚ĞµĞºÑÑ‚ Ğ´Ğ»Ñ Ğ¿Ñ€ĞµĞ¾Ğ±Ñ€Ğ°Ğ·Ğ¾Ğ²Ğ°Ğ½Ğ¸Ñ
 	private $event;
 	private $mEvents;
 	
 
 	//
-    // Êîíñòğóêòîğ.
+    // ĞšĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€.
     //
     function __construct() 
     {
     	parent::__construct();
-    	//$this->needLogin = true; // ğàñêîììåíòèğóéòå, ÷òîáû çàêğûòü íåàâòîğèçîâàííûé äîñòóï ê ñòğàíèöå
-		// Ìåíåäæåğû.
+    	//$this->needLogin = true; // Ñ€Ğ°ÑĞºĞ¾Ğ¼Ğ¼ĞµĞ½Ñ‚Ğ¸Ñ€ÑƒĞ¹Ñ‚Ğµ, Ñ‡Ñ‚Ğ¾Ğ±Ñ‹ Ğ·Ğ°ĞºÑ€Ñ‹Ñ‚ÑŒ Ğ½ĞµĞ°Ğ²Ñ‚Ğ¾Ñ€Ğ¸Ğ·Ğ¾Ğ²Ğ°Ğ½Ğ½Ñ‹Ğ¹ Ğ´Ğ¾ÑÑ‚ÑƒĞ¿ Ğº ÑÑ‚Ñ€Ğ°Ğ½Ğ¸Ñ†Ğµ
+		// ĞœĞµĞ½ĞµĞ´Ğ¶ĞµÑ€Ñ‹.
 	
 		$this->mEvents = M_Events::Instance();
 		
 	}
 
     //
-    // Âèğòóàëüíûé îáğàáîò÷èê çàïğîñà.
+    // Ğ’Ğ¸Ñ€Ñ‚ÑƒĞ°Ğ»ÑŒĞ½Ñ‹Ğ¹ Ğ¾Ğ±Ñ€Ğ°Ğ±Ğ¾Ñ‚Ñ‡Ğ¸Ğº Ğ·Ğ°Ğ¿Ñ€Ğ¾ÑĞ°.
     //
     protected function OnInput() 
     {
@@ -75,7 +75,7 @@ class C_Events extends C_Base
 							'inst'=>$inst,
 							'status'=>0);
 				if (!$this->mEvents->addEvent($vars)){
-					$this->alert="Îøèáêà ïğè äîáàâëåíèè â áàçó.";
+					$this->alert="ĞÑˆĞ¸Ğ±ĞºĞ° Ğ¿Ñ€Ğ¸ Ğ´Ğ¾Ğ±Ğ°Ğ²Ğ»ĞµĞ½Ğ¸Ğ¸ Ğ² Ğ±Ğ°Ğ·Ñƒ.";
 					return;
 				}
 			}
@@ -93,7 +93,7 @@ class C_Events extends C_Base
 							'inst'=>$inst,
 							'status'=>0);
 				if (!$this->mEvents->updEvent($vars, $id_event, $id_user)){
-					$this->alert="Îøèáêà ïğè äîáàâëåíèè â áàçó.";
+					$this->alert="ĞÑˆĞ¸Ğ±ĞºĞ° Ğ¿Ñ€Ğ¸ Ğ´Ğ¾Ğ±Ğ°Ğ²Ğ»ĞµĞ½Ğ¸Ğ¸ Ğ² Ğ±Ğ°Ğ·Ñƒ.";
 					return;
 				}
 			}
@@ -117,7 +117,7 @@ class C_Events extends C_Base
     }
 
     //
-    // Âèğòóàëüíûé ãåíåğàòîğ HTML.
+    // Ğ’Ğ¸Ñ€Ñ‚ÑƒĞ°Ğ»ÑŒĞ½Ñ‹Ğ¹ Ğ³ĞµĞ½ĞµÑ€Ğ°Ñ‚Ğ¾Ñ€ HTML.
     //
     protected function OnOutput() 
     {   	
@@ -126,16 +126,16 @@ class C_Events extends C_Base
 		$i=0;
 		foreach ($userEvent as $value){
 			switch($value[status]){
-				case 0: $userEvent[$i][status]='ïğîâåğÿåòñÿ, ïîêàçû ïîêà íå èäóò'; break;
-				case 1: $userEvent[$i][status]='îäîáğåííî, èäóò ïîêàçû'; 	break;
-				case 2: $userEvent[$i][status]='îòêëîíåíî'; 	break;
+				case 0: $userEvent[$i][status]='Ğ¿Ñ€Ğ¾Ğ²ĞµÑ€ÑĞµÑ‚ÑÑ, Ğ¿Ğ¾ĞºĞ°Ğ·Ñ‹ Ğ¿Ğ¾ĞºĞ° Ğ½Ğµ Ğ¸Ğ´ÑƒÑ‚'; break;
+				case 1: $userEvent[$i][status]='Ğ¾Ğ´Ğ¾Ğ±Ñ€ĞµĞ½Ğ½Ğ¾, Ğ¸Ğ´ÑƒÑ‚ Ğ¿Ğ¾ĞºĞ°Ğ·Ñ‹'; 	break;
+				case 2: $userEvent[$i][status]='Ğ¾Ñ‚ĞºĞ»Ğ¾Ğ½ĞµĞ½Ğ¾'; 	break;
 				}
 			$i++;
 		}
 		
 		
 	
-        // Ãåíåğàöèÿ ñîäåğæèìîãî ñòğàíèöû Welcome.
+        // Ğ“ĞµĞ½ĞµÑ€Ğ°Ñ†Ğ¸Ñ ÑĞ¾Ğ´ĞµÑ€Ğ¶Ğ¸Ğ¼Ğ¾Ğ³Ğ¾ ÑÑ‚Ñ€Ğ°Ğ½Ğ¸Ñ†Ñ‹ Welcome.
     	$vars = array(
 			'allEvent' => $allEvent,
 			'userEvent' => $userEvent,

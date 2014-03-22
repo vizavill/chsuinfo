@@ -24,7 +24,7 @@ class C_Comment extends C_Base {
 		
 		if(isset($_POST['page'])){
 			$page = addslashes($_POST['page']);
-			//Настройки
+			//РќР°СЃС‚СЂРѕР№РєРё
 			$cur_page = $page;
 			$page -= 1;
 			$per_page = 5;
@@ -34,7 +34,7 @@ class C_Comment extends C_Base {
 			$last_btn = true;
 			$start = $page * $per_page;
 			
-			//Вывод 5ти комментариев
+			//Р’С‹РІРѕРґ 5С‚Рё РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
 			$arrComments = $this->mRasp->get_comments($start, $per_page);
 			//$reverseAC = array_reverse($arrComments);
 			$insertedComment = new Comment();
@@ -55,14 +55,14 @@ class C_Comment extends C_Base {
 				$htmlComments .= $insertedComment->markup();				
 			}
 				
-			//Генерируем пагинатор
+			//Р“РµРЅРµСЂРёСЂСѓРµРј РїР°РіРёРЅР°С‚РѕСЂ
 			$query_pag_num = "SELECT COUNT(*) AS count FROM comments";
 			$result_pag_num = mysql_query($query_pag_num);
 			$row = mysql_fetch_array($result_pag_num);
 			$count = $row['count'];
 			$no_of_paginations = ceil($count / $per_page);
 				
-				/* ---------------Рассчет начала и конца лупа----------------------------------- */
+				/* ---------------Р Р°СЃСЃС‡РµС‚ РЅР°С‡Р°Р»Р° Рё РєРѕРЅС†Р° Р»СѓРїР°----------------------------------- */
 			if ($cur_page >= 7) {
 				$start_loop = $cur_page - 3;
 				if ($no_of_paginations > $cur_page + 3)
@@ -84,15 +84,15 @@ class C_Comment extends C_Base {
 				
 			$htmlComments .= "<div class=\"paginationComms\">";
 
-			// Доступ первой кнопки
+			// Р”РѕСЃС‚СѓРї РїРµСЂРІРѕР№ РєРЅРѕРїРєРё
 			if ($first_btn && $cur_page > 1) {
 				$htmlComments .= "<a href='#' p='1' class='active'><<</a>";
 			}
 
-			// Доступ предыдущей кнопки
+			// Р”РѕСЃС‚СѓРї РїСЂРµРґС‹РґСѓС‰РµР№ РєРЅРѕРїРєРё
 			if ($previous_btn && $cur_page > 1) {
 				$pre = $cur_page - 1;
-				$htmlComments .= "<a href='#' p='$pre' class='active'>Назад</a>";
+				$htmlComments .= "<a href='#' p='$pre' class='active'>РќР°Р·Р°Рґ</a>";
 			}
 			
 			for ($i = $start_loop; $i <= $end_loop; $i++) {
@@ -103,13 +103,13 @@ class C_Comment extends C_Base {
 			}
 				
 				
-			// Доступ кнопки следующая
+			// Р”РѕСЃС‚СѓРї РєРЅРѕРїРєРё СЃР»РµРґСѓСЋС‰Р°СЏ
 			if ($next_btn && $cur_page < $no_of_paginations) {
 				$nex = $cur_page + 1;
-				$htmlComments .= "<a href='#' p='$nex' class='active'>Дальше</a>";
+				$htmlComments .= "<a href='#' p='$nex' class='active'>Р”Р°Р»СЊС€Рµ</a>";
 			}
 
-			// Доступ кнопки последняя
+			// Р”РѕСЃС‚СѓРї РєРЅРѕРїРєРё РїРѕСЃР»РµРґРЅСЏСЏ
 			if ($last_btn && $cur_page < $no_of_paginations) {
 				$htmlComments .= "<a href='#' p='$no_of_paginations' class='active'>>></a>";
 			}
@@ -124,7 +124,7 @@ class C_Comment extends C_Base {
 							</div>
 							';
 			$htmlComments = iconv("WINDOWS-1251", "UTF-8", $htmlComments);
-			//Вывод разметки комментариев с этой страницы
+			//Р’С‹РІРѕРґ СЂР°Р·РјРµС‚РєРё РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ СЃ СЌС‚РѕР№ СЃС‚СЂР°РЅРёС†С‹
 			$this->code_msg = $htmlComments;
 		}else{
 			if($this->user !== null){
@@ -136,7 +136,7 @@ class C_Comment extends C_Base {
 					$this->code_msg = '';
 					
 					if($this->validates){
-						/* Все в порядке, вставляем данные в базу: */
+						/* Р’СЃРµ РІ РїРѕСЂСЏРґРєРµ, РІСЃС‚Р°РІР»СЏРµРј РґР°РЅРЅС‹Рµ РІ Р±Р°Р·Сѓ: */
 						$this->mComm->addComment($this->user['id_user'], $this->arr['body']);
 						
 						$this->arr['dt'] = date('r',time());
@@ -144,9 +144,9 @@ class C_Comment extends C_Base {
 						$this->arr['photo'] = $this->user['photo_200'];
 						$this->arr['full_name'] = iconv("WINDOWS-1251", "UTF-8", $this->user['first_name'].' '.$this->user['last_name']);
 						/*
-						/	Данные в $arr подготовлены для запроса mysql,
-						/	но нам нужно делать вывод на экран, поэтому 
-						/	готовим все элементы в массиве:
+						/	Р”Р°РЅРЅС‹Рµ РІ $arr РїРѕРґРіРѕС‚РѕРІР»РµРЅС‹ РґР»СЏ Р·Р°РїСЂРѕСЃР° mysql,
+						/	РЅРѕ РЅР°Рј РЅСѓР¶РЅРѕ РґРµР»Р°С‚СЊ РІС‹РІРѕРґ РЅР° СЌРєСЂР°РЅ, РїРѕСЌС‚РѕРјСѓ 
+						/	РіРѕС‚РѕРІРёРј РІСЃРµ СЌР»РµРјРµРЅС‚С‹ РІ РјР°СЃСЃРёРІРµ:
 						/*/
 						
 						$this->arr = array_map('stripslashes',$this->arr);
@@ -163,13 +163,13 @@ class C_Comment extends C_Base {
 						$htmlComment = $insertedComment->markup();
 						
 						$htmlComment = iconv("WINDOWS-1251","UTF-8", $htmlComment);
-						/* Вывод разметки только-что вставленного комментария: */
+						/* Р’С‹РІРѕРґ СЂР°Р·РјРµС‚РєРё С‚РѕР»СЊРєРѕ-С‡С‚Рѕ РІСЃС‚Р°РІР»РµРЅРЅРѕРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ: */
 						$this->code_msg = json_encode(array('status'=>1,'html'=>$htmlComment));
 
 					}
 					else
 					{
-						/* Вывод сообщений об ошибке */
+						/* Р’С‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёР№ РѕР± РѕС€РёР±РєРµ */
 						$this->code_msg =  '{"status":0,"errors":'.json_encode($this->arr).'}';
 					}
 				}else if(isset($_POST['delete'])){
@@ -183,7 +183,7 @@ class C_Comment extends C_Base {
 						}
 				}
 			}else{
-				$this->code_msg = '{"status":0,"errors":{"body":"'.iconv("WINDOWS-1251", "UTF-8",'Авторизируйтесь, чтобы добавлять комментарии.').'"}}';	
+				$this->code_msg = '{"status":0,"errors":{"body":"'.iconv("WINDOWS-1251", "UTF-8",'РђРІС‚РѕСЂРёР·РёСЂСѓР№С‚РµСЃСЊ, С‡С‚РѕР±С‹ РґРѕР±Р°РІР»СЏС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё.').'"}}';	
 			}
 		}
 	}
