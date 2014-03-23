@@ -58,7 +58,7 @@
 		<div id="footer-content">
 			<span class="link">© 2014 ChsuInfo.ru</span> Расписание обновляется ежедневно. 
 			<span class="authors" style="float:right;">Есть вопросы или нашли ошибку? 
-			<a href="http://vk.com/aid123" target="_blank">Алексей Дурягин</a> / 
+			<a href="http://vk.com/id52858776" target="_blank">Алексей Дурягин</a> / 
 			<a href="http://vk.com/id8416411" target="_blank">Вадим Осюков</a></span>
 		</div>
 	</div>
