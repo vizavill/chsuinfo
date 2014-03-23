@@ -88,7 +88,7 @@ class Comment
 		if(!($data['body'] = filter_input(INPUT_POST,'comment',FILTER_CALLBACK,array('options'=>'Comment::validate_text'))))
 		{
 			//$errors['body'] = iconv("WINDOWS-1251", "UTF-8",'Пожалуйста, введите текст комментария.');
-			$errors['body'] = "Пожалуйста, введите текст комментария.;
+			$errors['body'] = "Пожалуйста, введите текст комментария.";
 		}
 		
 		if(!empty($errors)){
