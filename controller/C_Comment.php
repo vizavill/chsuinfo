@@ -40,7 +40,8 @@ class C_Comment extends C_Base {
 			$insertedComment = new Comment();
 			foreach($arrComments as $comment){
 				$user = $this->mUsers->Get($comment['author_id']);
-				$comment_body = iconv("UTF-8", "WINDOWS-1251", $comment['body']);
+				//$comment_body = iconv("UTF-8", "WINDOWS-1251", $comment['body']);
+				$comment_body = $comment['body'];
 				
 				$commentData = array(
 									"body"=>$comment_body,
@@ -123,7 +124,7 @@ class C_Comment extends C_Base {
 							</div>
 							</div>
 							';
-			$htmlComments = iconv("WINDOWS-1251", "UTF-8", $htmlComments);
+			//$htmlComments = iconv("WINDOWS-1251", "UTF-8", $htmlComments);
 			//Вывод разметки комментариев с этой страницы
 			$this->code_msg = $htmlComments;
 		}else{
@@ -142,7 +143,8 @@ class C_Comment extends C_Base {
 						$this->arr['dt'] = date('r',time());
 						$this->arr['id'] = mysql_insert_id();
 						$this->arr['photo'] = $this->user['photo_200'];
-						$this->arr['full_name'] = iconv("WINDOWS-1251", "UTF-8", $this->user['first_name'].' '.$this->user['last_name']);
+						$this->arr['full_name'] = $this->user['first_name'].' '.$this->user['last_name'];
+						//$this->arr['full_name'] = iconv("WINDOWS-1251", "UTF-8", $this->user['first_name'].' '.$this->user['last_name']);
 						/*
 						/	Данные в $arr подготовлены для запроса mysql,
 						/	но нам нужно делать вывод на экран, поэтому 
@@ -162,7 +164,7 @@ class C_Comment extends C_Base {
 						$insertedComment = new Comment($commentData);
 						$htmlComment = $insertedComment->markup();
 						
-						$htmlComment = iconv("WINDOWS-1251","UTF-8", $htmlComment);
+						//$htmlComment = iconv("WINDOWS-1251","UTF-8", $htmlComment);
 						/* Вывод разметки только-что вставленного комментария: */
 						$this->code_msg = json_encode(array('status'=>1,'html'=>$htmlComment));
 
@@ -183,7 +185,8 @@ class C_Comment extends C_Base {
 						}
 				}
 			}else{
-				$this->code_msg = '{"status":0,"errors":{"body":"'.iconv("WINDOWS-1251", "UTF-8",'Авторизируйтесь, чтобы добавлять комментарии.').'"}}';	
+				//$this->code_msg = '{"status":0,"errors":{"body":"'.iconv("WINDOWS-1251", "UTF-8",'Авторизируйтесь, чтобы добавлять комментарии.').'"}}';	
+				$this->code_msg = '{"status":0,"errors":{"body":"Авторизируйтесь, чтобы добавлять комментарии."}}';	
 			}
 		}
 	}

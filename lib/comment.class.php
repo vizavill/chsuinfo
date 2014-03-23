@@ -7,13 +7,13 @@ class Comment
 	public function __construct($row)
 	{
 		/*
-		/	Конструктор
+		/	РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 		*/
 		
 		$this->data = $row;
 	}
 	
-	//Устанавливаем данные комментария
+	//РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РґР°РЅРЅС‹Рµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
 	public function setData($data){
 		$this->data = $data;
 	}
@@ -21,30 +21,35 @@ class Comment
 	public function markup()
 	{//error_reporting(E_ALL);
 		/*
-		/	Данный метод выводит разметку XHTML для комментария
+		/	Р”Р°РЅРЅС‹Р№ РјРµС‚РѕРґ РІС‹РІРѕРґРёС‚ СЂР°Р·РјРµС‚РєСѓ XHTML РґР»СЏ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
 		*/
 		
-		// Устанавливаем псевдоним, чтобы не писать каждый раз $this->data:
+		// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РїСЃРµРІРґРѕРЅРёРј, С‡С‚РѕР±С‹ РЅРµ РїРёСЃР°С‚СЊ РєР°Р¶РґС‹Р№ СЂР°Р· $this->data:
 		$d = &$this->data;
 		
-		//Поделиться в твиттере
-		$twitterText = urlencode(iconv("WINDOWS-1251", "UTF-8", $d['body']));
-		//Поделиться комментом вконтакте
-		$vkText = urlencode(iconv("WINDOWS-1251","UTF-8",$d['body']));
+		//РџРѕРґРµР»РёС‚СЊСЃСЏ РІ С‚РІРёС‚С‚РµСЂРµ
+		//$twitterText = urlencode(iconv("WINDOWS-1251", "UTF-8", $d['body']));
+		$twitterText = urlencode($d['body']);
+		
+		//РџРѕРґРµР»РёС‚СЊСЃСЏ РєРѕРјРјРµРЅС‚РѕРј РІРєРѕРЅС‚Р°РєС‚Рµ
+		//$vkText = urlencode(iconv("WINDOWS-1251","UTF-8",$d['body']));
+		$vkText = urlencode($d['body']);
 		
 		if(strlen($d['body']) > 91)
-			$twitterText = urlencode(iconv("WINDOWS-1251", "UTF-8", substr($d['body'], 0, 91).'...'));
+			$twitterText = urlencode(substr($d['body'], 0, 91).'...');
+			//$twitterText = urlencode(iconv("WINDOWS-1251", "UTF-8", substr($d['body'], 0, 91).'...'));
 		
 		$extLinks = '';
 		if(strlen($d['body']) >= 125){
-			$extLinks = '<a href="#" class="panLink" onclick="extComment(this); return false;" title="Развернуть комментарий"><img src="/view'.THEME.'/images/ext.png"></a>
-														<a href="#" class="panLink" onclick="extCommentHide(this); return false;" style="display:none" title="Свернуть комментарий"><img src="/view'.THEME.'/images/extn.png"></a>';
+			$extLinks = '<a href="#" class="panLink" onclick="extComment(this); return false;" title="Р Р°Р·РІРµСЂРЅСѓС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№"><img src="/view'.THEME.'/images/ext.png"></a>
+														<a href="#" class="panLink" onclick="extCommentHide(this); return false;" style="display:none" title="РЎРІРµСЂРЅСѓС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№"><img src="/view'.THEME.'/images/extn.png"></a>';
 		}
 					
 		if($d['id_role'] == 4){
-			$delOrtw = '<a href="#" onclick="delComment(this,'.$d['id'].'); return false;" class="panLink" title="Удалить комментарий"><img src="/view'.THEME.'/images/del.png"></a><br>';
+			$delOrtw = '<a href="#" onclick="delComment(this,'.$d['id'].'); return false;" class="panLink" title="РЈРґР°Р»РёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№"><img src="/view'.THEME.'/images/del.png"></a><br>';
 		}else{
-			$delOrtw = '<a href="https://twitter.com/intent/tweet?hashtags=chsuinfo,'.urlencode(iconv("WINDOWS-1251","UTF-8","комментарии")).'&text='.$twitterText.'&url=http://chsuinfo.ru/" target="_blank" class="panLink" title="Запостить в твиттер"><img src="/view'.THEME.'/images/tw.png"></a><br>';
+			//$delOrtw = '<a href="https://twitter.com/intent/tweet?hashtags=chsuinfo,'.urlencode(iconv("WINDOWS-1251","UTF-8","РєРѕРјРјРµРЅС‚Р°СЂРёРё")).'&text='.$twitterText.'&url=http://chsuinfo.ru/" target="_blank" class="panLink" title="Р—Р°РїРѕСЃС‚РёС‚СЊ РІ С‚РІРёС‚С‚РµСЂ"><img src="/view'.THEME.'/images/tw.png"></a><br>';
+			$delOrtw = '<a href="https://twitter.com/intent/tweet?hashtags=chsuinfo,РєРѕРјРјРµРЅС‚Р°СЂРёРё&text='.$twitterText.'&url=http://chsuinfo.ru/" target="_blank" class="panLink" title="Р—Р°РїРѕСЃС‚РёС‚СЊ РІ С‚РІРёС‚С‚РµСЂ"><img src="/view'.THEME.'/images/tw.png"></a><br>';
 		}
 		
 		if($d['id_role_a'] == 4)
@@ -59,7 +64,7 @@ class Comment
 					</div>
 					<div class="commentPanel">
 						'.$delOrtw.'
-						<a href="http://vk.com/share.php?title='.urlencode(iconv("WINDOWS-1251","UTF-8","Комментарии на")).' chsuinfo.ru&url=http://chsuinfo.ru&description='.$vkText.'" target="_blank" class="panLink" title="Запостить в вконтакте"><img src="/view'.THEME.'/images/vk_c.png"></a><br>
+						<a href="http://vk.com/share.php?title=РљРѕРјРјРµРЅС‚Р°СЂРёРё РЅР° chsuinfo.ru&url=http://chsuinfo.ru&description='.$vkText.'" target="_blank" class="panLink" title="Р—Р°РїРѕСЃС‚РёС‚СЊ РІ РІРєРѕРЅС‚Р°РєС‚Рµ"><img src="/view'.THEME.'/images/vk_c.png"></a><br>
 						'.$extLinks.'
 					</div>
 				</div>
@@ -69,31 +74,32 @@ class Comment
 	public static function validate(&$arr)
 	{
 		/*
-		/	Данный метод используется для проверки данных отправляемых через AJAX.
+		/	Р”Р°РЅРЅС‹Р№ РјРµС‚РѕРґ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РїСЂРѕРІРµСЂРєРё РґР°РЅРЅС‹С… РѕС‚РїСЂР°РІР»СЏРµРјС‹С… С‡РµСЂРµР· AJAX.
 		/
-		/	Он возвращает true/false в зависимости от правильности данных, и наполняет
-		/	массив $arr, который преается как параметр либо данными либо сообщением об ошибке.
+		/	РћРЅ РІРѕР·РІСЂР°С‰Р°РµС‚ true/false РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РїСЂР°РІРёР»СЊРЅРѕСЃС‚Рё РґР°РЅРЅС‹С…, Рё РЅР°РїРѕР»РЅСЏРµС‚
+		/	РјР°СЃСЃРёРІ $arr, РєРѕС‚РѕСЂС‹Р№ РїСЂРµР°РµС‚СЃСЏ РєР°Рє РїР°СЂР°РјРµС‚СЂ Р»РёР±Рѕ РґР°РЅРЅС‹РјРё Р»РёР±Рѕ СЃРѕРѕР±С‰РµРЅРёРµРј РѕР± РѕС€РёР±РєРµ.
 		*/
 		
 		$errors = array();
 		$data	= array();
 		
-		// Используем фильтр с возвратной функцией:
+		// РСЃРїРѕР»СЊР·СѓРµРј С„РёР»СЊС‚СЂ СЃ РІРѕР·РІСЂР°С‚РЅРѕР№ С„СѓРЅРєС†РёРµР№:
 		
 		if(!($data['body'] = filter_input(INPUT_POST,'comment',FILTER_CALLBACK,array('options'=>'Comment::validate_text'))))
 		{
-			$errors['body'] = iconv("WINDOWS-1251", "UTF-8",'Пожалуйста, введите текст комментария.');
+			//$errors['body'] = iconv("WINDOWS-1251", "UTF-8",'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ С‚РµРєСЃС‚ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ.');
+			$errors['body'] = "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ С‚РµРєСЃС‚ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ.;
 		}
 		
 		if(!empty($errors)){
 			
-			// Если есть ошибки, копируем массив $errors в $arr:
+			// Р•СЃР»Рё РµСЃС‚СЊ РѕС€РёР±РєРё, РєРѕРїРёСЂСѓРµРј РјР°СЃСЃРёРІ $errors РІ $arr:
 			
 			$arr = $errors;
 			return false;
 		}
 		
-		// Если данные введены правильно, подчищаем данные и копируем их в $arr:
+		// Р•СЃР»Рё РґР°РЅРЅС‹Рµ РІРІРµРґРµРЅС‹ РїСЂР°РІРёР»СЊРЅРѕ, РїРѕРґС‡РёС‰Р°РµРј РґР°РЅРЅС‹Рµ Рё РєРѕРїРёСЂСѓРµРј РёС… РІ $arr:
 		
 		foreach($data as $k=>$v){
 			$arr[$k] = mysql_real_escape_string($v);
@@ -105,18 +111,18 @@ class Comment
 	private static function validate_text($str)
 	{
 		/*
-		/	Данный метод используется как FILTER_CALLBACK
+		/	Р”Р°РЅРЅС‹Р№ РјРµС‚РѕРґ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РєР°Рє FILTER_CALLBACK
 		*/
 		
 		if(mb_strlen($str,'utf8')<1)
 			return false;
 		
-		// Кодируем все специальные символы html (<, >, ", & .. etc) и преобразуем
-		// символ новой строки в тег <br>:
+		// РљРѕРґРёСЂСѓРµРј РІСЃРµ СЃРїРµС†РёР°Р»СЊРЅС‹Рµ СЃРёРјРІРѕР»С‹ html (<, >, ", & .. etc) Рё РїСЂРµРѕР±СЂР°Р·СѓРµРј
+		// СЃРёРјРІРѕР» РЅРѕРІРѕР№ СЃС‚СЂРѕРєРё РІ С‚РµРі <br>:
 		
 		$str = nl2br(htmlspecialchars($str));
 		
-		// Удаляем все оставщиеся символы новой строки
+		// РЈРґР°Р»СЏРµРј РІСЃРµ РѕСЃС‚Р°РІС‰РёРµСЃСЏ СЃРёРјРІРѕР»С‹ РЅРѕРІРѕР№ СЃС‚СЂРѕРєРё
 		$str = str_replace(array(chr(10),chr(13)),'',$str);
 		
 		return $str;
