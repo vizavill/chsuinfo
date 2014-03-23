@@ -22,7 +22,7 @@
 					</select>
 					
 					<?else:?>
-					<select name="sel_lecturer" id="group" data-filter="true" data-autoWidth="false">
+					<select name="sel_lecturer" id="prepod" data-filter="true" data-autoWidth="false">
 						<? foreach ($lecturer as $value)
 						{
 							if  (isset($_COOKIE['sel_lecturer']) && ($_COOKIE['sel_lecturer']==$value[name_lecturer]))
