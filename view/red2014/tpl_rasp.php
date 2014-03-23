@@ -5,7 +5,7 @@
 			<div style="display:inline;position:relative; top:8px;">
 				
 				<div class="inline" style="margin-right:10px;">
-				
+				<?if ($person != 'lecturer'):?>
 					<select name="sel_grup" id="group" data-filter="true" data-autoWidth="false">
 						<? foreach ($grup as $value)
 						{
@@ -20,6 +20,23 @@
 						}
 						?>
 					</select>
+					
+					<?else:?>
+					<select name="sel_lecturer" id="group" data-filter="true" data-autoWidth="false">
+						<? foreach ($lecturer as $value)
+						{
+							if  (isset($_COOKIE['sel_lecturer']) && ($_COOKIE['sel_lecturer']==$value[name_lecturer]))
+							{		
+								echo "<option selected>   ".$value[name_lecturer]." </option>";  
+							}
+							else
+							{
+								echo "<option >   ".$value[name_lecturer]." </option>";
+							}
+						}
+						?>
+					</select>
+					<?endif?>
 				</div>
 				<div class="inline"  style="margin-right:10px;">
 					<div class="no-wrap valign-middle" style="position:relative; top:-16px;margin-left:10px;margin-right:10px;">

@@ -34,9 +34,19 @@ class C_Rasp extends C_Base {
 		
         // Обработка отправки формы.
 		if (($this->IsGet()))
-		{
+		{	
+			$expire = time() + 3600 * 24 * 100;
+			
+			if(isset($_GET[person]))
+			{
+				$expire = time() + 3600 * 24 * 100;
+				$this->person = $_GET[person];
+				$_COOKIE['person'] = $this->person;
+				setcookie("person", $this->person, time()+$expire);
+			}
+			
 			if($_GET[week]=='forward')
-			{		
+			{	
 				$expire = time() + 3600 * 24 * 100;
 				$this->sel_week = $_COOKIE['sel_week']+1;		
 				$_COOKIE['sel_week']=$this->sel_week;
@@ -54,15 +64,12 @@ class C_Rasp extends C_Base {
 		
 		
 		if (($this->IsPost()))
-		{
+		{	
 			$expire = time() + 3600 * 24 * 100;
 			$this->sel_grup = $_POST['sel_grup'];
 			$this->sel_lecturer = $_POST['sel_lecturer'];
-			$this->sel_week = $_POST['sel_week'];
-			$this->person = $_POST['person'];
-    
+			$this->sel_week = $_POST['sel_week'];    
 
-			$_COOKIE['person']=$this->person;
 			$_COOKIE['sel_week']=$this->sel_week;
 			$_COOKIE['sel_grup']=$this->sel_grup;
 			$_COOKIE['sel_lecturer']=$this->sel_lecturer;
@@ -70,7 +77,6 @@ class C_Rasp extends C_Base {
 			setcookie("sel_grup",$this->sel_grup,time()+$expire);
 			setcookie("sel_lecturer",$this->sel_lecturer,time()+$expire);
 			setcookie("sel_week",$this->sel_week,time()+$expire);
-			setcookie("person",$this->person,time()+$expire);
 		}
 	}
 
@@ -79,7 +85,7 @@ class C_Rasp extends C_Base {
     //
     protected function OnOutput()
 	{
-		if($_COOKIE['person']=='lecturer')
+		if($_COOKIE['person']=='lecturer' || $this->person=='lecture')
 		{
 			$type=$_COOKIE['sel_lecturer'];
 		}
@@ -123,6 +129,7 @@ class C_Rasp extends C_Base {
     	$vars = array(
 			//'html_comments'=>$htmlComments,
 			//'comments'=>$this->mRasp->get_comments(),
+			'person'=>$_COOKIE['person'],
 			'grup'=>$this->mRasp->all_grup(),
 			'lecturer'=>$this->mRasp->all_lecturer(),
 			'rasp'=>$this->mas_rasp,
