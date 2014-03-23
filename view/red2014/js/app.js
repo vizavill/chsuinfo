@@ -26,7 +26,7 @@ function loadData(page){
 	});
 }
 
-//Развернуть комментарий
+//Р Р°Р·РІРµСЂРЅСѓС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№
 function extComment(obj){
 	var heightComment = $(obj).parents('.commVk').find('.commentVk').height();
 	if(heightComment > 46){
@@ -36,16 +36,16 @@ function extComment(obj){
 	}
 }
 
-//Свернуть комментарий
+//РЎРІРµСЂРЅСѓС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№
 function extCommentHide(obj){
 	$(obj).parents('.commVk').find('.comm-text').animate( { height:51 }, { queue:false, duration:500 } );
 	$(obj).hide();
 	$(obj).prev().show();
 }
 
-//Удалить комментарий
+//РЈРґР°Р»РёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№
 function delComment(obj,id){
-	if(confirm("Удалить комментарий?")){
+	if(confirm("РЈРґР°Р»РёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№?")){
 		$.post('index.php?c=comment',{delete:id},function(msg){
 			loadData($('.htmlcomments span').text());
 		});
@@ -54,7 +54,7 @@ function delComment(obj,id){
 
 
 
-//Загрузить первую страницу комментариев
+//Р—Р°РіСЂСѓР·РёС‚СЊ РїРµСЂРІСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
 loadData(1); 
 
 $('.paginationComms a.active').live('click',function(){
@@ -65,16 +65,16 @@ $('.paginationComms a.active').live('click',function(){
 //ajax pagination comments end
 
 
-//ajax отправка комментария
+//ajax РѕС‚РїСЂР°РІРєР° РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
 var working = false;
 $('#commFieldSubmit').click(function(e){
  	e.preventDefault();
 	if(working) return false;
 	working = true;
-	$("#commFieldSubmit").val("Загрузка...");
+	$("#commFieldSubmit").val("Р—Р°РіСЂСѓР·РєР°...");
 	$.post('index.php?c=comment',{comment:$('#commFieldText').val()},function(msg){
 		working = false;
-		$("#commFieldSubmit").val("Отправить");	
+		$("#commFieldSubmit").val("РћС‚РїСЂР°РІРёС‚СЊ");	
 		if(msg.status){
 			loadData(1); 
 			$('#commFieldText').val('');
@@ -87,7 +87,7 @@ $('#commFieldSubmit').click(function(e){
 
 });
 
-//анимация слайдера последних новостей
+//Р°РЅРёРјР°С†РёСЏ СЃР»Р°Р№РґРµСЂР° РїРѕСЃР»РµРґРЅРёС… РЅРѕРІРѕСЃС‚РµР№
 function animate() {
     $(o).eq(curIndex).show().animate({left: '-=50px', opacity: '0'}, 400, function() {
 			$(o).eq(curIndex).attr('style', '').hide();
@@ -101,7 +101,7 @@ var numberOfTeaser  = o.length;
 var curIndex = 0;
 setInterval(animate, 7000);          
 
-//Инициализация селектов
+//РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРµР»РµРєС‚РѕРІ
 $('#group').ikSelect();
 $('#week').ikSelect({
 	customClass: 'week_select_link'
