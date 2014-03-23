@@ -31,6 +31,7 @@ class C_Rasp extends C_Base {
         
 		// C_Base.
 		parent::OnInput();
+		$expire = time() + 3600 * 24 * 100;
 		
         // Обработка отправки формы.
 		if (($this->IsGet()))
@@ -39,7 +40,6 @@ class C_Rasp extends C_Base {
 			
 			if(isset($_GET[person]))
 			{
-				$expire = time() + 3600 * 24 * 100;
 				$this->person = $_GET[person];
 				$_COOKIE['person'] = $this->person;
 				setcookie("person", $this->person, time()+$expire);
@@ -47,14 +47,13 @@ class C_Rasp extends C_Base {
 			
 			if($_GET[week]=='forward')
 			{	
-				$expire = time() + 3600 * 24 * 100;
 				$this->sel_week = $_COOKIE['sel_week']+1;		
 				$_COOKIE['sel_week']=$this->sel_week;
 				setcookie("sel_week",$this->sel_week,time()+$expire);
 			}
 			if ($_GET[week]=='back')
 			{
-				$expire = time() + 3600 * 24 * 100;
+
 				$this->sel_week = $_COOKIE['sel_week']-1;		
 				$_COOKIE['sel_week']=$this->sel_week;
 				setcookie("sel_week",$this->sel_week,time()+$expire);			
@@ -65,17 +64,32 @@ class C_Rasp extends C_Base {
 		
 		if (($this->IsPost()))
 		{	
-			$expire = time() + 3600 * 24 * 100;
-			$this->sel_grup = $_POST['sel_grup'];
-			$this->sel_lecturer = $_POST['sel_lecturer'];
-			$this->sel_week = $_POST['sel_week'];    
+			if(isset($_POST['sel_grup']))
+			{
+				$this->sel_grup = $_POST['sel_grup'];
+				$_COOKIE['sel_grup']=$this->sel_grup;
+				setcookie("sel_grup",$this->sel_grup,time()+$expire);
+				
+			}
+			
+			if(isset($_POST['sel_lecturer']))
+			{
+				$this->sel_lecturer = $_POST['sel_lecturer'];
+			   
 
-			$_COOKIE['sel_week']=$this->sel_week;
-			$_COOKIE['sel_grup']=$this->sel_grup;
+		
+			
 			$_COOKIE['sel_lecturer']=$this->sel_lecturer;
 		  
-			setcookie("sel_grup",$this->sel_grup,time()+$expire);
 			setcookie("sel_lecturer",$this->sel_lecturer,time()+$expire);
+			}
+
+			
+			
+			
+			
+			$this->sel_week = $_POST['sel_week'];
+				$_COOKIE['sel_week']=$this->sel_week;
 			setcookie("sel_week",$this->sel_week,time()+$expire);
 		}
 	}
