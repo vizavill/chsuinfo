@@ -1,4 +1,4 @@
-php_flag display_errors onuhu
+php_flag display_errors onr
 php_flag display_startup_errors off
 
  php_value error_reporting 2047  
