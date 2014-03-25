@@ -5,6 +5,19 @@ body{
 	font-family: Calibri, Tahoma, Arial;
 }
 
+.week1{
+	border: none;
+	background: #D11717;
+	box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .8);
+	color: #f0f0f0;
+	text-shadow: 0px 0px 3px rgba(0,0,0, .5);
+	position:relative;
+	left: 40px;
+	padding:5px;
+	border-radius: 3px;
+	bottom: 12px;
+}
+
 /*comments begin*/
 .commentVk{
 	word-wrap: break-word;
@@ -449,7 +462,8 @@ body{
 /*BLOCK CONTENT BEGIN*/
 .share{
 	float: right;
-	line-height: 45px
+	position: relative;
+	top: 17px;
 }
 
 .share span{

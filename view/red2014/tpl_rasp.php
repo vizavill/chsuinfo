@@ -67,7 +67,9 @@
 				<div class="inline" style="position:relative; bottom:12px;">
 					<input class="customButton" type="submit" name="submit" value="Отобразить">
 				</div>
-				
+				<div class="inline week1">
+					Сейчас в ЧГУ <b><? echo $now_week; ?></b> неделя.
+				</div>
 			</div>
 			</form>	
 			<div class="share valign-middle inline-block">
@@ -82,7 +84,25 @@
 								<div class="title_red uppercase">Понедельник<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right"><?=$rasp[1][date]?></span></div>
 								<table class="schedule">
 									<tbody>							
-									<?for($k=1;$k<=$rasp[max];$k++)
+									<?
+									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
+										for($i=0;$i<5;$i++)
+												echo "<tr>
+												<td>
+													<span class='no-wrap'></span><br>
+													<span class='gray no-wrap'></span>
+												</td>
+												<td>
+													<div>
+														<span class='bold'></span><br>
+														<span class='gray no-wrap'></span>
+														<span class='right m20left no-wrap'></span>
+													</div>
+												</td>
+											</tr>";	
+									}
+									
+									for($k=1;$k<=$rasp[max];$k++)
 									{
 										echo "<tr>
 											<td>
@@ -109,7 +129,24 @@
 							<div class="title_red uppercase">Вторник<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right"><?=$rasp[2][date]?></span></div>
 								<table class="schedule">
 									<tbody>
-									<?for($k=1;$k<=$rasp[max];$k++)
+									<?
+									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
+										for($i=0;$i<5;$i++)
+												echo "<tr>
+												<td>
+													<span class='no-wrap'></span><br>
+													<span class='gray no-wrap'></span>
+												</td>
+												<td>
+													<div>
+														<span class='bold'></span><br>
+														<span class='gray no-wrap'></span>
+														<span class='right m20left no-wrap'></span>
+													</div>
+												</td>
+											</tr>";	
+									}
+									for($k=1;$k<=$rasp[max];$k++)
 									{
 										echo "<tr>
 											<td>
@@ -137,7 +174,24 @@
 								<div class="title_red uppercase">Среда<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right"><?=$rasp[3][date]?></span></div>
 								<table class="schedule">
 									<tbody>
-									<?for($k=1;$k<=$rasp[max];$k++)
+									<?
+									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
+										for($i=0;$i<5;$i++)
+												echo "<tr>
+												<td>
+													<span class='no-wrap'></span><br>
+													<span class='gray no-wrap'></span>
+												</td>
+												<td>
+													<div>
+														<span class='bold'></span><br>
+														<span class='gray no-wrap'></span>
+														<span class='right m20left no-wrap'></span>
+													</div>
+												</td>
+											</tr>";	
+									}
+									for($k=1;$k<=$rasp[max];$k++)
 									{
 										echo "<tr>
 											<td>
@@ -164,7 +218,24 @@
 									<div class="title_red uppercase">Четверг<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right"><?=$rasp[4][date]?></span></div>
 									<table class="schedule">
 										<tbody>
-									<?for($k=1;$k<=$rasp[max];$k++)
+									<?
+									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
+										for($i=0;$i<5;$i++)
+												echo "<tr>
+												<td>
+													<span class='no-wrap'></span><br>
+													<span class='gray no-wrap'></span>
+												</td>
+												<td>
+													<div>
+														<span class='bold'></span><br>
+														<span class='gray no-wrap'></span>
+														<span class='right m20left no-wrap'></span>
+													</div>
+												</td>
+											</tr>";	
+									}
+									for($k=1;$k<=$rasp[max];$k++)
 									{
 										echo "<tr>
 											<td>
@@ -193,7 +264,24 @@
 										<div class="title_red uppercase">Пятница<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right"><?=$rasp[5][date]?></span></div>
 										<table class="schedule">
 											<tbody>
-									<?for($k=1;$k<=$rasp[max];$k++)
+									<?
+									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
+										for($i=0;$i<5;$i++)
+												echo "<tr>
+												<td>
+													<span class='no-wrap'></span><br>
+													<span class='gray no-wrap'></span>
+												</td>
+												<td>
+													<div>
+														<span class='bold'></span><br>
+														<span class='gray no-wrap'></span>
+														<span class='right m20left no-wrap'></span>
+													</div>
+												</td>
+											</tr>";	
+									}
+									for($k=1;$k<=$rasp[max];$k++)
 									{
 										echo "<tr>
 											<td>
@@ -220,7 +308,24 @@
 											<div class="title_red uppercase">Суббота<span style="color: #f0c1c1;font-size: 14px;text-transform: none" class="right"><?=$rasp[6][date]?></span></div>
 													<table class="schedule">
 														<tbody>
-									<?for($k=1;$k<=$rasp[max];$k++)
+									<?
+									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
+										for($i=0;$i<5;$i++)
+												echo "<tr>
+												<td>
+													<span class='no-wrap'></span><br>
+													<span class='gray no-wrap'></span>
+												</td>
+												<td>
+													<div>
+														<span class='bold'></span><br>
+														<span class='gray no-wrap'></span>
+														<span class='right m20left no-wrap'></span>
+													</div>
+												</td>
+											</tr>";	
+									}
+									for($k=1;$k<=$rasp[max];$k++)
 									{
 										echo "<tr>
 											<td>
