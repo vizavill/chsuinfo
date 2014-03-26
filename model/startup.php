@@ -9,7 +9,8 @@ function startup()
 	$dbName   = 'a53069_study';
 	
 	// Языковая настройка.
-	setlocale(LC_ALL, 'ru_RU.utf8');	
+	setlocale(LC_ALL, 'ru_RU.utf8');
+	setlocale(LC_ALL, 'rus');	
 	
 	// Подключение к БД.
 	mysql_connect($hostname, $username, $password) or die('No connect with data base'); 

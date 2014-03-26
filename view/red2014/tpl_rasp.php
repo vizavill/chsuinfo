@@ -1,5 +1,7 @@
 	<div id="content">
-	
+	<pre>
+		<?print_r($rasp)?>
+	</pre>
 		<div id="content_c">
 			<form  style="width:750px;float:left;" action="index.php?c=rasp" method="post">
 			<div style="display:inline;position:relative; top:8px;">
@@ -265,7 +267,8 @@
 										<table class="schedule">
 											<tbody>
 									<?
-									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
+									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer']))
+									{
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>
