@@ -3,12 +3,12 @@
 		<?print_r($rasp)?>
 	</pre>
 		<div id="content_c">
-			<form  style="width:750px;float:left;" action="index.php?c=rasp" method="post">
+			<form  style="width:850px;float:left;" action="index.php?c=rasp" method="get">
 			<div style="display:inline;position:relative; top:8px;">
 				
 				<div class="inline" style="margin-right:10px;">
 				<?if ($person != 'lecturer'):?>
-					<select name="sel_grup" id="group" data-filter="true" data-autoWidth="false">
+					<select name="g" id="group" data-filter="true" data-autoWidth="false">
 						<? foreach ($grup as $value)
 						{
 							if  (isset($_COOKIE['sel_grup']) && ($_COOKIE['sel_grup']==$value[title_grup]))
@@ -24,7 +24,7 @@
 					</select>
 					
 					<?else:?>
-					<select name="sel_lecturer" id="prepod" data-filter="true" data-autoWidth="false">
+					<select name="l" id="prepod" data-filter="true" data-autoWidth="false">
 						<? foreach ($lecturer as $value)
 						{
 							if  (isset($_COOKIE['sel_lecturer']) && ($_COOKIE['sel_lecturer']==$value[name_lecturer]))
@@ -44,7 +44,7 @@
 					<div class="no-wrap valign-middle" style="position:relative; top:-16px;margin-left:10px;margin-right:10px;">
 						<a href="index.php?c=rasp&week=back" class="scheduleListButton" id="listLeft"></a>
 						<div class="inline"  style="margin-right:0px;">
-							<select name="sel_week" id="week" data-filter="true" data-autoWidth="false">
+							<select name="w" id="week" data-filter="true" data-autoWidth="false">
 							<?for ($i=1;$i<=$week;$i++)
 							{
 								if (isset($_COOKIE['sel_week']) && ($_COOKIE['sel_week']==$i))
@@ -67,7 +67,7 @@
 					</div>
 				</div>
 				<div class="inline" style="position:relative; bottom:12px;">
-					<input class="customButton" type="submit" name="submit" value="Отобразить">
+					<input class="customButton" type="submit" value="Отобразить">
 				</div>
 				<div class="inline week1">
 					Сейчас в ЧГУ <b><? echo $now_week; ?></b> неделя.
@@ -75,7 +75,41 @@
 			</div>
 			</form>	
 			<div class="share valign-middle inline-block">
-				<span>Запостить в</span> <a href="http://vk.com/share.php?title=Расписание ЧГУ&url=http://chsuinfo.ru/&description=Обновленная версия расписания" target="_blank"><i class="i vk"></i></a> <a href="https://twitter.com/share?hashtags=chsuinfo&url=http://chsuinfo.ru/&text=Обновленная версия расписания" target="_blank"><i class="i tw"></i></a> <a href="https://www.facebook.com/sharer/sharer.php?u=http://chsuinfo.ru/" target="_blank"><i class="i fb"></i></a>
+				
+				<!-- <span>Сохранить в</span> <a href="http://vk.com/share.php?description=Обновленная версия расписания&url=http://chsuinfo.ru/index.php<?php echo $url_soc;?>" target="_blank"><i class="i vk"></i></a> <a href="https://twitter.com/share?hashtags=chsuinfo&text=Обновленная версия расписания&url=http://chsuinfo.ru/index.php<?php echo $url_soc;?>" target="_blank"><i class="i tw"></i></a> <a href="https://www.facebook.com/sharer/sharer.php?u=http://chsuinfo.ru/index.php<?php echo $url_soc;?>" target="_blank"><i class="i fb"></i></a> -->
+				
+				
+				<?php 
+					$url_soc = '';
+					if(isset($_COOKIE['sel_week']) && isset($_COOKIE['sel_grup']) && isset($_COOKIE['person']) && $_COOKIE['person'] == 'group')
+					{		
+						$url_soc = '?g='.$_COOKIE['sel_grup'].'&w='.$_COOKIE['sel_week'];
+					}
+					
+					if(isset($_COOKIE['sel_week']) && isset($_COOKIE['sel_lecturer']) && isset($_COOKIE['person']) && $_COOKIE['person'] == 'lecturer')
+					{		
+						$url_soc = '?l='.$_COOKIE['sel_lecturer'].'&w='.$_COOKIE['sel_week'];
+					}
+				?>
+				
+				<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8">
+				</script>
+				<script type="text/javascript">
+				 new Ya.share({
+				  element: 'sharerasp',
+				  theme: 'counter',
+				  link: 'http://chsuinfo.ru/index.php<? echo $url_soc;?>',
+				  elementStyle: {
+				   'type': 'button',
+				   'border': false,
+				   'quickServices': ['vkontakte',
+									 'facebook',
+									 'twitter']                  
+								},
+				  l10n: 'ru' // Вывод английской версии        
+				 });
+				</script>
+				<span id="sharerasp"></span>
 			</div>
 			
 			<table class="rasp">

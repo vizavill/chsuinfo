@@ -3,7 +3,19 @@
 <head>
     <!-- v 2.0 -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
-    <title>ChsuInfo - Расписание</title>
+	<?php 
+					$title = '';
+					if(isset($_COOKIE['sel_week']) && isset($_COOKIE['sel_grup']) && isset($_COOKIE['person']) && $_COOKIE['person'] == 'group')
+					{		
+						$title = "(".$_COOKIE['sel_grup'].")";
+					}
+					
+					if(isset($_COOKIE['sel_week']) && isset($_COOKIE['sel_lecturer']) && isset($_COOKIE['person']) && $_COOKIE['person'] == 'lecturer')
+					{		
+						$title = "(".$_COOKIE['sel_lecturer'].")";
+					}
+				?>
+    <title>ChsuInfo - Расписание <?echo $title;?></title>
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"> -->
     <link href="/view/red2014/css/style.css" rel="stylesheet" type="text/css" />
 	<link href="/view/red2014/css/reveal.css" rel="stylesheet" />
@@ -29,7 +41,7 @@
 				<a href="<?=$linkAuthVk?>" class="vk-link" style="margin-left: 15px;">Войти через<img src="/view/red2014/images/vk.png" width="20px;" style="padding-left:3px;"></a>
 			<?endif?>			
 			<span>
-				<a href="index.php?c=rasp&person=group" id="active">Расписание для студентов</a> / <a href="index.php?c=rasp&person=lecturer">Расписание для преподавателей</a> / <a href="http://m.chsuinfo.ru/">Mobile</a> / <a href="index.php?c=sms_vk_rasp">SMS & VK</a>
+				<a href="index.php?c=rasp&person=group">Расписание для студентов</a> / <a href="index.php?c=rasp&person=lecturer">Расписание для преподавателей</a> / <a href="http://m.chsuinfo.ru/">Mobile</a> / <a href="index.php?c=sms_vk_rasp">SMS & VK</a>
 			</span>
 			<div id="header-shadow"></div>
 		</div>
