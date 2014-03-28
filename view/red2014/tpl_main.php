@@ -1,21 +1,10 @@
 <!DOCTYPE HTML>
 <html lang="ru">
 <head>
-    <!-- v 2.0 -->
+    <!-- v 2.0 --> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf8"/>
-	<?php 
-					$title = '';
-					if(isset($_COOKIE['sel_week']) && isset($_COOKIE['sel_grup']) && isset($_COOKIE['person']) && $_COOKIE['person'] == 'group')
-					{		
-						$title = "(".$_COOKIE['sel_grup'].")";
-					}
-					
-					if(isset($_COOKIE['sel_week']) && isset($_COOKIE['sel_lecturer']) && isset($_COOKIE['person']) && $_COOKIE['person'] == 'lecturer')
-					{		
-						$title = "(".$_COOKIE['sel_lecturer'].")";
-					}
-				?>
-    <title>ChsuInfo - Расписание <?echo $title;?></title>
+	
+    <title><?= $title;?></title>
     <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"> -->
     <link href="/view/red2014/css/style.css" rel="stylesheet" type="text/css" />
 	<link href="/view/red2014/css/reveal.css" rel="stylesheet" />

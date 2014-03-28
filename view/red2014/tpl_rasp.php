@@ -9,7 +9,7 @@
 					<select name="g" id="group" data-filter="true" data-autoWidth="false">
 						<? foreach ($grup as $value)
 						{
-							if  (isset($_COOKIE['sel_grup']) && ($_COOKIE['sel_grup']==$value[title_grup]))
+							if  ($sel_grup==$value[title_grup])
 							{		
 								echo "<option selected>   ".$value[title_grup]." </option>";  
 							}
@@ -20,12 +20,12 @@
 						}
 						?>
 					</select>
-					
+					 
 					<?else:?>
-					<select name="l" id="prepod" data-filter="true" data-autoWidth="false">
+					<select name="l" id="prepod" data-filter="true" data-autoWidth="false"> 
 						<? foreach ($lecturer as $value)
 						{
-							if  (isset($_COOKIE['sel_lecturer']) && ($_COOKIE['sel_lecturer']==$value[name_lecturer]))
+							if  ($sel_lecturer==$value[name_lecturer])
 							{		
 								echo "<option selected>   ".$value[name_lecturer]." </option>";  
 							}
@@ -46,7 +46,7 @@
 							<select name="w" id="week" data-filter="true" data-autoWidth="false">
 							<?for ($i=1;$i<=$week;$i++)
 							{
-								if (isset($_COOKIE['sel_week']) && ($_COOKIE['sel_week']==$i))
+								if ($sel_week==$i)
 								{		
 									echo "<option value=".$i." selected>   ".$i." Неделя</option>";
 								}

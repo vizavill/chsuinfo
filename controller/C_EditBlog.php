@@ -5,7 +5,7 @@ include_once('controller/C_Base.php');
 //
 class C_EditBlog extends C_Base 
 {
-	private $title;		// текст для преобразования
+	private $title1;		// текст для преобразования
 	private $text;		// текст для преобразования
 	private $author;		// текст для преобразования
 	private $date_post;		// текст для преобразования
@@ -38,7 +38,7 @@ class C_EditBlog extends C_Base
 		// Обработка отправки формы.
 		if ($this->IsPost())
 		{
-			$this->title = $_POST['title'];
+			$this->title1 = $_POST['title'];
 			$this->text = $_POST['text'];
 			$this->author = $_POST['author'];
 			$this->date_post = $_POST['date_post'];
@@ -49,7 +49,7 @@ class C_EditBlog extends C_Base
 			}
 			
 			// Добавляем пользователя в базу
-			$vars = array('title'=>$this->title,
+			$vars = array('title'=>$this->title1,
 						'text'=>$this->text,
 						'author'=>$this->author,
 						'date_post'=>$this->date_post);

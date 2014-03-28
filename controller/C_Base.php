@@ -7,7 +7,7 @@ include_once('model/M_SmsRasp.php');
 include_once('model/M_Rasp.php');
 include_once('model/M_Example.php');
 include_once('model/M_Setting.php');
-include_once('model/M_EditBlog.php');
+//include_once('model/M_EditBlog.php');
 include_once('model/M_Blog.php');
 include_once('model/M_Starosta.php');
 include_once('model/M_Sender.php');
@@ -31,6 +31,7 @@ abstract class C_Base extends Controller
 	protected $mStar;		// оповещение пользователя
 	private $start_time;	// время начала генерации страницы
 	protected $mUsers;
+	protected $title;
 	protected $mVKSender;
 	protected $_VKMailing;
 	
@@ -80,6 +81,7 @@ abstract class C_Base extends Controller
 	    // Основной шаблон всех страниц.
 		$vars = array('content' => $this->content,
 					'user'=>$this->user,
+					'title'=>$this->title,
 					'_VKMailing'=>$this->mSmsRasp->verVKMailing($user[id_user]),
 					'linkAuthVk'=>"https://oauth.vk.com/authorize?client_id=".CLIENT_ID."&scope=".SCOPE."&redirect_uri=".PATH.OAUTH_CALLBACK."&response_type=code&v=5.0");						
 			

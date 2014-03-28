@@ -45,8 +45,12 @@ class C_Rasp extends C_Base {
 				$this->sel_grup = $_GET['g'];
 				$_COOKIE['sel_grup']=$this->sel_grup;
 				setcookie("sel_grup",$this->sel_grup,time()+$expire);
-				
 			}
+			else
+			{
+				$this->sel_grup = $_COOKIE['sel_grup'];
+			}
+			
 			//Преподаватель
 			if(isset($_GET['l']))
 			{
@@ -54,11 +58,19 @@ class C_Rasp extends C_Base {
 				$_COOKIE['sel_lecturer']=$this->sel_lecturer;
 				setcookie("sel_lecturer",$this->sel_lecturer,time()+$expire);
 			}
+			else
+			{
+				$this->sel_lecturer = $_COOKIE['sel_lecturer'];
+			}
 			//Неделя
 			if(isset($_GET['w'])){
 				$this->sel_week = $_GET['w'];
 				$_COOKIE['sel_week']=$this->sel_week;
 				setcookie("sel_week",$this->sel_week,time()+$expire);
+			}
+			else
+			{
+				$this->sel_week = $_COOKIE['sel_week'];
 			}
 			
 			if(isset($_GET[person]))
@@ -67,24 +79,10 @@ class C_Rasp extends C_Base {
 				$_COOKIE['person'] = $this->person;
 				setcookie("person", $this->person, time()+$expire);
 			}
-			
-			
-			
-			
-			if($_GET[week]=='forward')
-			{	
-				$this->sel_week = $_COOKIE['sel_week']+1;		
-				$_COOKIE['sel_week']=$this->sel_week;
-				setcookie("sel_week",$this->sel_week,time()+$expire);
-			}
-			if ($_GET[week]=='back')
+			else
 			{
-
-				$this->sel_week = $_COOKIE['sel_week']-1;		
-				$_COOKIE['sel_week']=$this->sel_week;
-				setcookie("sel_week",$this->sel_week,time()+$expire);			
-			}
-			
+				$this->person = $_COOKIE['person'];
+			}		
 		}
 	}
 
@@ -93,18 +91,17 @@ class C_Rasp extends C_Base {
     //
     protected function OnOutput()
 	{
-		if($_COOKIE['person']=='lecturer' || $this->person=='lecture')
+		if($this->person=='lecturer')
 		{
-			$type=$_COOKIE['sel_lecturer'];
 			$sel_person=$this->sel_lecturer;
 		}
 		else
 		{
-			$type=$_COOKIE['sel_grup'];
 			$sel_person=$this->sel_grup;
 		}
 		 
-		$this->mas_rasp=$this->mRasp->rasp($_COOKIE['sel_week'], 'week', $_COOKIE['person'], $type);
+		$this->mas_rasp=$this->mRasp->rasp($this->sel_week, 'week', $this->person, $sel_person);
+		$this->title = "Расписание ".$sel_person." на ".$this->sel_week." неделю.";
 		
 		/* Не требуется так как подгрузка будет осуществляться с помощью ajax
 		
