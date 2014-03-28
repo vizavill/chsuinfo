@@ -1,7 +1,5 @@
 	<div id="content">
-	<pre>
-		<?print_r($rasp)?>
-	</pre>
+	
 		<div id="content_c">
 			<form  style="width:850px;float:left;" action="index.php?c=rasp" method="get">
 			<div style="display:inline;position:relative; top:8px;">
@@ -42,7 +40,8 @@
 				</div>
 				<div class="inline"  style="margin-right:10px;">
 					<div class="no-wrap valign-middle" style="position:relative; top:-16px;margin-left:10px;margin-right:10px;">
-						<a href="index.php?c=rasp&week=back" class="scheduleListButton" id="listLeft"></a>
+						<a href="index.php?c=rasp&g=<?=$sel_person?>&w=<?=($sel_week-1)?>" class="scheduleListButton" id="listLeft"></a>
+						
 						<div class="inline"  style="margin-right:0px;">
 							<select name="w" id="week" data-filter="true" data-autoWidth="false">
 							<?for ($i=1;$i<=$week;$i++)
@@ -63,7 +62,7 @@
 							?>		
 							</select>
 							</div>
-						<a href="index.php?c=rasp&week=forward" class="scheduleListButton" id="listRight"></a>
+						<a href="index.php?c=rasp&g=<?=$sel_person?>&w=<?=($sel_week+1)?>"" class="scheduleListButton" id="listRight"></a>
 					</div>
 				</div>
 				<div class="inline" style="position:relative; bottom:12px;">
@@ -301,8 +300,7 @@
 										<table class="schedule">
 											<tbody>
 									<?
-									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer']))
-									{
+									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>

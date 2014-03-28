@@ -96,10 +96,12 @@ class C_Rasp extends C_Base {
 		if($_COOKIE['person']=='lecturer' || $this->person=='lecture')
 		{
 			$type=$_COOKIE['sel_lecturer'];
+			$sel_person=$this->sel_lecturer;
 		}
 		else
 		{
 			$type=$_COOKIE['sel_grup'];
+			$sel_person=$this->sel_grup;
 		}
 		 
 		$this->mas_rasp=$this->mRasp->rasp($_COOKIE['sel_week'], 'week', $_COOKIE['person'], $type);
@@ -137,6 +139,10 @@ class C_Rasp extends C_Base {
     	$vars = array(
 			//'html_comments'=>$htmlComments,
 			//'comments'=>$this->mRasp->get_comments(),
+			'sel_grup'=>$this->sel_grup,
+			'sel_lecturer'=>$this->sel_lecturer,
+			'sel_week'=>$this->sel_week,
+			'sel_person'=>$sel_person,
 			'person'=>$_COOKIE['person'],
 			'grup'=>$this->mRasp->all_grup(),
 			'lecturer'=>$this->mRasp->all_lecturer(),
