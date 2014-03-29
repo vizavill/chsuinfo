@@ -19,7 +19,7 @@
 <body>
 	<div id="header">
 		<div id="header_content">
-			<a href="/"><img src="http://placehold.it/132x60"></a>
+			<a href="/"><img src="/view/red2014/images/logo.png"></a>
 
 			<? if (isset($user)): ?>
 				<div class="small-ava" style="margin-left:15px;">
