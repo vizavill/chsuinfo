@@ -74,7 +74,7 @@
 			</div>
 			</form>	
 			<div class="share valign-middle inline-block">
-				<div style="display:inline; margin-right:10px; float:right;">
+				<div style="display:inline; float:right;">
 					<?php 
 						$url_soc = '';
 						if(isset($_COOKIE['sel_week']) && isset($_COOKIE['sel_grup']) && isset($_COOKIE['person']) && $_COOKIE['person'] == 'group')
