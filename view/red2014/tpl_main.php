@@ -31,7 +31,15 @@
 				<a href="<?=$linkAuthVk?>" class="vk-link" style="margin-left: 15px;">Войти через<img src="/view/red2014/images/vk.png" width="20px;" style="padding-left:3px;"></a>
 			<?endif?>			
 			<span>
-				<a href="index.php?c=rasp&person=group">Расписание для студентов</a> / <a href="index.php?c=rasp&person=lecturer">Расписание для преподавателей</a> / <a href="http://m.chsuinfo.ru/">Mobile</a> / <a href="index.php?c=sms_vk_rasp">SMS & VK</a>
+			<?php
+				if(strpos($_SERVER['REQUEST_URI'], "person=group") != false)
+					$menuHtml = '<a href="index.php?c=rasp&person=group" id="active">Расписание для студентов</a> / <a href="index.php?c=rasp&person=lecturer">Расписание для преподавателей</a> / <a href="http://m.chsuinfo.ru/">Mobile</a> / <a href="index.php?c=sms_vk_rasp">SMS & VK</a>';
+				if(strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)
+					$menuHtml = '<a href="index.php?c=rasp&person=group">Расписание для студентов</a> / <a href="index.php?c=rasp&person=lecturer" id="active">Расписание для преподавателей</a> / <a href="http://m.chsuinfo.ru/">Mobile</a> / <a href="index.php?c=sms_vk_rasp">SMS & VK</a>';
+				if(strpos($_SERVER['REQUEST_URI'], "c=sms_vk_rasp") != false)
+					$menuHtml = '<a href="index.php?c=rasp&person=group">Расписание для студентов</a> / <a href="index.php?c=rasp&person=lecturer">Расписание для преподавателей</a> / <a href="http://m.chsuinfo.ru/">Mobile</a> / <a href="index.php?c=sms_vk_rasp" id="active">SMS & VK</a>';
+				echo $menuHtml;
+			?>
 			</span>
 			<div id="header-shadow"></div>
 		</div>
