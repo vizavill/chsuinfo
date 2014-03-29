@@ -14,6 +14,7 @@
     <script type="text/javascript" src="/view/red2014/js/jquery.ikSelect.min.js"></script>
 	<script type="text/javascript" src="/view/red2014/js/jquery.reveal.js"></script>
 
+	<script type="text/javascript" src="//vk.com/js/api/openapi.js?110"></script>	
 </head>
 <body>
 	<div id="header">
@@ -47,7 +48,7 @@
 			<a href="http://vk.com/chsuinfo" target="_blank"><i class="i vk"></i></a>
 			<h3 class="inline-block no-margin">vk.com/chsuinfo</h3>
 			<div class="posts inline-block">
-						<div style="display: none;"><span style="margin-right: 16px">05.03.2014</span> Новостьklllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll</div>
+						<div style="display: none;"><span style="margin-right: 16px">05.03.2014</span> Новость 1</div>
 						<div style="display: block;"><span style="margin-right: 16px">03.03.2014</span> Новость 2</div>
 						<div style="display: none;"><span style="margin-right: 16px">26.02.2014</span> Новость 3</div>
 						<div style="display: none;"><span style="margin-right: 16px">24.02.2014</span> Новость 4</div>
