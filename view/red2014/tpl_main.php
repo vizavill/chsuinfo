@@ -32,12 +32,12 @@
 			<?endif?>			
 			<span>
 			<?php
-				if(strpos($_SERVER['REQUEST_URI'], "person=group") != false)
-					$menuHtml = '<a href="index.php?c=rasp&person=group" id="active">Расписание для студентов</a> / <a href="index.php?c=rasp&person=lecturer">Расписание для преподавателей</a> / <a href="http://m.chsuinfo.ru/">Mobile</a> / <a href="index.php?c=sms_vk_rasp">SMS & VK</a>';
 				if(strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)
 					$menuHtml = '<a href="index.php?c=rasp&person=group">Расписание для студентов</a> / <a href="index.php?c=rasp&person=lecturer" id="active">Расписание для преподавателей</a> / <a href="http://m.chsuinfo.ru/">Mobile</a> / <a href="index.php?c=sms_vk_rasp">SMS & VK</a>';
-				if(strpos($_SERVER['REQUEST_URI'], "c=sms_vk_rasp") != false)
+				else if(strpos($_SERVER['REQUEST_URI'], "c=sms_vk_rasp") != false)
 					$menuHtml = '<a href="index.php?c=rasp&person=group">Расписание для студентов</a> / <a href="index.php?c=rasp&person=lecturer">Расписание для преподавателей</a> / <a href="http://m.chsuinfo.ru/">Mobile</a> / <a href="index.php?c=sms_vk_rasp" id="active">SMS & VK</a>';
+				else
+					$menuHtml = '<a href="index.php?c=rasp&person=group" id="active">Расписание для студентов</a> / <a href="index.php?c=rasp&person=lecturer">Расписание для преподавателей</a> / <a href="http://m.chsuinfo.ru/">Mobile</a> / <a href="index.php?c=sms_vk_rasp">SMS & VK</a>';
 				echo $menuHtml;
 			?>
 			</span>
