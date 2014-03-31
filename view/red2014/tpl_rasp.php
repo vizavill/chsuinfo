@@ -127,7 +127,7 @@
 								<table class="schedule">
 									<tbody>							
 									<?
-									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
+									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)){
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>
@@ -172,7 +172,7 @@
 								<table class="schedule">
 									<tbody>
 									<?
-									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
+									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)){
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>
@@ -217,7 +217,7 @@
 								<table class="schedule">
 									<tbody>
 									<?
-									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
+									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)){
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>
@@ -261,7 +261,7 @@
 									<table class="schedule">
 										<tbody>
 									<?
-									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
+									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)){
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>
@@ -307,7 +307,7 @@
 										<table class="schedule">
 											<tbody>
 									<?
-									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
+									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)){
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>
@@ -351,7 +351,7 @@
 													<table class="schedule">
 														<tbody>
 									<?
-									if(!isset($_COOKIE['sel_week']) && !isset($_COOKIE['sel_grup']) && !isset($_COOKIE['sel_lecturer'])){
+									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)){
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>
