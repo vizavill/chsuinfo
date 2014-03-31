@@ -564,6 +564,34 @@ body{
 	overflow: hidden;
 	position: relative;
 }
+
+.posts{
+	display: inline-block;
+	float: right;
+	width: 800px;
+	height: 19px;
+	top: 3px;
+	left: -20px;
+	overflow: hidden;
+	position: relative;
+}
+
+.posts a{
+	color: #3c2114;
+	text-decoration: none;
+}
+
+.posts a:hover{
+	color: #3c2114;
+	text-decoration: underline;
+}
+
+.posts a:visited{
+	color: #3c2114;
+}
+
+
+
 /*BLOCK NEWS END*/
 
 /*BLOCK FOOTER BEGIN*/
