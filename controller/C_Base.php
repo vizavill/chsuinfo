@@ -17,7 +17,7 @@ include_once('model/M_Events.php');
 include_once('model/M_Upload.php');
 include_once('model/M_VK.php');
 include_once('model/M_Comment.php');
-
+include_once('lib/parsernews.class.php');
 //
 // Базовый контроллер сайта.
 //
@@ -78,9 +78,12 @@ abstract class C_Base extends Controller
 	//	
 	protected function OnOutput()
 	{
+		$parser = new parser();
+		$chsu_news = $parser->parseNews();
 	    // Основной шаблон всех страниц.
 		$vars = array('content' => $this->content,
 					'user'=>$this->user,
+					'chsu_news'=>$chsu_news,
 					'title'=>$this->title,
 					'_VKMailing'=>$this->mSmsRasp->verVKMailing($user[id_user]),
 					'linkAuthVk'=>"https://oauth.vk.com/authorize?client_id=".CLIENT_ID."&scope=".SCOPE."&redirect_uri=".PATH.OAUTH_CALLBACK."&response_type=code&v=5.0");						

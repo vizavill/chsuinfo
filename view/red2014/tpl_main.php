@@ -56,11 +56,7 @@
 			<a href="http://vk.com/chsuinfo" target="_blank"><i class="i vk"></i></a>
 			<h3 class="inline-block no-margin">vk.com/chsuinfo</h3>
 			<div class="posts inline-block">
-						<div style="display: none;"><span style="margin-right: 16px">05.03.2014</span> Новость 1</div>
-						<div style="display: block;"><span style="margin-right: 16px">03.03.2014</span> Новость 2</div>
-						<div style="display: none;"><span style="margin-right: 16px">26.02.2014</span> Новость 3</div>
-						<div style="display: none;"><span style="margin-right: 16px">24.02.2014</span> Новость 4</div>
-						<div style="display: none;"><span style="margin-right: 16px">20.02.2014</span> Новость 5</div>
+						<?=$chsu_news?>
 				</div>
 		</div>
 	</div>
