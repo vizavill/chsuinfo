@@ -51,7 +51,7 @@ class M_Sms
 		$vars = array('server_id'=>$value[server_id],
 							'from_sms'=>$value[from],
 							'to_sms'=>$value[to],
-							'text'=>iconv("utf-8","cp1251",$value[text]),
+							'text'=>iconv("cp1251","utf-8",$value[text]),
 							'zone'=>$value[zone],
 							'parts'=>$value[parts],
 							'credits'=>$value[credits],

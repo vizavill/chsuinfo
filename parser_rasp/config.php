@@ -10,7 +10,7 @@ $dbpas="studypas";
 $dbhost2="a53069.mysql.mchost.ru";
 $dbname2="a53069_chsuinfo";
 $dbuser2="a53069_chsuinfo";
-$dbpas2="http://chsu.zz.mu/";
+$dbpas2="8uEiJ4SR7f";
 
 //Адресс сайта с расписанием
 $http_rasp="http://rasp.chsu.ru/";

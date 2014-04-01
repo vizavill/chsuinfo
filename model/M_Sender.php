@@ -77,14 +77,18 @@ class M_Sender
     //
 	public function sokrat($mas)
 	{
-		$len=4;
+		$len=6;
 		$vowel=array('а','у','о','ы','и','э','я','ю','ё','е','ь','ъ');
 		$out_string='';
 		foreach($mas as $string){
+			//танцы с бубном, типа можно и закомментить если че
+			$string = iconv("UTF-8","WINDOWS-1251",$string);
+			
 			$len_str=strlen($string);
 			if($len<=$len_str){
 				$str=substr($string,0,$len);
 				foreach($vowel as $value){
+					$value = iconv("UTF-8","WINDOWS-1251", $value);
 					if($str[$len-1]==$value){
 						$str=substr($string,0,$len+1);
 					}
@@ -96,7 +100,7 @@ class M_Sender
 				$out_string.=$string." ";
 			}
 		}
-		return $out_string;
+		return iconv("WINDOWS-1251","UTF-8",$out_string);
 	}	
 		
 

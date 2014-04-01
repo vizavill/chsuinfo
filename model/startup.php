@@ -3,10 +3,10 @@
 function startup()
 {
 	// Настройки подключения к БД.
-	$hostname = 'localhost';	
-	$username = 'a53069_study'; 
-	$password = '';
-	$dbName   = 'a53069_study';
+	$hostname = 'a53069.mysql.mchost.ru';	
+	$username = 'a53069_chsuinfo'; 
+	$password = '8uEiJ4SR7f';
+	$dbName   = 'a53069_chsuinfo';
 	
 	// Языковая настройка.
 	setlocale(LC_ALL, 'ru_RU.utf8');	
@@ -32,7 +32,7 @@ function startup()
 	// настройки доступа
 	define("SCOPE", "friends");
 	// путь к папке со скриптами
-	define("PATH", "http://new.chsuinfo.ru/");
+	define("PATH", "http://chsuinfo.ru/");
 	
 	
 	define("THEME", "/red2014");

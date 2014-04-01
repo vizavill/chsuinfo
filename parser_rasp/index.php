@@ -3,13 +3,14 @@ include_once("class.php");
 include_once("config.php");
 
 //объявляем экзэмпляр класса
-$pars=new Parsesr_html($dbhost,$dbuser,$dbpas);
+$pars=new Parsesr_html($dbhost2,$dbuser2,$dbpas2);
 
 
 
 //Cкачиваем страницу со списком преподов и если все ОК, заносим ее в базу
 if ($html=$pars->download_html($http_prepod, false, ''))
 {
+echo"1";
 	if($pars->verify_html($html))
 	{
 		$pars->truncate('lecturer');

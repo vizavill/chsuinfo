@@ -127,9 +127,6 @@ class C_Rasp extends C_Base {
 			$htmlComments .= $insertedComment->markup();
 		}
 		*/
-			
-	
-		
 		
 		// Генерация содержимого страницы Rasp.
       

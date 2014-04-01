@@ -140,7 +140,7 @@ class M_VK
     }
     // Функция отправки сообщения
     function MsgToUser($user_id, $message, $attachment = "",$title, $token) {
-        $link = "https://api.vk.com/method/messages.send?user_id=" . $user_id . "&message=" . urlencode(iconv("CP1251","utf8",$message)) . "&attachment=" . $attachment . "&access_token=" . $token . "&title=".iconv("CP1251","utf8",$title);
+        $link = "https://api.vk.com/method/messages.send?user_id=" . $user_id . "&message=" . urlencode($message) . "&attachment=" . $attachment . "&access_token=" . $token . "&title=".$title;
         $res = $this->send($link);
         $response = strpos($res, 'response');
         if ($response !== FALSE) {

@@ -12,7 +12,7 @@ body{
 	color: #f0f0f0;
 	text-shadow: 0px 0px 3px rgba(0,0,0, .5);
 	position: relative;
-	left: 40px;
+	left: 10px;
 	padding: 10px 12px 10px 12px;
 	border-radius: 3px;
 	bottom: 14px;
@@ -564,6 +564,34 @@ body{
 	overflow: hidden;
 	position: relative;
 }
+
+.posts{
+	display: inline-block;
+	float: right;
+	width: 800px;
+	height: 19px;
+	top: 3px;
+	left: -20px;
+	overflow: hidden;
+	position: relative;
+}
+
+.posts a{
+	color: #3c2114;
+	text-decoration: none;
+}
+
+.posts a:hover{
+	color: #3c2114;
+	text-decoration: underline;
+}
+
+.posts a:visited{
+	color: #3c2114;
+}
+
+
+
 /*BLOCK NEWS END*/
 
 /*BLOCK FOOTER BEGIN*/
