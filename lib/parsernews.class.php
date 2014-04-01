@@ -59,7 +59,7 @@ class parser{
 			//dates
 			$posDate = strpos($this->html, 'metadata-entry metadata-publish-date">');
 			$this->html = substr($this->html, $posDate);
-			array_push($this->dates, substr($this->html, strpos($this->html, 'metadata-entry metadata-publish-date">')+38, strpos($this->html, 'metadata-entry metadata-tags')-70));
+			array_push($this->dates, substr($this->html, strpos($this->html, 'metadata-entry metadata-publish-date">')+38, strpos($this->html, 'metadata-entry metadata-tags')-108));
 			$this->html = substr($this->html, strpos($this->html, 'metadata-entry metadata-tags'));
 			
 			//mask
