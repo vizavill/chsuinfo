@@ -52,7 +52,7 @@ class M_Users
 	// $remember 	- нужно ли запомнить в куках
 	// результат	- true или false
 	//
-	public function LoginVk($idVk, $remember = true)
+	public function LoginVk($idVk, $accToken, $remember = true)
 	{
 		// вытаскиваем пользователя из БД 
 		$user = $this->GetByIdVk($idVk);
@@ -64,14 +64,14 @@ class M_Users
 		$id_user=$user['id_user'];	
 				
 		// запоминаем имя и md5(пароль)
-		if ($remember)
-		{
+		if ($remember){
 			$expire = time() + 3600 * 24 * 100;
 			setcookie('phoneNumber', $phoneNumber, $expire);
 			setcookie('idVk', $idVk, $expire);
 			setcookie('password', md5($password), $expire);
+			setcookie('access_token', $accToken, $expire);
 		}		
-				
+		
 		// открываем сессию и запоминаем SID
 		$this->sid = $this->OpenSession($id_user);
 		

@@ -46,6 +46,7 @@ class C_Setting extends C_Base {
 				{
 					
 					$this->mSet->getProfileVk($data['user_id'], $data['access_token'],$this->user[id_user]);
+					
 					header('Location: index.php?c=setting');
 					die();					
 				}
