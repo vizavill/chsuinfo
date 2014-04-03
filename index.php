@@ -15,7 +15,7 @@ include_once('controller/C_NotifAll.php');
 //include_once('controller/C_Events.php');
 include_once('controller/C_VK.php');
 include_once('controller/C_Comment.php');
-error_reporting(E_ALL);
+
 // Инициализация.
 startup();
 

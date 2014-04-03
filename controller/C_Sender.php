@@ -25,7 +25,7 @@ class C_Sender extends C_Base {
 		}
 		
 		//Получаем завтрашнюю дату
-		$date=date('Y-m-d',mktime(0, 0, 0, date("m"), date("d")+1, date("Y")));
+		$date=date('Y-m-d',mktime(0, 0, 0, date("m"), date("d")-1, date("Y")));
 		
 		//Удаляем устаревшие подписки
 		$this->mSender->clear();
@@ -46,19 +46,21 @@ class C_Sender extends C_Base {
 		
 			//Проверяем есть ли пары если есть формируем сообщение
 			if(count($rasp_day)!=0)
-			{
+			{	
+				//Начало сообщения
 				$sms="Занятия на ".date('j',mktime(0, 0, 0, date("m"), date("d")+1, date("Y")))." число, ".$user[person]."\n"; 
 				
+				//бежим по расписанию и сокращаем его если будет послано  в виде СМС
 				foreach($rasp_day as $value2)
-				{					
+				{				
+print_r($value2);				
 					if($value[message_type]=="vk")
 					{
 						$discip=$value2[discip];
 					}
 					else
 					{	
-						$mas_word=$this->mSender->dali($value2[discip]);
-						$discip=$this->mSender->sokrat($mas_word);	
+						$discip=$this->mSender->sokrat($this->mSender->dali($value2[discip]));	
 					}
 					
 					$address=implode("",$this->mSender->dali($value2[address]));
@@ -66,15 +68,16 @@ class C_Sender extends C_Base {
 					$sms=$sms."$time\n $discip\n $address\n ";
 				}
 			}
-			else
+			else //Если пары не найдены
 			{	
+				//Если сообщения в ВК то отправляем "пар нет" на телефон ничего не отправляем
 				if($value[message_type]=="vk")
 				{			
 					$sms= "Занятий на ".date('j',mktime(0, 0, 0, date("m"), date("d")+1, date("Y")))." число не найдено\n";
 				}
 			}			
 	
-						
+				echo $sms;		
 			//Если сообщение не пустое то отправляем его
 			if($sms!='')
 			{
@@ -112,7 +115,7 @@ class C_Sender extends C_Base {
 				{	
 					$val[message] = "Чтобы получать расписание в сообщении, добавте меня в друзья, это связано с тем, что сайт ВКонтакте ограничил число сообщений, отправляемых людям, которые не находятся в списке друзей.";
 				}
-		
+				
 				$response = $this->mVK->MsgToUser($val[id_vk], $val[message].  $this->mVK->link, '',"Расписание_на_завтра", $this->mVK->token);
 				sleep(5); 
 		
@@ -141,7 +144,7 @@ class C_Sender extends C_Base {
 			
 		if(count($arraySms)){
 			//Отсылаем массив СМС сообщений
-			$this->mSms->sendArraySms($arraySms);
+			//$this->mSms->sendArraySms($arraySms);
 		}
 		
 
