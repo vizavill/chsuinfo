@@ -40,7 +40,8 @@ class Comment
 			//$twitterText = urlencode(iconv("WINDOWS-1251", "UTF-8", substr($d['body'], 0, 91).'...'));
 		
 		$extLinks = '';
-		if(strlen($d['body']) >= 125){
+		$pbody = iconv("UTF-8", "WINDOWS-1251", $d['body']);
+		if(strlen($pbody) >= 105){
 			$extLinks = '<a href="#" class="panLink" onclick="extComment(this); return false;" title="Развернуть комментарий"><img src="/view'.THEME.'/images/ext.png"></a>
 														<a href="#" class="panLink" onclick="extCommentHide(this); return false;" style="display:none" title="Свернуть комментарий"><img src="/view'.THEME.'/images/extn.png"></a>';
 		}
