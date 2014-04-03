@@ -17,6 +17,7 @@ class C_Login extends C_Base
 		$this->phoneNumber = '';
 		//Менеджеры
 		$this->mReg = M_Reg::Instance(); 
+		$this->mVK = M_VK::Instance();
 	}
 	
 	//
@@ -44,22 +45,31 @@ class C_Login extends C_Base
 					//Проверяем есть ли базе пользователь
 					if($this->mUsers->GetByidVk($data['user_id']))
 					{
-						if ($this->mUsers->LoginVk($data['user_id'], true))
+						if ($this->mUsers->LoginVk($data['user_id'], $data['access_token'],true))
 						{
 							header('Location: index.php');
 							die();
-						}
-					
-						
+						}		
 					}
 					else
 					{
-						$this->alert="К этому аккаунту не привязана ни одна учетная запись";
+						$user_info = $this->mVK->UserGetInfo($data['access_token'],"");
+						
+						// Добавляем пользователя в базу
+						$vars = array('id_vk'=>$data['user_id'],
+									'sex'=>$user_info->sex,
+									'first_name'=>$user_info->first_name,
+									'last_name'=>$user_info->last_name,
+									'photo_200'=>$user_info->photo_200,
+									'id_role'=>'1');
+						$this->mReg->addUser($vars);
+						header('Location: index.php');
+						die();
 					}
 					//Логинимся
 				
 				}
-    }
+			}
 }
 		
 		
