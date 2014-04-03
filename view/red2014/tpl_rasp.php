@@ -50,7 +50,7 @@
 								{		
 									echo "<option value=".$i." selected>   ".$i." Неделя</option>";
 								}
-								elseif($i==$now_week)
+								elseif($i==$now_week && $sel_week==NULL)
 								{
 									echo "<option value=".$i." selected>   ".$i." Неделя</option>";
 								}

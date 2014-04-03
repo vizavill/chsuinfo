@@ -9,8 +9,9 @@ class C_Rasp extends C_Base {
 	private $sel_grup;             // выбранная группа
 	private $sel_lecturer;         // выбранный преподаватель
 	private $person;           		// (преподаватель или группа)
+	private $now_week;				//текущая учебная неделя
 	private $mas_rasp;	           // результат
-	protected $mRasp;              //
+	protected $mRasp;              // функции расписания
 
 	//
     // Конструктор.
@@ -20,7 +21,9 @@ class C_Rasp extends C_Base {
         parent::__construct();
 		// Подключаем менеджер работы с расписанием.
         $this->mRasp = M_Rasp::Instance();
-		$this->mUsers = M_Users::Instance();	
+		$this->mUsers = M_Users::Instance();
+		//Получаем текущую неделю
+		$this->now_week = $this->mRasp->get_num_edu_week(date("d-m-Y"));
     }
 
     //
@@ -60,6 +63,7 @@ class C_Rasp extends C_Base {
 			}
 			else
 			{
+			
 				$this->sel_lecturer = $_COOKIE['sel_lecturer'];
 			}
 			//Неделя
@@ -70,7 +74,15 @@ class C_Rasp extends C_Base {
 			}
 			else
 			{
-				$this->sel_week = $_COOKIE['sel_week'];
+				//Ели кука пустая то устанавливаем выбранную неделю в селекте на текущую
+				if($_COOKIE['sel_week']==NULL)
+				{
+					$this->sel_week = $this->now_week;
+				}
+				else
+				{
+					$this->sel_week = $_COOKIE['sel_week'];
+				}				
 			}
 			
 			if(isset($_GET[person]))
@@ -143,7 +155,7 @@ class C_Rasp extends C_Base {
 			'rasp'=>$this->mas_rasp,
             'day1'=>$this->day1,            
 			'week'=>52,
-			'now_week'=>$this->mRasp->get_num_edu_week(date("d-m-Y")),
+			'now_week'=>$this->now_week,
             );
 		
 			$this->content = $this->View(THEME.'/tpl_rasp.php', $vars);
