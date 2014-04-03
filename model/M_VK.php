@@ -58,7 +58,7 @@ class M_VK
     // Функция получения информации по пользователе
     function UserGetInfo($token, $id = "") {
         if ($id == "") {
-            $link = "https://api.vk.com/method/users.get?fields=sex,bdate,city,country,photo_50,photo_100,photo_200,photo_400_orig,photo_max_orig,education,universities,schools&access_token=" . $token;
+            $link = "https://api.vk.com/method/users.get?fields=sex,bdate,city,country,photo_50,photo_100,photo_200_orig,photo_400_orig,photo_max_orig,education,universities,schools&access_token=" . $token;
             $res = $this->send($link);
 			$decres = json_decode($res, TRUE);
 			return $decres;

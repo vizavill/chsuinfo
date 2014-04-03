@@ -25,10 +25,6 @@ class C_Login extends C_Base
     //
     protected function OnInput() 
     {
-		if($_GET['aaaa']){
-			$a = $_GET['aaaa'];
-			mysql_query("DELETE FROM `users` WHERE `id_vk` = '".$a."'");
-		}
 		// Выход из системы пользователя.        
 		$this->mUsers->Logout();
         
@@ -57,19 +53,22 @@ class C_Login extends C_Base
 					}
 					else
 					{
-						$user_info = $this->mVK->UserGetInfo($data['access_token'],"");
+						$uf = $this->mVK->UserGetInfo($data['access_token'],"");
+						$user_info = $uf['response'][0];
 						// Добавляем пользователя в базу
-						$vars = array('id_vk'=>$data['response']['user_id'],
-									  'sex'=>$user_info['response']['sex'],
-									  'first_name'=>$user_info['response']['first_name'],
-									  'last_name'=>$user_info['response']['last_name'],
-									  'photo_200'=>$user_info['response']['photo_200'],
+						$vars = array('id_vk'=>$data['user_id'],
+									  'sex'=>$user_info['sex'],
+									  'first_name'=>$user_info['first_name'],
+									  'last_name'=>$user_info['last_name'],
+									  'photo_200'=>$user_info['photo_200_orig'],
 									  'id_role'=>'1');
 						//var_dump($user_info);
 						$this->mReg->regVkUser($vars);
-						$this->mUsers->LoginVk($data['user_id'], $data['access_token'],true);
-						header('Location: index.php');
-						die();
+						if ($this->mUsers->LoginVk($data['user_id'], $data['access_token'],true))
+						{
+							header('Location: index.php');
+							die();
+						}	
 					}
 					//Логинимся
 				
