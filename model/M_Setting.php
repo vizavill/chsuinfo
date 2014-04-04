@@ -47,17 +47,14 @@ class M_Setting
 	public function getProfileVk($idVk,$accessToken, $id_user)
 	{	
 		 // получим профиль пользователя
-		$resp = file_get_contents('https://api.vkontakte.ru/method/getProfiles?uids='.$idVk.'&v=5.0&fields=sex,photo_200,contacts,bdate&access_token='.$accessToken);
+		 //https://api.vk.com/method/users.get?fields=sex,bdate,city,country,photo_50,photo_100,photo_200_orig,photo_400_orig,photo_max_orig,education,universities,schools&access_token=
+		$resp = file_get_contents('https://api.vkontakte.ru/method/users.get?fields=sex,bdate,city,country,photo_50,photo_100,photo_200_orig,photo_400_orig,photo_max_orig,education,universities,schools&access_token='.$accessToken);
 		$data = json_decode($resp, true);
-		
-	
-		
-		
 		$vars = array('id_vk'=>$data[response][0][id],
-						'first_name'=>iconv("utf8","CP1251",$data[response][0][first_name]),
-						'last_name'=>iconv("utf8","CP1251",$data[response][0][last_name]),
+						'first_name'=>$data[response][0][first_name],
+						'last_name'=>$data[response][0][last_name],
 						'bdate'=>$data[response][0][bdate],
-						'photo_200'=>$data[response][0][photo_200],
+						'photo_200'=>$data[response][0][photo_200_orig],
 						'sex'=>$data[response][0][sex]);
 		$this->msql->Update('users',$vars,"id_user='$id_user'");
 		
