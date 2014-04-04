@@ -32,7 +32,7 @@
 			<?endif?>			
 			<span>
 			<?php
-				if(strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)
+				if((strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false) || ( (strpos($_SERVER['REQUEST_URI'], "person=lecturer") == false) && (strpos($_SERVER['REQUEST_URI'], "c=sms_vk_rasp") == false) && ($_COOKIE['person'] == 'lecturer')))
 					$menuHtml = '<a href="index.php?c=rasp&person=group">Расписание для студентов</a> / <a href="index.php?c=rasp&person=lecturer" id="active">Расписание для преподавателей</a> / <a href="http://m.chsuinfo.ru/">Mobile</a> / <a href="index.php?c=sms_vk_rasp">SMS & VK</a>';
 				else if(strpos($_SERVER['REQUEST_URI'], "c=sms_vk_rasp") != false)
 					$menuHtml = '<a href="index.php?c=rasp&person=group">Расписание для студентов</a> / <a href="index.php?c=rasp&person=lecturer">Расписание для преподавателей</a> / <a href="http://m.chsuinfo.ru/">Mobile</a> / <a href="index.php?c=sms_vk_rasp" id="active">SMS & VK</a>';
