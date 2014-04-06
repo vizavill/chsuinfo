@@ -40,7 +40,7 @@
 				</div>
 				<div class="inline"  style="margin-right:10px;">
 					<div class="no-wrap valign-middle" style="position:relative; top:-16px;margin-left:10px;margin-right:10px;">
-						<a href="index.php?c=rasp&g=<?=$sel_person?>&w=<?=($sel_week-1)?>" class="scheduleListButton" id="listLeft"></a>
+						<a href="index.php?c=rasp&g=<?=$sel_person?>&w=<?=($sel_week-1)?>&p=<?=($person)?>" class="scheduleListButton" id="listLeft"></a>
 						
 						<div class="inline"  style="margin-right:0px;">
 							<select name="w" id="week" data-filter="true" data-autoWidth="false">
@@ -62,7 +62,7 @@
 							?>		
 							</select>
 							</div>
-						<a href="index.php?c=rasp&g=<?=$sel_person?>&w=<?=($sel_week+1)?>"" class="scheduleListButton" id="listRight"></a>
+						<a href="index.php?c=rasp&g=<?=$sel_person?>&w=<?=($sel_week+1)?>&p=<?=($person)?>" class="scheduleListButton" id="listRight"></a>
 					</div>
 				</div>
 				<div class="inline" style="position:relative; bottom:12px;">
@@ -72,9 +72,9 @@
 					Сейчас в ЧГУ <b><? echo $now_week; ?></b> неделя.
 				</div>
 			</div>
-			<?if ($person == 'lecturer'):?>
-				<input type="hidden" name="person" value="lecturer">
-			<?endif?>
+
+				<input type="hidden" name="p" value="<?=($person)?>">
+
 			</form>	
 			<div class="share valign-middle inline-block">
 				<div style="display:inline; float:right;">
@@ -82,12 +82,12 @@
 						$url_soc = '';
 						if(isset($_COOKIE['sel_week']) && isset($_COOKIE['sel_grup']) && isset($_COOKIE['person']) && $_COOKIE['person'] == 'group')
 						{		
-							$url_soc = '?g='.$_COOKIE['sel_grup'].'&w='.$_COOKIE['sel_week'];
+							$url_soc = '?g='.$sel_grup.'&w='.$sel_week.'&p='.$person;
 						}
 						
 						if(isset($_COOKIE['sel_week']) && isset($_COOKIE['sel_lecturer']) && isset($_COOKIE['person']) && $_COOKIE['person'] == 'lecturer')
 						{		
-							$url_soc = '?l='.$_COOKIE['sel_lecturer'].'&w='.$_COOKIE['sel_week'];
+							$url_soc = '?l='.$sel_lecturer.'&w='.$sel_week.'&p='.$person;
 						}
 					?>
 					
@@ -116,7 +116,7 @@
 					<!-- Put this div tag to the place, where the Like block will be -->
 					<div id="vk_like"></div>
 					<script type="text/javascript">
-					VK.Widgets.Like("vk_like", {type: "mini", pageUrl:"http://new.chsuinfo.ru"});
+					VK.Widgets.Like("vk_like", {type: "mini", pageUrl:"http://chsuinfo.ru"});
 					</script>
 				</div>
 			</div>
@@ -130,7 +130,7 @@
 								<table class="schedule">
 									<tbody>							
 									<?
-									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)){
+									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "p=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "p=lecturer") != false)){
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>
@@ -175,7 +175,7 @@
 								<table class="schedule">
 									<tbody>
 									<?
-									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)){
+									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "p=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "p=lecturer") != false)){
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>
@@ -220,7 +220,7 @@
 								<table class="schedule">
 									<tbody>
 									<?
-									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)){
+									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "p=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "p=lecturer") != false)){
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>
@@ -264,7 +264,7 @@
 									<table class="schedule">
 										<tbody>
 									<?
-									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)){
+									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "p=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "p=lecturer") != false)){
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>
@@ -310,7 +310,7 @@
 										<table class="schedule">
 											<tbody>
 									<?
-									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)){
+									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "p=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "p=lecturer") != false)){
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>
@@ -354,7 +354,7 @@
 													<table class="schedule">
 														<tbody>
 									<?
-									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "person=lecturer") != false)){
+									if((!isset($_COOKIE['sel_grup']) && strpos($_SERVER['REQUEST_URI'], "p=lecturer") == false) || (!isset($_COOKIE['sel_lecturer']) && strpos($_SERVER['REQUEST_URI'], "p=lecturer") != false)){
 										for($i=0;$i<5;$i++)
 												echo "<tr>
 												<td>

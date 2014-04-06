@@ -85,14 +85,15 @@ class C_Rasp extends C_Base {
 				}				
 			}
 			
-			if(isset($_GET[person]))
+			if(isset($_GET[p]))
 			{
-				$this->person = $_GET[person];
+				$this->person = $_GET[p];
 				$_COOKIE['person'] = $this->person;
 				setcookie("person", $this->person, time()+$expire);
 			}
 			else
 			{
+				
 				$this->person = $_COOKIE['person'];
 			}		
 		}
