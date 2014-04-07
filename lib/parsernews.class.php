@@ -7,8 +7,6 @@ class parser{
 	var $html_news = '';
 	//content
 	var $content = "";
-	//title
-	var $title = "Парсер новостей";
 	//данные
 	var $titles = array();
 	var $text = array();
@@ -59,8 +57,8 @@ class parser{
 			//dates
 			$posDate = strpos($this->html, 'metadata-entry metadata-publish-date">');
 			$this->html = substr($this->html, $posDate);
-			array_push($this->dates, substr($this->html, strpos($this->html, 'metadata-entry metadata-publish-date">')+38, strpos($this->html, 'metadata-entry metadata-tags')-108));
-			$this->html = substr($this->html, strpos($this->html, 'metadata-entry metadata-tags'));
+			array_push($this->dates, trim(substr($this->html, strpos($this->html, 'metadata-entry metadata-publish-date">')+39, strpos($this->html, '</span> <span class="metadata-entry metadata-tags')-39)));
+			$this->html = substr($this->html, strpos($this->html, '</span> <span class="metadata-entry metadata-tags'));
 			
 			//mask
 			$this->content .= '<div style="display: none;"><span style="margin-right: 16px">'.$this->dates[$i].'</span> <a href="'.$this->links[$i].'" target="_blank">'.$this->titles[$i].'</a></div>';
