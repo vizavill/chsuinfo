@@ -55,11 +55,11 @@ class Comment
 		}
 		
 		if($d['id_role_a'] == 4)
-			$chAdmin = '<img style="padding-left:5px;vertical-align:middle" src="/view'.THEME.'/images/adm.png">';
+			$chAdmin = '<img style="padding-left:5px;vertical-align:middle" title="Администратор" src="/view'.THEME.'/images/adm.png">';
 		
 		return '
 				<div class="commVk">
-					<div class="img-comm"><a href="http://vk.com/id'.$d['id_vk'].'" target="_blank"><img width="50" src="'.$d['photo'].'"></a></div>
+					<div class="img-comm"><a href="http://vk.com/id'.$d['id_vk'].'" target="_blank"><img width="50" height="50" src="'.$d['photo'].'"></a></div>
 					<div class="comm-text">
 						<div class="comm-name">'.$d['full_name'].$chAdmin.'</div>
 						<div class="commentVk">'.$d['body'].'<a href="#"></a></div>
