@@ -35,12 +35,10 @@ class C_Comment extends C_Base {
 			$start = $page * $per_page;
 			
 			//Вывод 5ти комментариев
-			$arrComments = $this->mRasp->get_comments($start, $per_page);
-			//$reverseAC = array_reverse($arrComments);
+			$arrComments = $this->mRasp->get_comments();
 			$insertedComment = new Comment();
 			foreach($arrComments as $comment){
 				$user = $this->mUsers->Get($comment['author_id']);
-				//$comment_body = iconv("UTF-8", "WINDOWS-1251", $comment['body']);
 				$comment_body = $comment['body'];
 				
 				$commentData = array(
@@ -56,75 +54,6 @@ class C_Comment extends C_Base {
 				$htmlComments .= $insertedComment->markup();				
 			}
 				
-			//Генерируем пагинатор
-			$query_pag_num = "SELECT COUNT(*) AS count FROM comments";
-			$result_pag_num = mysql_query($query_pag_num);
-			$row = mysql_fetch_array($result_pag_num);
-			$count = $row['count'];
-			$no_of_paginations = ceil($count / $per_page);
-				
-				/* ---------------Рассчет начала и конца лупа----------------------------------- */
-			if ($cur_page >= 7) {
-				$start_loop = $cur_page - 3;
-				if ($no_of_paginations > $cur_page + 3)
-					$end_loop = $cur_page + 3;
-				else if ($cur_page <= $no_of_paginations && $cur_page > $no_of_paginations - 6) {
-					$start_loop = $no_of_paginations - 6;
-					$end_loop = $no_of_paginations;
-				} else {
-					$end_loop = $no_of_paginations;
-				}
-			} else {
-				$start_loop = 1;
-				if ($no_of_paginations > 7)
-					$end_loop = 7;
-				else
-					$end_loop = $no_of_paginations;
-			}
-			/* ----------------------------------------------------------------------------------------------------------- */
-				
-			$htmlComments .= "<div class=\"paginationComms\">";
-
-			// Доступ первой кнопки
-			if ($first_btn && $cur_page > 1) {
-				$htmlComments .= "<a href='#' p='1' class='active'><<</a>";
-			}
-
-			// Доступ предыдущей кнопки
-			if ($previous_btn && $cur_page > 1) {
-				$pre = $cur_page - 1;
-				$htmlComments .= "<a href='#' p='$pre' class='active'>Назад</a>";
-			}
-			
-			for ($i = $start_loop; $i <= $end_loop; $i++) {
-				if ($cur_page == $i)
-					$htmlComments .= "<span class=\"page active\">{$i}</span>";
-				else
-					$htmlComments .= "<a href='#' p='$i' class='active'>{$i}</a>";
-			}
-				
-				
-			// Доступ кнопки следующая
-			if ($next_btn && $cur_page < $no_of_paginations) {
-				$nex = $cur_page + 1;
-				$htmlComments .= "<a href='#' p='$nex' class='active'>Дальше</a>";
-			}
-
-			// Доступ кнопки последняя
-			if ($last_btn && $cur_page < $no_of_paginations) {
-				$htmlComments .= "<a href='#' p='$no_of_paginations' class='active'>>></a>";
-			}
-			//$goto = "<input type='text' class='goto' size='1' style='margin-top:-1px;margin-left:60px;'/><input type='button' id='go_btn' class='go_button' value='Go'/>";
-			//$total_string = "<span class='total' a='$no_of_paginations'>Page <b>" . $cur_page . "</b> of <b>$no_of_paginations</b></span>";
-			//$msg = $msg . "</ul>" . $goto . $total_string . "</div>";  // Content for pagination
-				
-				
-			$htmlComments .= '<div class="loader">
-								<img src="/view'.THEME.'/images/loader.gif">
-							</div>
-							</div>
-							';
-			//$htmlComments = iconv("WINDOWS-1251", "UTF-8", $htmlComments);
 			//Вывод разметки комментариев с этой страницы
 			$this->code_msg = $htmlComments;
 		}else{

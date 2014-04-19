@@ -91,7 +91,7 @@
 						}
 					?>
 					
-					<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8">
+					<!-- <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8">
 					</script>
 					<script type="text/javascript">
 					 new Ya.share({
@@ -106,7 +106,7 @@
 					  l10n: 'ru' // Вывод английской версии        
 					 });
 					</script>
-					<span id="sharerasp"></span>
+					<span id="sharerasp"></span> -->
 				</div>
 				<div style="display:inline; float:right; padding-top:5px;">
 					<script type="text/javascript">

@@ -1,16 +1,4 @@
-//ajax pagination comments begin
-function loading_show(){
-	$('.loader').fadeIn();
-}
-
-function loading_hide()	{
-	$('.loader').fadeOut();
-} 
-
-loading_hide();
-
 function loadData(page){
-	loading_show(); 
 	$.ajax
 	({
 		type: "POST",
@@ -20,7 +8,6 @@ function loadData(page){
 		{
 			$(".htmlcomments").ajaxComplete(function(event, request, settings){
 				$(".htmlcomments").html(msg);
-				loading_hide();
 			});
 		}
 	});
@@ -111,3 +98,6 @@ $('#prepod').ikSelect({
 	customClass: 'prepod_select_link'
 });
 
+//Высота чата
+var hhtable = $('.rasp td').css("height");
+$('.htmlcomments').css("height", parseInt(hhtable) - 65);
