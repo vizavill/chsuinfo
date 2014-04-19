@@ -54,12 +54,14 @@ class Comment
 			$delOrtw = '<a href="https://twitter.com/intent/tweet?hashtags=chsuinfo,комментарии&text='.$twitterText.'&url=http://chsuinfo.ru/" target="_blank" class="panLink" title="Запостить в твиттер"><img src="/view'.THEME.'/images/tw.png"></a><br>';
 		}
 		
+		/*
 		if($d['id_role_a'] == 4)
 			$chAdmin = '<img style="padding-left:5px;vertical-align:middle" title="Администратор" src="/view'.THEME.'/images/adm.png">';
+		*/
 		
 		return '
 				<div class="commVk">
-					<div class="img-comm"><a href="http://vk.com/id'.$d['id_vk'].'" target="_blank"><img width="50" height="50" src="'.$d['photo'].'"></a></div>
+					<div class="img-comm"><div class="img-ava"><a href="http://vk.com/id'.$d['id_vk'].'" target="_blank"><img width="50" src="'.$d['photo'].'"></a></div></div>
 					<div class="comm-text">
 						<div class="comm-name">'.$d['full_name'].$chAdmin.'</div>
 						<div class="commentVk">'.$d['body'].'<a href="#"></a></div>
