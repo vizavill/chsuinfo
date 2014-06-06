@@ -56,7 +56,7 @@
 			<a href="http://vk.com/chsuinfo" target="_blank"><i class="i vk"></i></a>
 			<h3 class="inline-block no-margin">vk.com/chsuinfo</h3>
 			<div class="posts inline-block">
-						<?=$chsu_news?>
+						<? //echo $chsu_news; ?>
 				</div>
 		</div>
 	</div>

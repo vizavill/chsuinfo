@@ -30,8 +30,7 @@ class C_Rasp extends C_Base {
     // Виртуальный обработчик запроса.
     //
     protected function OnInput()
-	{
-        
+	{		
 		// C_Base.
 		parent::OnInput();
 		$expire = time() + 3600 * 24 * 100;

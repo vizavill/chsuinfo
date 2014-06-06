@@ -25,13 +25,14 @@ class C_Sender extends C_Base {
 		}
 		
 		//Получаем завтрашнюю дату
-		$date=date('Y-m-d',mktime(0, 0, 0, date("m"), date("d")-1, date("Y")));
+		$date=date('Y-m-d',mktime(0, 0, 0, date("m"), date("d")+1, date("Y")));
 		
 		//Удаляем устаревшие подписки
 		$this->mSender->clear();
 		
 		//Получаем список подписок  на текущий час
 		$mas=$this->mSender->mailing_list();
+		
 	
 		//Бежим по массиву подписок
 		foreach ($mas as $value)
@@ -42,18 +43,30 @@ class C_Sender extends C_Base {
 			$sms='';
 			
 			//Получаем расписание для подписчика на завтра
-			$rasp_day=$this->mRasp->rasp($date,"date",$user['type'],$user['person']);
-		
+			$rasp_day=$this->mRasp->get_rasp_day($date,$user['type'],$user['person']);
+			
+			echo "<pre>";
+			print_r($rasp_day);
+			echo"</pre>";
+			
+			
 			//Проверяем есть ли пары если есть формируем сообщение
 			if(count($rasp_day)!=0)
 			{	
 				//Начало сообщения
 				$sms="Занятия на ".date('j',mktime(0, 0, 0, date("m"), date("d")+1, date("Y")))." число, ".$user[person]."\n"; 
+
+
 				
+			
+				
+				
+				
+
 				//бежим по расписанию и сокращаем его если будет послано  в виде СМС
 				foreach($rasp_day as $value2)
-				{				
-print_r($value2);				
+				{
+						
 					if($value[message_type]=="vk")
 					{
 						$discip=$value2[discip];
@@ -63,9 +76,8 @@ print_r($value2);
 						$discip=$this->mSender->sokrat($this->mSender->dali($value2[discip]));	
 					}
 					
-					$address=implode("",$this->mSender->dali($value2[address]));
-					$time=implode("",$this->mSender->dali($value2[time]));
-					$sms=$sms."$time\n $discip\n $address\n ";
+					
+					$sms=$sms."$value2[para] пара $value2[start_time]-$value2[end_time]\n"."    "."$discip\n $value2[lecturer] $value2[address]\n ";
 				}
 			}
 			else //Если пары не найдены
@@ -77,7 +89,7 @@ print_r($value2);
 				}
 			}			
 	
-				echo $sms;		
+			echo $sms;
 			//Если сообщение не пустое то отправляем его
 			if($sms!='')
 			{
@@ -115,9 +127,9 @@ print_r($value2);
 				{	
 					$val[message] = "Чтобы получать расписание в сообщении, добавте меня в друзья, это связано с тем, что сайт ВКонтакте ограничил число сообщений, отправляемых людям, которые не находятся в списке друзей.";
 				}
-				
-				$response = $this->mVK->MsgToUser($val[id_vk], $val[message].  $this->mVK->link, '',"Расписание_на_завтра", $this->mVK->token);
-				sleep(5); 
+				//$val[id_vk]
+				$response = $this->mVK->MsgToUser(8416411, $val[message].  $this->mVK->link, '',"Расписание_на_завтра", $this->mVK->token);
+				sleep(3); 
 		
 				if($response=="ok") 
 				{
@@ -132,13 +144,11 @@ print_r($value2);
 				 
 					$this->mSender->AddVKMailing($vars);
 					echo "</br>".$val[id_vk]." error</br>";
-				}
-			
-			}	
-		
-				
-			
-		}else{
+				}			
+			}				
+		}
+		else
+		{
 			echo "в массиве нет записей";	
 		}
 			

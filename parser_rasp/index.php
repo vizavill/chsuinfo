@@ -10,7 +10,6 @@ $pars=new Parsesr_html($dbhost2,$dbuser2,$dbpas2);
 //Cкачиваем страницу со списком преподов и если все ОК, заносим ее в базу
 if ($html=$pars->download_html($http_prepod, false, ''))
 {
-echo"1";
 	if($pars->verify_html($html))
 	{
 		$pars->truncate('lecturer');
@@ -39,7 +38,7 @@ $array_pr=$pars->pr_gr('lecturer','name_lecturer');
 $array_gr=$pars->pr_gr('grup','title_grup');
 
 //Семестр
-for ($semestr=1;$semestr<=2;$semestr++)
+for ($semestr=1;$semestr<=1;$semestr++)
 {
 
 

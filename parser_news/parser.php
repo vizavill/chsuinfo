@@ -15,13 +15,13 @@ class parser{
 	var $full_text = array();
 	var $images = array();
 	var $links = array();
-	
+	var $dates = array();
 	
 	function __construct(){
 		$this->html = file_get_contents($this->url);
 	}
 	
-	function parseNews($num = 5, $full_text = true){
+	function parseNews($num = 5, $full_text = false){
 		for($i = 0; $i < $num; $i++){
 			//titles
 			$posHistory = strpos($this->html, 'history.png');
@@ -55,8 +55,14 @@ class parser{
 				$this->html_news = substr($this->html_news, strpos($this->html_news, '<span class="metadata-entry metadata-publish-date">'));
 			}
 			
+			//dates
+			$posDate = strpos($this->html, 'metadata-entry metadata-publish-date">');
+			$this->html = substr($this->html, $posDate);
+			array_push($this->dates, trim(substr($this->html, strpos($this->html, 'metadata-entry metadata-publish-date">')+39, strpos($this->html, '</span> <span class="metadata-entry metadata-tags')-39)));
+			$this->html = substr($this->html, strpos($this->html, '</span> <span class="metadata-entry metadata-tags'));
+			
 			//mask
-			$this->content .= '<b>Title</b>: '.$this->titles[$i].'<br><b>Image</b>: <img src="http://www.chsu.ru'.$this->images[$i].'"><br><b>Text</b>: '.$this->text[$i].'<br><b>Full Text</b>: '.trim($this->full_text[$i]).'<br><b>Link: </b> <a href="'.$this->links[$i].'" target="_blank">Ссылка на новость</a><hr>';
+			$this->content .= '<b>Title</b>: '.$this->titles[$i].'('.$this->dates[$i].')<br><b>Image</b>: <img src="http://www.chsu.ru'.$this->images[$i].'"><br><b>Text</b>: '.$this->text[$i].'<br><b>Full Text</b>: '.trim($this->full_text[$i]).'<br><b>Link: </b> <a href="'.$this->links[$i].'" target="_blank">Ссылка на новость</a><hr>';
 		}
 		
 		//out
