@@ -3,10 +3,10 @@
 function startup()
 {
 	// Настройки подключения к БД.
-	$hostname = 'a112970.mysql.mchost.ru';	
-	$username = 'a112970_chsuinfo'; 
+	$hostname = 'a53069.mysql.mchost.ru';	
+	$username = 'a53069_chsuinfo'; 
 	$password = '8uEiJ4SR7f';
-	$dbName   = 'a112970_chsuinfo';
+	$dbName   = 'a53069_chsuinfo';
 	
 	// Языковая настройка.
 	setlocale(LC_ALL, 'ru_RU.utf8');	
@@ -23,14 +23,10 @@ function startup()
 	define("LOGIN", "79517498329");
 	// защищенный ключ
 	define("PASSWORD", "4780sd");
-	
-	
-	
-	
 	// id приложения
-	define("CLIENT_ID", "4554015");
+	define("CLIENT_ID", "4242336");
 	// защищенный ключ
-	define("SECRET", "cXjxZQZUhlsPUdfoUaqS");
+	define("SECRET", "s8AbTjmmbw7vostF77v4");
 	// куда перенаправим пользователя после авторизации
 	define("OAUTH_CALLBACK", "index.php?c=login");
 	// настройки доступа

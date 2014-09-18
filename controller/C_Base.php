@@ -7,7 +7,14 @@ include_once('model/M_SmsRasp.php');
 include_once('model/M_Rasp.php');
 include_once('model/M_Example.php');
 include_once('model/M_Setting.php');
+//include_once('model/M_EditBlog.php');
+include_once('model/M_Blog.php');
+include_once('model/M_Starosta.php');
 include_once('model/M_Sender.php');
+include_once('model/M_IncMes.php');
+include_once('model/M_NotifAll.php');
+include_once('model/M_Events.php');
+include_once('model/M_Upload.php');
 include_once('model/M_VK.php');
 include_once('model/M_Comment.php');
 include_once('lib/parsernews.class.php');
@@ -57,7 +64,10 @@ abstract class C_Base extends Controller
 			header("Location: index.php");
 			die();
 		}
-		
+		else
+		{
+			$this->mStar = M_Starosta::Instance();
+		}
 		
 		// Засекаем время начала обработки запроса.
 		$this->start_time = microtime(true);
@@ -76,7 +86,7 @@ abstract class C_Base extends Controller
 					'chsu_news'=>$chsu_news,
 					'title'=>$this->title,
 					'_VKMailing'=>$this->mSmsRasp->verVKMailing($user[id_user]),
-					'linkAuthVk'=>"https://oauth.vk.com/authorize?client_id=".CLIENT_ID."&scope=".SCOPE."&redirect_uri=".PATH.OAUTH_CALLBACK."&response_type=code&v=5.24");						
+					'linkAuthVk'=>"https://oauth.vk.com/authorize?client_id=".CLIENT_ID."&scope=".SCOPE."&redirect_uri=".PATH.OAUTH_CALLBACK."&response_type=code&v=5.0");						
 			
 		$page = $this->View(THEME.'/tpl_main.php', $vars);
 						
