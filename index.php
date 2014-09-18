@@ -2,17 +2,10 @@
 include_once('model/startup.php');
 include_once('controller/C_Login.php');
 include_once('controller/C_Reg.php');
-include_once('controller/C_Restore.php');
 include_once('controller/C_VKSmsRasp.php');//
 include_once('controller/C_Setting.php');//
 include_once('controller/C_Rasp.php');//
-//include_once('controller/C_EditBlog.php'); 
-//include_once('controller/C_Blog.php');
-include_once('controller/C_Starosta.php');
 include_once('controller/C_Sender.php');
-include_once('controller/C_IncMes.php');
-include_once('controller/C_NotifAll.php');
-//include_once('controller/C_Events.php');
 include_once('controller/C_VK.php');
 include_once('controller/C_Comment.php');
 

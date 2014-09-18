@@ -56,19 +56,18 @@ class M_Users
 	{
 		// вытаскиваем пользователя из БД 
 		$user = $this->GetByIdVk($idVk);
-
+	
 		if ($user == null)
 			return false;
-		
+	
 		$idVk = $user['id_vk'];
 		$id_user=$user['id_user'];	
 				
 		// запоминаем имя и md5(пароль)
-		if ($remember){
-			$expire = time() + 3600 * 24 * 100;
-			setcookie('phoneNumber', $phoneNumber, $expire);
+		if ($remember)
+		{		
+			$expire = time() + 3600 * 24 * 100;		
 			setcookie('idVk', $idVk, $expire);
-			setcookie('password', md5($password), $expire);
 			setcookie('access_token', $accToken, $expire);
 		}		
 		

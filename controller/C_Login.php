@@ -6,7 +6,7 @@ include_once('controller/C_Base.php');
 //
 class C_Login extends C_Base
 {
-	private $phoneNumber;	// телефон пользователя
+	
 	
 	//
 	// Конструктор.
@@ -14,7 +14,7 @@ class C_Login extends C_Base
 	public function __construct() 
 	{
 		parent::__construct();			
-		$this->phoneNumber = '';
+		
 		//Менеджеры
 		$this->mReg = M_Reg::Instance(); 
 		$this->mVK = M_VK::Instance();
@@ -27,30 +27,41 @@ class C_Login extends C_Base
     {
 		// Выход из системы пользователя.        
 		$this->mUsers->Logout();
+		
         
 		// C_Base.
         parent::OnInput();
         
 		// Обработка отправки формы.
-		if ($this->IsGet()){
+		if ($this->IsGet())
+		{	
 			
 			// получили параметр code, значит вход через Вконтакте
-			if($_REQUEST['code'])
-			{			
+			if($_GET['code'])
+			{	
+				
 				// получаем access_token
-				$resp = file_get_contents('https://oauth.vk.com/access_token?client_id='.CLIENT_ID.'&code='.$_REQUEST['code'].'&client_secret='.SECRET.'&redirect_uri='.PATH.OAUTH_CALLBACK);
+				$resp = file_get_contents('https://oauth.vk.com/access_token?client_id='.CLIENT_ID.'&code='.$_GET['code'].
+				'&client_secret='.SECRET.
+				'&redirect_uri='.PATH.OAUTH_CALLBACK);
 				$data = json_decode($resp, true);
+				
+			
+				
 				if($data['access_token'])
-				{				
+				{	
+					
 					//Проверяем есть ли базе пользователь
 					if($this->mUsers->GetByidVk($data['user_id']))
 					{
+						
 						if ($this->mUsers->LoginVk($data['user_id'], $data['access_token'],true))
-						{
-							header('Location: index.php');
+						{							
+							header('Location: index.php');								
 							die();
 						}		
 					}
+					//Если пользователя нет 
 					else
 					{
 						$uf = $this->mVK->UserGetInfo($data['access_token'],"");
@@ -70,39 +81,14 @@ class C_Login extends C_Base
 							die();
 						}	
 					}
-					//Логинимся
-				
 				}
 			}
-}
-		
-		
-        if ($this->IsPost())
-        {
-		
-			
-			$this->phoneNumber = $_POST['phoneNumber'];
-			
-	        if ($this->mUsers->Login($this->phoneNumber,$_POST['password'],true))
-			{
-			
-				header('Location: index.php');
-				die();
-			}
-			if($this->phoneNumber=='')
-			{
-				header('Location: index.php?');
-				die();
-			
-			}
-			else
-			{
-				$this->alert="Вы ввели неправильную комбинацию логин или пароль. Вы можете восстановить забытый пароль в форме ниже";
-				sleep(5);
-			}
-			
-			
-        }
+		}
+		else
+		{
+			header('Location: index.php');								
+			die();
+		}
     }
 
     //
@@ -111,8 +97,7 @@ class C_Login extends C_Base
     protected function OnOutput() 
     {    
 		// Генерация содержимого формы входа.
-        $vars = array('phoneNumber' => $this->phoneNumber,
-					 'alert' =>$this->alert);        
+        $vars = array('alert' =>$this->alert);        
     	$this->content = $this->View('tpl_restore.php', $vars);
 		
 		// C_Base.
