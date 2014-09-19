@@ -1,15 +1,15 @@
 <?
 
 //Параметры подключения к базе данных
-$dbhost="a112970.mysql.mchost.ru";
-$dbname="a112970_study";
-$dbuser="a112970_study";
+$dbhost="a53069.mysql.mchost.ru";
+$dbname="a53069_study";
+$dbuser="a53069_study";
 $dbpas="studypas";
 
 //Параметры подключения к базе данных
-$dbhost2="a112970.mysql.mchost.ru";
-$dbname2="a112970_chsuinfo";
-$dbuser2="a112970_chsuinfo";
+$dbhost2="a53069.mysql.mchost.ru";
+$dbname2="a53069_chsuinfo";
+$dbuser2="a53069_chsuinfo";
 $dbpas2="8uEiJ4SR7f";
 
 //Адресс сайта с расписанием

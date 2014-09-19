@@ -1,4 +1,4 @@
-<?
+﻿<?
 class parser{
 	//url страницы
 	var $url  = "http://www.chsu.ru/news";
