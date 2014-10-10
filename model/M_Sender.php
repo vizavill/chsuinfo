@@ -55,7 +55,7 @@ class M_Sender
 	{
         $now_hour=date('H');
         $now_day=date('Y-m-d');
-		return $this->msql->Select("SELECT * FROM mailing WHERE (id_user=461)");//(time='$now_hour')
+		return $this->msql->Select("SELECT * FROM mailing WHERE (time='$now_hour')");
     }
     
     //

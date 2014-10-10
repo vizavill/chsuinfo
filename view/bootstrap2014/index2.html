@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="css/bootstrap-switch.min.css" rel="stylesheet">
+	
+	<script type="text/javascript" src="http://vk.com/js/api/openapi.js"></script>
+	<script type="text/javascript">
+	  VK.init({apiId: 4330846, onlyWidgets: true});
+	</script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">ChsuInfo</a>
+        </div>
+		
+        <div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="#" data-toggle="modal" data-target=".authmodal">Войти в профиль</a></li>
+			</ul>
+		
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">Для студентов</a></li>
+            <li><a href="./">Для преподавателей</a></li>
+			<li><a href="#">Мобильная версия</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	
+	<div class="container">
+		<div class="row" style="padding-left:15px">
+			<div class="inline-block" style="margin-right:12px;">
+				<select class="selectpicker" data-live-search="true" data-width="230px" data-size="10">
+					<option>1ПИНФпб-01-11оп</option>
+				    <option>Steamed</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				    <option>Toasted</option>
+				</select>
+			</div>
+			
+			<div class="inline-block" style="margin-right:12px;">
+				<a href="#" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-left"></span></a>
+				<select class="selectpicker" data-live-search="true" data-width="127px" data-size="10">
+					<option>1 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>2 неделя</option>
+				    <option>52 неделя</option>
+				    <option>52 неделя</option>
+				    <option>52 неделя</option>
+				</select>
+				
+				<a href="#" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-right"></span></a>
+			</div>
+			<div class="inline-block" style="margin-right:12px;">
+				<button type="button" class="btn btn-danger">Отобразить</button>
+			</div>
+			<div class="inline-block" style="margin-right:12px;">
+				<button type="button" class="btn btn-default visible-lg-inline visible-md-inline" disabled>В ЧГУ 6 неделя</button>
+			</div>
+			
+			<div class="inline-block" style="float:right">
+				<div id="vk_like_big" class="visible-md-inline visible-lg-inline pull-right" style="display:absolute; top:6px;"></div>
+				<div id="vk_like_mini" class="visible-sm-inline pull-right" style="display:absolute; top:6px;"></div>
+				<script type="text/javascript">
+					VK.Widgets.Like("vk_like_big", {type: "button", height: 24});
+					VK.Widgets.Like("vk_like_mini", {type: "mini", height: 24});
+				</script>
+			</div>
+		</div>
+		
+		<hr>
+		
+		<div class="row" style="padding-left:15px;padding-right: 15px;">
+			<!--
+			<div class="alert alert-danger" role="alert">Расписание на данную неделю не найдено</div>
+			<div class="alert alert-info" role="alert">Отобразите ваше расписание</div>
+			
+			<div class="follow">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".followmodal">Подписаться на рассылку</button>
+				<button type="button" class="btn btn-success">Изменить настройки рассылки</button>
+			</div>
+			
+			<div class="alert alert-danger fade in" role="alert">
+			  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			  <strong>Ошибка!</strong> Вы должны войти в профиль. <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target=".authmodal">Войти в профиль</button>
+			</div>
+			
+			<div class="alert alert-success fade in" role="alert">
+			  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			  <strong>Отлично!</strong> Вы успешно подписались на расписание.
+			</div>
+			-->
+			
+			<div class="follow">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".followmodal" style="margin-right:10px;">Подписаться на рассылку</button>
+				<input type="checkbox" name="select-rasp" data-size="small" data-on-text="<span class='glyphicon glyphicon-th-list'></span>" data-off-text="<span class='glyphicon glyphicon-th'></span>" data-toggle="tooltip" data-placement="top" title="Some tooltip text!" checked>
+				<button type="button" class="btn btn-default visible-sm-inline pull-right" disabled>В ЧГУ 6 неделя</button>
+			</div>
+			
+			<div class="visible-lg rasp1">
+			<table class="rasp1 col-sm-12 col-md-12 col-lg-12">
+				<tr>
+					<td>
+						<div class="panel panel-default">
+						  <div class="panel-heading">Понедельник<div class="pull-right">23 Сен</div></div>
+						  <!-- <div class="panel-body"></div> -->
+						  <ul class="list-group">
+							<li class="list-group-item day-item">
+								<!-- <div class="time"><div id="begin">13:30</div><div id="end">15:00</div></div>
+								<div class="lectureinfo">Лабораторная работа <br>Алгорит обработ данных<br>1ИВТпб-01-11оп<br>218а Сов.8</div> --> sddsfdfs
+							</li>
+							<li class="list-group-item">Dapibus ac facilisis in</li>
+							<li class="list-group-item">Morbi leo risus</li>
+							<li class="list-group-item">Porta ac consectetur ac</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						  </ul>
+						</div>
+					</td>
+					<td>
+						<div class="panel panel-default">
+						  <div class="panel-heading">Вторник<div class="pull-right">23 Сен</div></div>
+						  <!-- <div class="panel-body"></div> -->
+						  <ul class="list-group">
+							<li class="list-group-item">Cras justo odio</li>
+							<li class="list-group-item">Dapibus ac facilisis in</li>
+							<li class="list-group-item">Morbi leo risus</li>
+							<li class="list-group-item">Porta ac consectetur ac</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						  </ul>
+						</div>
+					</td>
+					<td>
+						<div class="panel panel-default">
+						  <div class="panel-heading">Среда<div class="pull-right">23 Сен</div></div>
+						  <!-- <div class="panel-body"></div> -->
+						  <ul class="list-group">
+							<li class="list-group-item">Cras justo odio</li>
+							<li class="list-group-item">Dapibus ac facilisis in</li>
+							<li class="list-group-item">Morbi leo risus</li>
+							<li class="list-group-item">Porta ac consectetur ac</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						  </ul>
+						</div>
+					</td>
+				</tr>
+				<tr>
+				  <td>
+						<div class="panel panel-default">
+						  <div class="panel-heading">Четверг<div class="pull-right">23 Сен</div></div>
+						  <!-- <div class="panel-body"></div> -->
+						  <ul class="list-group">
+							<li class="list-group-item">Cras justo odio</li>
+							<li class="list-group-item">Dapibus ac facilisis in</li>
+							<li class="list-group-item">Morbi leo risus</li>
+							<li class="list-group-item">Porta ac consectetur ac</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						  </ul>
+						</div>
+					</td>
+					<td>
+						<div class="panel panel-default">
+						  <div class="panel-heading">Пятница<div class="pull-right">23 Сен</div></div>
+						  <!-- <div class="panel-body"></div> -->
+						  <ul class="list-group">
+							<li class="list-group-item">Cras justo odio</li>
+							<li class="list-group-item">Dapibus ac facilisis in</li>
+							<li class="list-group-item">Morbi leo risus</li>
+							<li class="list-group-item">Porta ac consectetur ac</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						  </ul>
+						</div>
+					</td>
+					<td>
+						<div class="panel panel-default">
+						  <div class="panel-heading">Суббота<div class="pull-right">23 Сен</div></div>
+						  <!-- <div class="panel-body"></div> -->
+						  <ul class="list-group">
+							<li class="list-group-item">Cras justo odio</li>
+							<li class="list-group-item">Dapibus ac facilisis in</li>
+							<li class="list-group-item">Morbi leo risus</li>
+							<li class="list-group-item">Porta ac consectetur ac</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						  </ul>
+						</div>
+					</td>
+				</tr>
+			  </table>
+		</div>
+	<!--Для планшетов-->
+	<div class="visible-md visible-sm rasp1-md-sm">
+	<table class="rasp1-md-sm col-sm-12 col-md-12 col-lg-12">
+				<tr>
+					<td>
+						<div class="panel panel-default">
+						  <div class="panel-heading">Понедельник<div class="pull-right">23 Сен</div></div>
+						  <!-- <div class="panel-body"></div> -->
+						  <ul class="list-group">
+							<li class="list-group-item day-item">
+								<!-- <div class="time"><div id="begin">13:30</div><div id="end">15:00</div></div>
+								<div class="lectureinfo">Лабораторная работа <br>Алгорит обработ данных<br>1ИВТпб-01-11оп<br>218а Сов.8</div> --> sddsfdfs
+							</li>
+							<li class="list-group-item">Dapibus ac facilisis in</li>
+							<li class="list-group-item">Morbi leo risus</li>
+							<li class="list-group-item">Porta ac consectetur ac</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						  </ul>
+						</div>
+					</td>
+					<td>
+						<div class="panel panel-default">
+						  <div class="panel-heading">Вторник<div class="pull-right">23 Сен</div></div>
+						  <!-- <div class="panel-body"></div> -->
+						  <ul class="list-group">
+							<li class="list-group-item">Cras justo odio</li>
+							<li class="list-group-item">Dapibus ac facilisis in</li>
+							<li class="list-group-item">Morbi leo risus</li>
+							<li class="list-group-item">Porta ac consectetur ac</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						  </ul>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="panel panel-default">
+						  <div class="panel-heading">Среда<div class="pull-right">23 Сен</div></div>
+						  <!-- <div class="panel-body"></div> -->
+						  <ul class="list-group">
+							<li class="list-group-item day-item">
+								<!-- <div class="time"><div id="begin">13:30</div><div id="end">15:00</div></div>
+								<div class="lectureinfo">Лабораторная работа <br>Алгорит обработ данных<br>1ИВТпб-01-11оп<br>218а Сов.8</div> --> sddsfdfs
+							</li>
+							<li class="list-group-item">Dapibus ac facilisis in</li>
+							<li class="list-group-item">Morbi leo risus</li>
+							<li class="list-group-item">Porta ac consectetur ac</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						  </ul>
+						</div>
+					</td>
+					<td>
+						<div class="panel panel-default">
+						  <div class="panel-heading">Четверг<div class="pull-right">23 Сен</div></div>
+						  <!-- <div class="panel-body"></div> -->
+						  <ul class="list-group">
+							<li class="list-group-item">Cras justo odio</li>
+							<li class="list-group-item">Dapibus ac facilisis in</li>
+							<li class="list-group-item">Morbi leo risus</li>
+							<li class="list-group-item">Porta ac consectetur ac</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						  </ul>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="panel panel-default">
+						  <div class="panel-heading">Пятница<div class="pull-right">23 Сен</div></div>
+						  <!-- <div class="panel-body"></div> -->
+						  <ul class="list-group">
+							<li class="list-group-item day-item">
+								<!-- <div class="time"><div id="begin">13:30</div><div id="end">15:00</div></div>
+								<div class="lectureinfo">Лабораторная работа <br>Алгорит обработ данных<br>1ИВТпб-01-11оп<br>218а Сов.8</div> --> sddsfdfs
+							</li>
+							<li class="list-group-item">Dapibus ac facilisis in</li>
+							<li class="list-group-item">Morbi leo risus</li>
+							<li class="list-group-item">Porta ac consectetur ac</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						  </ul>
+						</div>
+					</td>
+					<td>
+						<div class="panel panel-default">
+						  <div class="panel-heading">Суббота<div class="pull-right">23 Сен</div></div>
+						  <!-- <div class="panel-body"></div> -->
+						  <ul class="list-group">
+							<li class="list-group-item">Cras justo odio</li>
+							<li class="list-group-item">Dapibus ac facilisis in</li>
+							<li class="list-group-item">Morbi leo risus</li>
+							<li class="list-group-item">Porta ac consectetur ac</li>
+							<li class="list-group-item">Vestibulum at eros</li>
+						  </ul>
+						</div>
+					</td>
+				</tr>
+			  </table>
+		</div>
+	</div>
+	</div>
+	<div class="footer">
+	  <div class="container">
+		<p class="text inline-block pull-left">ChsuInfo.ru - Расписание Череповецкого Государственного Университета</p> <p class="pull-right inline-block text"><a href="#">Алексей Дурягин</a> / <a href="#">Вадим Осюков</a></p>   
+	  </div>
+	</div>
+	
+	<!-- Auth modal -->
+	
+	<div class="modal fade authmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="myModalLabel">Авторизация</h4>
+		  </div>
+		  <div class="modal-body">
+			<center><div id="vk_auth"></div></center>
+			<script type="text/javascript">
+			VK.Widgets.Auth("vk_auth", {width: "200px", authUrl: '/dev/Auth'});
+			</script>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	
+	<div class="modal fade followmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="myModalLabel">Подписка на расписание</h4>
+		  </div>
+		  <div class="modal-body">
+			<div>
+				<!-- <label>Группа: </label> 1ПИб-01-21оп<br> или <br> -->
+				<button type="button" class="btn btn-default" disabled="">Подписка на: Селивановских В.В. доцент</button>
+			</div>
+			<hr>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" value="">
+					Я хочу получать расписание в виде сообщения вконтакте.
+				</label>
+				<hr>
+				Присылать расписание в 
+				<select class="selectpicker" data-width="auto">
+					<option>08:00</option>
+					<option>08:00</option>
+					<option>08:00</option>
+					<option>08:00</option>
+					<option>23:00</option>
+				</select>
+			</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+			<button type="button" class="btn btn-primary">Сохранить настройки</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>	
+    <script src="js/bootstrap-switch.min.js"></script>
+    <script src="js/js.js"></script>
+	</body>
+</html>

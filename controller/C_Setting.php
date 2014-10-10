@@ -4,8 +4,7 @@ include_once('controller/C_Base.php');
 // Конттроллер страницы управления профилем.
 //
 class C_Setting extends C_Base {
-	
-	protected $mReg;  
+	 
     protected $mSms;
     protected $mRasp;    	
 
@@ -17,10 +16,8 @@ class C_Setting extends C_Base {
 		$this->needLogin = true; // раскомментируйте, чтобы закрыть неавторизованный доступ к странице
 		// Менеджеры.
 		$this->mUsers = M_Users::Instance();	
-		$this->mReg = M_Reg::Instance();
 		$this->mSms = M_Sms::Instance();
 		$this->mRasp = M_Rasp::Instance();
-	    //$this->mVer = M_Verify::Instance();
 		 $this->mSet = M_Setting::Instance();
     }
 
@@ -56,7 +53,6 @@ class C_Setting extends C_Base {
 		{
 		
 			$type = $_POST['type'];
-			$phoneNumber = $_POST['phoneNumber'];
 			
 			if ($_POST['type']=='grup')
 			{
@@ -78,8 +74,7 @@ class C_Setting extends C_Base {
 						'type'=>$type,
 						'person'=>$person,
 						'first_name'=>$firstName,
-						'last_name'=>$lastName,
-						'phone_number'=>$phoneNumber
+						'last_name'=>$lastName
 						);
 						
 			$this->mSet->edit_person($var, $this->user[id_user]);
