@@ -36,7 +36,7 @@ function startup()
 	// настройки доступа
 	define("SCOPE", "friends");
 	// путь к папке со скриптами
-	define("PATH", "http://chsuinfo.ru/");
+	define("PATH", "http://test.chsuinfo.ru/");
 	
 	
 	define("THEME", "/bootstrap2014");

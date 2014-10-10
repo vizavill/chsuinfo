@@ -120,15 +120,20 @@
 				  <th>Дисциплина</th>
 				  <th>Неделя</th>
 				  <th>Ч/Н</th>
-				  <th>Преподаватель</th>
+				<?if ($person == 'lecturer'):?>  
+					<th>Группа</th>
+				 <?else:?>
+					<th>Преподаватель</th>
+				 <?endif?>
 				  <th>Ауд/Адрес</th>
 				</tr>
 			  </thead>
 			  <tbody>
 				
 				<?
-					for($i = 1; $i <=5; $i++)
+					for($i = 0; $i <=6; $i++)
 					{
+						//Если в этот день нет пар пропускаем его
 						if($rasp[$i] == 0)
 							continue;
 					
@@ -166,22 +171,18 @@
 						
 						
 						
-						echo "<tr class='danger'><td colspan='6'>".$day."</td></tr>";
+						echo "<tr class='danger'><td colspan='6'>".$day." ".$value[date]."</td></tr>";
 						
 						foreach($rasp[$i] as $value)
-						{
-							if($value == 0)
-								continue;
-							
+						{							
 							echo "<tr>
 									<td>".$value[start_time]."-".$value[end_time]."</td>
 									<td>".$value[discip]."</td>
-									<td>3 - 5</td>
-									<td>нечет</td>
+									<td>c ".$value[n_week]." по ".$value[k_week]."</td>
+									<td>".$value[parity]."</td>
 									<td>".$value[lecturer]."</td>
 									<td>".$value[address]."</td>
 								</tr>";
-								
 						}
 					}			
 				?>
