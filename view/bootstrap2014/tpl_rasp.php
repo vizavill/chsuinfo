@@ -58,7 +58,7 @@
 							echo "<option value=".$i." >   ".$i." Неделя</option>";
 						}
 					}
-					?>		
+					?>		 
 					</select>
 								
 				<a href="index.php?c=rasp&g=<?=$sel_person?>&w=<?=($sel_week+1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -131,7 +131,7 @@
 			  <tbody>
 				
 				<?
-					for($i = 0; $i <=6; $i++)
+					for($i = 0; $i <=9; $i++)
 					{
 						//Если в этот день нет пар пропускаем его
 						if($rasp[$i] == 0)
@@ -171,10 +171,14 @@
 						
 						
 						
-						echo "<tr class='danger'><td colspan='6'>".$day." ".$value[date]."</td></tr>";
+						echo "<tr class='danger'><td colspan='6'>".$day." ".$rasp[$i][date]."</td></tr>";
 						
-						foreach($rasp[$i] as $value)
-						{							
+						foreach($rasp[$i] as $key=>$value)
+						{
+							if($key == "date")
+								continue;
+								
+								
 							echo "<tr>
 									<td>".$value[start_time]."-".$value[end_time]."</td>
 									<td>".$value[discip]."</td>
