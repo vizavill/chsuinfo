@@ -34,7 +34,7 @@
         <div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<? if (isset($user)): ?>
-					<li><img src="<?=$user[photo_200]?>" class="img-thumbnail ava-head" width="40"></li>
+					<li><div class="ava-head img-circle"><img src="<?=$user[photo_200]?>"></div></li>
 					<li><a href="index.php?c=login">Выйти</a></li>			
 				<?else:?>
 					<li><a href="<?=$linkAuthVk?>">Войти в профиль</a></li>
