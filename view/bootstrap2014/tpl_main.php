@@ -66,26 +66,6 @@
 	  </div>
 	</div>
 	
-	<!-- Auth modal -->
-	
-	<div class="modal fade authmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-sm">
-		<div class="modal-content">
-		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-			<h4 class="modal-title" id="myModalLabel">Авторизация</h4>
-		  </div>
-		  <div class="modal-body">
-			<center><div id="vk_auth"></div></center>
-			<script type="text/javascript">
-			VK.Widgets.Auth("vk_auth", {width: "200px", authUrl: '/dev/Auth'});
-			</script>
-		  </div>
-		</div>
-	  </div>
-	</div>
-	
-	
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

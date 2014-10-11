@@ -12,6 +12,7 @@ class C_Rasp extends C_Base {
 	private $now_week;				//текущая учебная неделя
 	private $mas_rasp;	           // результат
 	protected $mRasp;              // функции расписания
+	protected $mSmsRasp;
 
 	//
     // Конструктор.
@@ -22,6 +23,7 @@ class C_Rasp extends C_Base {
 		// Подключаем менеджер работы с расписанием.
         $this->mRasp = M_Rasp::Instance();
 		$this->mUsers = M_Users::Instance();
+		$this->mSmsRasp= M_SmsRasp::Instance();
 		//Получаем текущую неделю
 		$this->now_week = $this->mRasp->get_num_edu_week(date("d-m-Y"));
     }
@@ -33,6 +35,7 @@ class C_Rasp extends C_Base {
 	{		
 		// C_Base.
 		parent::OnInput();
+		$this->user = $this->mUsers->Get(); 
 		$expire = time() + 3600 * 24 * 100;
 		
         // Обработка отправки формы.
@@ -115,36 +118,14 @@ class C_Rasp extends C_Base {
 		$this->mas_rasp=$this->mRasp->rasp($this->sel_week, 'week', $this->person, $sel_person);
 		$this->title = "Расписание ".$sel_person." на ".$this->sel_week." неделю.";
 		
-		/* Не требуется так как подгрузка будет осуществляться с помощью ajax
+		$masVK=$this->mSmsRasp->verVKMailing($this->user);
+		if(count($masVK)!=0)
+			$vk=$masVK[0];
 		
-		//Последние 5 комментариев
-		$arrComments = $this->mRasp->get_comments();
-		$this->user =  $this->mUsers->Get();
-		$reverseAC = array_reverse($arrComments);
-		//$ttest = var_dump($arrComments);
-		$insertedComment = new Comment();
-		foreach($reverseAC as $comment){
-			$user = $this->mUsers->Get($comment['author_id']);
-			$comment_body = iconv("UTF-8", "WINDOWS-1251", $comment['body']);
-			
-			$commentData = array(
-								"body"=>$comment_body,
-								"id"=>$comment['id'],
-								"id_role"=>$this->user['id_role'],
-								"id_vk"=>$user['id_vk'],
-								"photo"=>$user['photo_200'],
-								"full_name"=>$user['first_name'].' '.$user['last_name']
-								);
-			$insertedComment->setData($commentData);		
-			$htmlComments .= $insertedComment->markup();
-		}
-		*/
 		
 		// Генерация содержимого страницы Rasp.
       
     	$vars = array(
-			//'html_comments'=>$htmlComments,
-			//'comments'=>$this->mRasp->get_comments(),
 			'sel_grup'=>$this->sel_grup,
 			'sel_lecturer'=>$this->sel_lecturer,
 			'sel_week'=>$this->sel_week,
@@ -156,6 +137,8 @@ class C_Rasp extends C_Base {
             'day1'=>$this->day1,            
 			'week'=>52,
 			'now_week'=>$this->now_week,
+			'vk'=>$vk,
+			'user'=>$this->user
             );
 		
 			$this->content = $this->View(THEME.'/tpl_rasp.php', $vars);

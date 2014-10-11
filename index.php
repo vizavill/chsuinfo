@@ -1,7 +1,7 @@
 <?php
 include_once('model/startup.php');
 include_once('controller/C_Login.php');
-include_once('controller/C_VKSmsRasp.php');//
+include_once('controller/C_VKRasp.php');//
 include_once('controller/C_Setting.php');//
 include_once('controller/C_Rasp.php');//
 include_once('controller/C_Sender.php');
@@ -38,8 +38,8 @@ case 'setting':
 case 'starosta':
 	$controller = new C_Starosta();
 	break;
-case 'sms_vk_rasp':
-	$controller = new C_VKSmsRasp();
+case 'vk_rasp':
+	$controller = new C_VKRasp();
 	break;
 case 'edit_blog':
 	$controller = new C_EditBlog();

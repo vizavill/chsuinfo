@@ -86,6 +86,7 @@
 		<hr>
 		
 		<div class="row" style="padding-left:15px;padding-right: 15px;">
+			<div id="msg"></div>
 			<!--
 			<div class="alert alert-danger" role="alert">Расписание на данную неделю не найдено</div>
 			<div class="alert alert-info" role="alert">Отобразите ваше расписание</div>
@@ -107,7 +108,17 @@
 			-->
 			
 			<div class="follow">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".followmodal" style="margin-right:10px;">Подписаться на рассылку</button>
+				<?if(isset($user) && ((isset($_COOKIE['sel_lecturer']) && (isset($_GET['l']) or ($_GET['p'] == 'lecturer'))) or (isset($_COOKIE['sel_grup']) && (isset($_GET['g']) or ($_GET['p'] == 'group'))))):?>
+				
+					<?if(!isset($vk)):?>
+						<a type="button" class="btn btn-primary followbtn" data-toggle="modal" data-target=".followmodal" style="margin-right:10px;">Подписаться на рассылку</a>
+					<?endif?>
+					<?if(isset($vk)):?>
+						<a type="button" class="btn btn-danger followbtn" style="margin-right:10px;" href="index.php?c=vk_rasp&mailing=delete&id_mailing=<?=$vk[id_mailing]?>">Отписаться от рассылки</a>
+					<?endif?>
+				
+				<?endif?>
+				
 				<input type="checkbox" name="select-rasp" data-size="small" data-on-text="<span class='glyphicon glyphicon-th-list'></span>" data-off-text="<span class='glyphicon glyphicon-th'></span>" data-toggle="tooltip" data-placement="top" title="Some tooltip text!" checked>
 				<button type="button" class="btn btn-default visible-sm-inline pull-right" disabled>В ЧГУ 6 неделя</button>
 			</div>
@@ -207,40 +218,28 @@
 		  <div class="modal-body">
 			<div>
 				<?if ($person != 'lecturer'):?>
-						<button type="button" class="btn btn-default" disabled="">Подписка на: <?=$sel_lecturer?></button>
-						
-						
-					
-					 
+						<button type="button" class="btn btn-default" disabled="">Подписка на: <?=$sel_grup?></button>
 						<?else:?>
-					 
-					
-						
-						<label>Группа: </label> <?=$sel_grup?><br>
+						<button type="button" class="btn btn-default" disabled="">Подписка на: <?=$sel_lecturer?></button>
 						<?endif?>
-				<!-- <label>Группа: </label> 1ПИб-01-21оп<br> или <br> -->
 
 			</div>
 			<hr>
 			<div class="checkbox">
 				<label>
-					<input type="checkbox" value="">
+					<input type="checkbox" onclick="checkAddress(this)">
 					Я хочу получать расписание в виде сообщения вконтакте.
 				</label>
 				<hr>
 				Присылать расписание в 
-				<select class="selectpicker" data-width="auto">
-					<option>08:00</option>
-					<option>08:00</option>
-					<option>08:00</option>
-					<option>08:00</option>
-					<option>23:00</option>
+				<select class="selectpicker" data-width="auto" id="time">
+					<? for($i=8; $i<=23; $i++) echo "<option value=\"{$i}\">{$i}:00</option>"; ?>
 				</select>
 			</div>
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-			<button type="button" class="btn btn-primary">Сохранить настройки</button>
+			<button type="button" class="btn btn-primary" id="saveFollow" data-loading-text="Сохраняем..." disabled>Сохранить настройки</button>
 		  </div>
 		</div>
 	  </div>
