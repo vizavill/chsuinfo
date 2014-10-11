@@ -39,8 +39,11 @@
 			</div>
 			
 			<div class="inline-block" style="margin-right:12px;">
-			
-				<a href="index.php?c=rasp&g=<?=$sel_person?>&w=<?=($sel_week-1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-left"></span></a>
+				<?if ($person != 'lecturer'):?>
+					<a href="index.php?c=rasp&g=<?=$sel_grup?>&w=<?=($sel_week-1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-left"></span></a>
+				<?else:?>
+					<a href="index.php?c=rasp&l=<?=$sel_lecturer?>&w=<?=($sel_week-1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-left"></span></a>
+				<?endif?>
 				
 				<select name="w" class="selectpicker" data-live-search="true" data-width="127px" data-size="10">
 					<?for ($i=1;$i<=$week;$i++)
@@ -61,10 +64,14 @@
 					?>		 
 					</select>
 								
-				<a href="index.php?c=rasp&g=<?=$sel_person?>&w=<?=($sel_week+1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-right"></span></a>
+				<?if ($person != 'lecturer'):?>
+					<a href="index.php?c=rasp&g=<?=$sel_grup?>&w=<?=($sel_week+1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-left"></span></a>
+				<?else:?>
+					<a href="index.php?c=rasp&l=<?=$sel_lecturer?>&w=<?=($sel_week+1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-left"></span></a>
+				<?endif?>
 				
 			</div>
-			
+				<input name="p" type="hidden" value="<?=($person)?>"/>
 			<div class="inline-block" style="margin-right:12px;">
 				<button type="submit" class="btn btn-danger">Отобразить</button>
 			</div>
@@ -108,7 +115,7 @@
 			-->
 			
 			<div class="follow">
-				<?if(isset($user) && ((isset($_COOKIE['sel_lecturer']) && (isset($_GET['l']) or ($_GET['p'] == 'lecturer'))) or (isset($_COOKIE['sel_grup']) && (isset($_GET['g']) or ($_GET['p'] == 'group'))))):?>
+				<?if(isset($user) && (isset($sel_lecturer) || isset($sel_grup))):?>
 				
 					<?if(!isset($vk)):?>
 						<a type="button" class="btn btn-primary followbtn" data-toggle="modal" data-target=".followmodal" style="margin-right:10px;">Подписаться на рассылку</a>

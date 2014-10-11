@@ -69,7 +69,8 @@ class C_Rasp extends C_Base {
 				$this->sel_lecturer = $_COOKIE['sel_lecturer'];
 			}
 			//Неделя
-			if(isset($_GET['w'])){
+			if(isset($_GET['w']))
+			{
 				$this->sel_week = $_GET['w'];
 				$_COOKIE['sel_week']=$this->sel_week;
 				setcookie("sel_week",$this->sel_week,time()+$expire);
@@ -95,8 +96,14 @@ class C_Rasp extends C_Base {
 			}
 			else
 			{
-				
-				$this->person = $_COOKIE['person'];
+				if(isset($_COOKIE['person']))
+					$this->person = $_COOKIE['person'];
+				else
+				{
+					$this->person = "grup";
+					$_COOKIE['person'] = $this->person;
+					setcookie("person", $this->person, time()+$expire);
+				}
 			}		
 		}
 	}
@@ -115,8 +122,11 @@ class C_Rasp extends C_Base {
 			$sel_person=$this->sel_grup;
 		}
 		 
+		//Получаем массив с расписанием
 		$this->mas_rasp=$this->mRasp->rasp($this->sel_week, 'week', $this->person, $sel_person);
-		$this->title = "Расписание ".$sel_person." на ".$this->sel_week." неделю.";
+		
+		//Заголовок страницы
+		$this->title = "Расписание ".$sel_person." на ".$this->sel_week." неделю. Череповецкий государственный университет";
 		
 		$masVK=$this->mSmsRasp->verVKMailing($this->user);
 		if(count($masVK)!=0)
@@ -128,8 +138,7 @@ class C_Rasp extends C_Base {
     	$vars = array(
 			'sel_grup'=>$this->sel_grup,
 			'sel_lecturer'=>$this->sel_lecturer,
-			'sel_week'=>$this->sel_week,
-			'sel_person'=>$sel_person,
+			'sel_week'=>$this->sel_week,			
 			'person'=>$_COOKIE['person'],
 			'grup'=>$this->mRasp->all_grup(),
 			'lecturer'=>$this->mRasp->all_lecturer(),
