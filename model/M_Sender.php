@@ -53,7 +53,7 @@ class M_Sender
     //
     function mailing_list()
 	{
-        $now_hour=date('H');
+        $now_hour=date('g');
         $now_day=date('Y-m-d');
 		return $this->msql->Select("SELECT * FROM mailing WHERE (time='$now_hour')");
     }

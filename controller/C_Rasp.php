@@ -150,7 +150,9 @@ class C_Rasp extends C_Base {
 			'user'=>$this->user
             );
 		
+			//$this->content = $this->View(THEME.'/tpl_rasp_block.php', $vars);
 			$this->content = $this->View(THEME.'/tpl_rasp.php', $vars);
+			
 
 		
 	
