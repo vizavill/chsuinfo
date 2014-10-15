@@ -139,7 +139,7 @@ class C_Rasp extends C_Base {
 			'sel_grup'=>$this->sel_grup,
 			'sel_lecturer'=>$this->sel_lecturer,
 			'sel_week'=>$this->sel_week,			
-			'person'=>$_COOKIE['person'],
+			'person'=>$this->person,
 			'grup'=>$this->mRasp->all_grup(),
 			'lecturer'=>$this->mRasp->all_lecturer(),
 			'rasp'=>$this->mas_rasp,

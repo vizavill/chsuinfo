@@ -115,7 +115,7 @@
 			-->
 			
 			<div class="follow">
-				<?if(isset($user) && (isset($sel_lecturer) || isset($sel_grup))):?>
+				<?if((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup) && $person == 'group')):?>
 				
 					<?if(!isset($vk)):?>
 						<a type="button" class="btn btn-primary followbtn" data-toggle="modal" data-target=".followmodal" style="margin-right:10px;">Подписаться на рассылку</a>
@@ -123,14 +123,20 @@
 					<?if(isset($vk)):?>
 						<a type="button" class="btn btn-danger followbtn" style="margin-right:10px;" href="index.php?c=vk_rasp&mailing=delete&id_mailing=<?=$vk[id_mailing]?>">Отписаться от рассылки</a>
 					<?endif?>
-				
 				<?endif?>
 				
-				<input type="checkbox" name="select-rasp" data-size="small" data-on-text="<span class='glyphicon glyphicon-th-list'></span>" data-off-text="<span class='glyphicon glyphicon-th'></span>" data-toggle="tooltip" data-placement="top" title="Some tooltip text!" checked>
+				<?if(!((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup))  && $person == 'group')):?>
+					<div class="alert alert-info" role="alert">Отобразите ваше расписание</div>
+					
+				<?else:?>
+					<input type="checkbox" name="select-rasp" data-size="small" data-on-text="<span class='glyphicon glyphicon-th-list'></span>" data-off-text="<span class='glyphicon glyphicon-th'></span>" data-toggle="tooltip" data-placement="top" title="Some tooltip text!" checked>
+				<?endif?>
+				
+				
 				<button type="button" class="btn btn-default visible-sm-inline pull-right" disabled>В ЧГУ 6 неделя</button>
 			</div>
 			
-			
+			<?if(isset($rasp)):?>
 			<table class="table table-hover rasp">
 			  <thead>
 				<tr>
@@ -147,7 +153,7 @@
 				</tr>
 			  </thead>
 			  <tbody>
-				
+				<?endif?>
 				<?
 					for($i = 0; $i <=9; $i++)
 					{
