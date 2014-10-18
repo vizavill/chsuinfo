@@ -115,7 +115,7 @@
 			-->
 			
 			<div class="follow">
-				<?if((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup) && $person == 'group')):?>
+				<?if((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup) && $person == 'grup')):?>
 				
 					<?if(!isset($vk)):?>
 						<a type="button" class="btn btn-primary followbtn" data-toggle="modal" data-target=".followmodal" style="margin-right:10px;">Подписаться на рассылку</a>
@@ -125,11 +125,11 @@
 					<?endif?>
 				<?endif?>
 				
-				<?if(!((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup))  && $person == 'group')):?>
+				<?if(!((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup))  && $person == 'grup')):?>
 					<div class="alert alert-info" role="alert">Отобразите ваше расписание</div>
 					
 				<?else:?>
-					<input type="checkbox" name="select-rasp" data-size="small" data-on-text="<span class='glyphicon glyphicon-th-list'></span>" data-off-text="<span class='glyphicon glyphicon-th'></span>" data-toggle="tooltip" data-placement="top" title="Some tooltip text!" checked>
+					<input type="checkbox" name="select-rasp" data-size="small" data-on-text="<span class='glyphicon glyphicon-th-list'></span>" data-off-text="<span class='glyphicon glyphicon-th'></span>" data-toggle="tooltip" data-placement="top" <?if($_COOKIE['view'] == 'block') echo 'checked';?>>
 				<?endif?>
 				
 				
@@ -165,7 +165,7 @@
 				<tr>
 					<td class="col-sm-4 col-md-4 col-lg-4">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Понедельник<div class="pull-right"><?=$rasp[$i][date]?></div></div>
+						  <div class="panel-heading">Понедельник<div class="pull-right"><?=$rasp[1][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							
@@ -196,7 +196,7 @@
 					</td>
 					<td class="col-sm-4 col-md-4 col-lg-4">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Вторник<div class="pull-right"><?=$rasp[$i][date]?></div></div>
+						  <div class="panel-heading">Вторник<div class="pull-right"><?=$rasp[2][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
@@ -223,7 +223,7 @@
 					</td>
 					<td class="col-sm-4 col-md-4 col-lg-4">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Среда<div class="pull-right"><?=$rasp[$i][date]?></div></div>
+						  <div class="panel-heading">Среда<div class="pull-right"><?=$rasp[3][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
@@ -252,7 +252,7 @@
 				<tr>
 					<td class="col-sm-4 col-md-4 col-lg-4">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Четверг<div class="pull-right">23 Сен</div></div>
+						  <div class="panel-heading">Четверг<div class="pull-right"><?=$rasp[4][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
@@ -279,7 +279,7 @@
 					</td>
 					<td class="col-sm-4 col-md-4 col-lg-4">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Пятница<div class="pull-right">23 Сен</div></div>
+						  <div class="panel-heading">Пятница<div class="pull-right"><?=$rasp[5][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
@@ -306,7 +306,7 @@
 					</td>
 					<td class="col-sm-4 col-md-4 col-lg-4">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Суббота<div class="pull-right">23 Сен</div></div>
+						  <div class="panel-heading">Суббота<div class="pull-right"><?=$rasp[6][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
@@ -335,12 +335,12 @@
 			  </table>
 		</div>
 	<!--Для планшетов-->
-	<div class="visible-md visible-sm rasp1-md-sm">
+	<div class="visible-md visible-sm rasp1-md-sm row">
 	<table class="rasp1-md-sm col-sm-12 col-md-12 col-lg-12">
 				<tr>
-					<td>
+					<td class="col-sm-6 col-md-6 col-lg-6">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Понедельник<div class="pull-right">23 Сен</div></div>
+						  <div class="panel-heading">Понедельник<div class="pull-right"><?=$rasp[1][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
@@ -352,7 +352,7 @@
 												<div id='end'>".$rasp[1][$i][end_time]."</div>
 											</div>";
 											
-										echo"<div class='lectureinfo'>
+										echo"<div class='lectureinfo shortnfo'>
 												<div id='lecture'>".$rasp[1][$i][discip]."</div>
 												<div id='with'>".$rasp[1][$i][lecturer]."</div>
 												<div id='addr'>".$rasp[1][$i][address]."</div>
@@ -364,9 +364,9 @@
 						  </ul>
 						</div>
 					</td>
-					<td>
+					<td class="col-sm-6 col-md-6 col-lg-6">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Вторник<div class="pull-right">23 Сен</div></div>
+						  <div class="panel-heading">Вторник<div class="pull-right"><?=$rasp[2][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
@@ -378,7 +378,7 @@
 												<div id='end'>".$rasp[2][$i][end_time]."</div>
 											</div>";
 											
-										echo"<div class='lectureinfo'>
+										echo"<div class='lectureinfo shortnfo'>
 												<div id='lecture'>".$rasp[2][$i][discip]."</div>
 												<div id='with'>".$rasp[2][$i][lecturer]."</div>
 												<div id='addr'>".$rasp[2][$i][address]."</div>
@@ -392,9 +392,9 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td class="col-sm-6 col-md-6 col-lg-6">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Среда<div class="pull-right">23 Сен</div></div>
+						  <div class="panel-heading">Среда<div class="pull-right"><?=$rasp[3][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
@@ -406,7 +406,7 @@
 												<div id='end'>".$rasp[3][$i][end_time]."</div>
 											</div>";
 											
-										echo"<div class='lectureinfo'>
+										echo"<div class='lectureinfo shortnfo'>
 												<div id='lecture'>".$rasp[3][$i][discip]."</div>
 												<div id='with'>".$rasp[3][$i][lecturer]."</div>
 												<div id='addr'>".$rasp[3][$i][address]."</div>
@@ -418,9 +418,9 @@
 						  </ul>
 						</div>
 					</td>
-					<td>
+					<td class="col-sm-6 col-md-6 col-lg-6">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Четверг<div class="pull-right">23 Сен</div></div>
+						  <div class="panel-heading">Четверг<div class="pull-right"><?=$rasp[4][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
@@ -432,7 +432,7 @@
 												<div id='end'>".$rasp[4][$i][end_time]."</div>
 											</div>";
 											
-										echo"<div class='lectureinfo'>
+										echo"<div class='lectureinfo shortnfo'>
 												<div id='lecture'>".$rasp[4][$i][discip]."</div>
 												<div id='with'>".$rasp[4][$i][lecturer]."</div>
 												<div id='addr'>".$rasp[4][$i][address]."</div>
@@ -446,9 +446,9 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td class="col-sm-6 col-md-6 col-lg-6">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Пятница<div class="pull-right">23 Сен</div></div>
+						  <div class="panel-heading">Пятница<div class="pull-right"><?=$rasp[5][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
@@ -460,7 +460,7 @@
 												<div id='end'>".$rasp[5][$i][end_time]."</div>
 											</div>";
 											
-										echo"<div class='lectureinfo'>
+										echo"<div class='lectureinfo shortnfo'>
 												<div id='lecture'>".$rasp[5][$i][discip]."</div>
 												<div id='with'>".$rasp[5][$i][lecturer]."</div>
 												<div id='addr'>".$rasp[5][$i][address]."</div>
@@ -472,9 +472,9 @@
 						  </ul>
 						</div>
 					</td>
-					<td>
+					<td class="col-sm-6 col-md-6 col-lg-6">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Суббота<div class="pull-right">23 Сен</div></div>
+						  <div class="panel-heading">Суббота<div class="pull-right"><?=$rasp[6][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
@@ -486,7 +486,7 @@
 												<div id='end'>".$rasp[6][$i][end_time]."</div>
 											</div>";
 											
-										echo"<div class='lectureinfo'>
+										echo"<div class='lectureinfo shortnfo'>
 												<div id='lecture'>".$rasp[6][$i][discip]."</div>
 												<div id='with'>".$rasp[6][$i][lecturer]."</div>
 												<div id='addr'>".$rasp[6][$i][address]."</div>
@@ -501,6 +501,7 @@
 				</tr>
 			  </table>
 		</div>
+	  </div>
 	</div>
 	
 	

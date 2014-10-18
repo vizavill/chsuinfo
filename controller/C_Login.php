@@ -21,22 +21,24 @@ class C_Login extends C_Base
     // Виртуальный обработчик запроса.
     //
     protected function OnInput() 
-    {
+    {// C_Base.
+        parent::OnInput();
 		// Выход из системы пользователя.        
 		$this->mUsers->Logout();
 		
+		
         
-		// C_Base.
-        parent::OnInput();
+		
+		
         
 		// Обработка отправки формы.
 		if ($this->IsGet())
 		{	
-			
+	
 			// получили параметр code, значит вход через Вконтакте
-			if($_GET['code'])
+			if(isset($_GET['code']))
 			{	
-				
+						
 				// получаем access_token
 				$resp = file_get_contents('https://oauth.vk.com/access_token?client_id='.CLIENT_ID.'&code='.$_GET['code'].
 				'&client_secret='.SECRET.
@@ -81,9 +83,7 @@ class C_Login extends C_Base
 					}
 				}
 			}
-		}
-		else
-		{
+			
 			header('Location: index.php');								
 			die();
 		}

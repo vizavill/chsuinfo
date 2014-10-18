@@ -116,15 +116,14 @@ class M_Users
 	//
 	public function Logout()
 	{
-		setcookie('phoneNumber', '', time() - 1);
-		setcookie('password', '', time() - 1);
+		
 		setcookie('idVk', '', time() - 1);
-		unset($_COOKIE['phoneNumber']);
-		unset($_COOKIE['password']);
 		unset($_COOKIE['idVk']);
 		unset($_SESSION['sid']);		
 		$this->sid = null;
 		$this->uid = null;
+		
+		
 	}
 						
 	//

@@ -77,7 +77,7 @@
 			</div>
 		
 			<div class="inline-block" style="margin-right:12px;">
-				<button type="button" class="btn btn-default visible-lg-inline visible-md-inline" disabled>Сейчас в ЧГУ <? echo $now_week; ?> неделя.</button>
+				<button type="button" class="btn btn-default visible-lg-inline visible-md-inline" disabled>В ЧГУ <? echo $now_week; ?> неделя.</button>
 			</div>
 		
 			<div class="inline-block" style="float:right">
@@ -115,7 +115,7 @@
 			-->
 			
 			<div class="follow">
-				<?if((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup) && $person == 'group')):?>
+				<?if((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup) && $person == 'grup')):?>
 				
 					<?if(!isset($vk)):?>
 						<a type="button" class="btn btn-primary followbtn" data-toggle="modal" data-target=".followmodal" style="margin-right:10px;">Подписаться на рассылку</a>
@@ -125,15 +125,15 @@
 					<?endif?>
 				<?endif?>
 				
-				<?if(!((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup))  && $person == 'group')):?>
+				<?if(!((isset($sel_lecturer)  && ($person == 'lecturer')) || (isset($sel_grup))  &&  ($person == 'grup'))):?>
 					<div class="alert alert-info" role="alert">Отобразите ваше расписание</div>
 					
 				<?else:?>
-					<input type="checkbox" name="select-rasp" data-size="small" data-on-text="<span class='glyphicon glyphicon-th-list'></span>" data-off-text="<span class='glyphicon glyphicon-th'></span>" data-toggle="tooltip" data-placement="top" title="Some tooltip text!" checked>
+					<input type="checkbox" name="select-rasp" data-size="small" data-on-text="<span class='glyphicon glyphicon-th-list'></span>" data-off-text="<span class='glyphicon glyphicon-th'></span>" data-toggle="tooltip" data-placement="top" <?if($_COOKIE['view'] == 'block') echo 'checked';?>>
 				<?endif?>
 				
 				
-				<button type="button" class="btn btn-default visible-sm-inline pull-right" disabled>В ЧГУ 6 неделя</button>
+				<button type="button" class="btn btn-default visible-sm-inline pull-right" disabled>В ЧГУ <? echo $now_week; ?> неделя.</button>
 			</div>
 			
 			<?if(isset($rasp)):?>

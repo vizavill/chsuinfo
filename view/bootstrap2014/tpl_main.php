@@ -52,7 +52,7 @@
 								<li><a href="index.php?c=rasp&p=lecturer">Расписание для преподавателей</a></li>';
 				echo $menuHtml;
 			?>
-
+			<li class="visible-lg-inline"><a href="http://m.chsuinfo.ru/" target="_blank">Мобильная версия</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

@@ -1,4 +1,13 @@
-$("[name='select-rasp']").bootstrapSwitch();
+var switchtpl = $("[name='select-rasp']").bootstrapSwitch();
+$("[name='select-rasp']").on('switchChange.bootstrapSwitch', function(event, state) {
+	$("[name='select-rasp']").bootstrapSwitch('disabled', true);
+	if(state)
+		$.get("index.php?view=block",function(data){location.reload();});
+	else
+		$.get("index.php?view=line",function(data){location.reload();});
+});
+
+
 function checkAddress(checkbox)
 {   
 	if(checkbox.checked) $('#saveFollow').removeAttr('disabled');
