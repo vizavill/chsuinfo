@@ -23,10 +23,12 @@ class C_Sender extends C_Base {
 			echo "Завтра выходной</br>";
 			return false;
 		}
-		
-		//Получаем завтрашнюю дату
-		$date=date('Y-m-d',mktime(0, 0, 0, date("m"), date("d")+1, date("Y")));
-
+		if(date('G')>12 && date('G')<23)
+			//Получаем завтрашнюю дату
+			$date=date('Y-m-d',mktime(0, 0, 0, date("m"), date("d")+1, date("Y")));
+		else
+			$date=date('Y-m-d',mktime(0, 0, 0, date("m"), date("d"), date("Y")));
+			
 		//Получаем список подписок  на текущий час
 		$mas=$this->mSender->mailing_list();
 		echo "<pre>";
@@ -48,7 +50,9 @@ class C_Sender extends C_Base {
 			if(count($rasp_day)!=0)
 			{	
 				//Начало сообщения
-				$sms="Занятия на ".date('j',mktime(0, 0, 0, date("m"), date("d")+1, date("Y")))." число, ".$user[person]."\n\n"; 	
+				//$sms="Занятия на ".date('j',mktime(0, 0, 0, date("m"), date("d")+1, date("Y")))." число, ".$user[person]."\n\n"; 	
+				
+				$sms="Занятия на ".$date."\n\n"; 	
 				
 				foreach($rasp_day as $value2)
 				{					
@@ -57,7 +61,7 @@ class C_Sender extends C_Base {
 			}
 			else //Если пары не найдены
 			{			
-				$sms= "Занятий на ".date('j',mktime(0, 0, 0, date("m"), date("d")+1, date("Y")))." число не найдено\n";
+				$sms= "Занятий на ".$date." число не найдено\n";
 			}			
 	
 			

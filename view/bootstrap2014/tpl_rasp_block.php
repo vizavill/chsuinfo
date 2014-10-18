@@ -143,9 +143,10 @@
 <div class="container">
 		
 			
-			<div class="visible-lg rasp1">
+			
+			<div class="visible-lg row">
 			<?if(isset($rasp)):?>
-			<table class="rasp1 col-sm-12 col-md-12 col-lg-12">			
+			<table class="col-sm-12 col-md-12 col-lg-12">		
 				<?if ($person == 'lecturer'):?>  
 				
 				 <?else:?>
@@ -169,89 +170,172 @@
 			
 			
 				<tr>
-					<td>
+					<td class="col-sm-4 col-md-4 col-lg-4">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Понедельник<div class="pull-right"><?=$rasp[1][date]?></div></div>
+						  <div class="panel-heading">Понедельник<div class="pull-right"><?=$rasp[$i][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<? for  ($i=1; $i<$rasp[max];$i++)
-								{
-									echo"<li class='list-group-item day-item'>".$rasp[1][$i][discip]."</li>";
-								}
 							
-							?>
+								<? for  ($i=1; $i<$rasp[max];$i++)
+									{
+										echo"<li class='list-group-item'>";
+										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
+										echo "<div class='time'>
+												<div id='begin'>".$rasp[1][$i][start_time]."</div>
+												<div id='end'>".$rasp[1][$i][end_time]."</div>
+											</div>";
+											
+										echo"<div class='lectureinfo'>
+												<div id='lecture'>".$rasp[1][$i][discip]."</div>
+												<div id='with'>".$rasp[1][$i][lecturer]."</div>
+												<div id='addr'>".$rasp[1][$i][address]."</div>
+											</div>";
+											
+										echo"</li>";
+									}
+								
+								?>
+								
+									
+									
+							
 						  </ul>
 						</div>
 					</td>
-					<td>
+					<td class="col-sm-4 col-md-4 col-lg-4">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Вторник<div class="pull-right"><?=$rasp[2][date]?></div></div>
+						  <div class="panel-heading">Вторник<div class="pull-right"><?=$rasp[$i][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
-								{
-									echo"<li class='list-group-item day-item'>".$rasp[2][$i][discip]."</li>";
-								}
-							
-							?>
+									{
+										echo"<li class='list-group-item'>";
+										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
+										echo "<div class='time'>
+												<div id='begin'>".$rasp[2][$i][start_time]."</div>
+												<div id='end'>".$rasp[2][$i][end_time]."</div>
+											</div>";
+											
+										echo"<div class='lectureinfo'>
+												<div id='lecture'>".$rasp[2][$i][discip]."</div>
+												<div id='with'>".$rasp[2][$i][lecturer]."</div>
+												<div id='addr'>".$rasp[2][$i][address]."</div>
+											</div>";
+											
+										echo"</li>";
+									}
+								
+								?>
 						  </ul>
 						</div>
 					</td>
-					<td>
+					<td class="col-sm-4 col-md-4 col-lg-4">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Среда<div class="pull-right"><?=$rasp[3][date]?></div></div>
+						  <div class="panel-heading">Среда<div class="pull-right"><?=$rasp[$i][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
-								{
-									echo"<li class='list-group-item day-item'>".$rasp[3][$i][discip]."</li>";
-								}
-							
-							?>
+									{
+										echo"<li class='list-group-item'>";
+										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
+										echo "<div class='time'>
+												<div id='begin'>".$rasp[3][$i][start_time]."</div>
+												<div id='end'>".$rasp[3][$i][end_time]."</div>
+											</div>";
+											
+										echo"<div class='lectureinfo'>
+												<div id='lecture'>".$rasp[3][$i][discip]."</div>
+												<div id='with'>".$rasp[3][$i][lecturer]."</div>
+												<div id='addr'>".$rasp[3][$i][address]."</div>
+											</div>";
+											
+										echo"</li>";
+									}
+								
+								?>
 						  </ul>
 						</div>
 					</td>
 				</tr>
 				<tr>
-				  <td>
+					<td class="col-sm-4 col-md-4 col-lg-4">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Четверг<div class="pull-right"><?=$rasp[4][date]?></div></div>
+						  <div class="panel-heading">Четверг<div class="pull-right">23 Сен</div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
-								{
-									echo"<li class='list-group-item day-item'>".$rasp[4][$i][discip]."</li>";
-								}
-							
-							?>
+									{
+										echo"<li class='list-group-item'>";
+										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
+										echo "<div class='time'>
+												<div id='begin'>".$rasp[4][$i][start_time]."</div>
+												<div id='end'>".$rasp[4][$i][end_time]."</div>
+											</div>";
+											
+										echo"<div class='lectureinfo'>
+												<div id='lecture'>".$rasp[4][$i][discip]."</div>
+												<div id='with'>".$rasp[4][$i][lecturer]."</div>
+												<div id='addr'>".$rasp[4][$i][address]."</div>
+											</div>";
+											
+										echo"</li>";
+									}
+								
+								?>
 						  </ul>
 						</div>
 					</td>
-					<td>
+					<td class="col-sm-4 col-md-4 col-lg-4">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Пятница<div class="pull-right"><?=$rasp[5][date]?></div></div>
+						  <div class="panel-heading">Пятница<div class="pull-right">23 Сен</div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
-								{
-									echo"<li class='list-group-item day-item'>".$rasp[5][$i][discip]."</li>";
-								}
-							
-							?>
+									{
+										echo"<li class='list-group-item'>";
+										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
+										echo "<div class='time'>
+												<div id='begin'>".$rasp[5][$i][start_time]."</div>
+												<div id='end'>".$rasp[5][$i][end_time]."</div>
+											</div>";
+											
+										echo"<div class='lectureinfo'>
+												<div id='lecture'>".$rasp[5][$i][discip]."</div>
+												<div id='with'>".$rasp[5][$i][lecturer]."</div>
+												<div id='addr'>".$rasp[5][$i][address]."</div>
+											</div>";
+											
+										echo"</li>";
+									}
+								
+								?>
 						  </ul>
 						</div>
 					</td>
-					<td>
+					<td class="col-sm-4 col-md-4 col-lg-4">
 						<div class="panel panel-default">
-						  <div class="panel-heading">Суббота<div class="pull-right"><?=$rasp[6][date]?></div></div>
+						  <div class="panel-heading">Суббота<div class="pull-right">23 Сен</div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							<? for  ($i=1; $i<$rasp[max];$i++)
-								{
-									echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
-								}
-							
-							?>
+									{
+										echo"<li class='list-group-item'>";
+										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
+										echo "<div class='time'>
+												<div id='begin'>".$rasp[6][$i][start_time]."</div>
+												<div id='end'>".$rasp[6][$i][end_time]."</div>
+											</div>";
+											
+										echo"<div class='lectureinfo'>
+												<div id='lecture'>".$rasp[6][$i][discip]."</div>
+												<div id='with'>".$rasp[6][$i][lecturer]."</div>
+												<div id='addr'>".$rasp[6][$i][address]."</div>
+											</div>";
+											
+										echo"</li>";
+									}
+								
+								?>
 						  </ul>
 						</div>
 					</td>

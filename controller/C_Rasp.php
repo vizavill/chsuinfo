@@ -13,6 +13,7 @@ class C_Rasp extends C_Base {
 	private $mas_rasp;	           // результат
 	protected $mRasp;              // функции расписания
 	protected $mSmsRasp;
+	protected $view;
 
 	//
     // Конструктор.
@@ -42,6 +43,20 @@ class C_Rasp extends C_Base {
 		if (($this->IsGet()))
 		{	
 			$expire = time() + 3600 * 24 * 100;
+			
+			
+			
+			if(isset($_GET['view']))
+			{
+				$this->view = $_GET['view'];
+				$_COOKIE['view']=$this->view;
+				setcookie("view",$this->view,time()+$expire);
+			}
+			else
+			{
+				$this->view = $_COOKIE['view'];
+			}
+			
 			
 			//Обработка основных параметров формы
 			//Группа...
@@ -149,9 +164,15 @@ class C_Rasp extends C_Base {
 			'vk'=>$vk,
 			'user'=>$this->user
             );
-		
-			//$this->content = $this->View(THEME.'/tpl_rasp_block.php', $vars);
-			$this->content = $this->View(THEME.'/tpl_rasp.php', $vars);
+			
+			if ($_GET['view'] == "block" || $_COOKIE['view'] == "block")
+			{
+				$this->content = $this->View(THEME.'/tpl_rasp_block.php', $vars);
+			}
+			else
+			{
+				$this->content = $this->View(THEME.'/tpl_rasp.php', $vars);
+			}
 			
 
 		
