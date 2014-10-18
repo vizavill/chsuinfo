@@ -1,5 +1,3 @@
-
-
 <div class="container">
 	<form role="form" action="index.php?c=rasp" method="get">
 		<div class="row" style="padding-left:15px">
@@ -91,7 +89,7 @@
 				</script>
 			</div>
 		</div>
-		</form>	
+		</form>		
 		<hr>
 		
 		<div class="row" style="padding-left:15px;padding-right: 15px;">
@@ -135,13 +133,8 @@
 				<?endif?>
 				
 				
-				<button type="button" class="btn btn-default visible-sm-inline pull-right" disabled>В ЧГУ 6 неделя</button>
+				<button type="button" class="btn btn-default visible-sm-inline pull-right" disabled>В ЧГУ <? echo $now_week; ?> неделя</button>
 			</div>
-		</div>
-		</div>
-
-<div class="container">
-		
 			
 			
 			<div class="visible-lg row">
@@ -192,8 +185,7 @@
 											</div>";
 											
 										echo"</li>";
-									}
-								
+									}								
 								?>
 								
 									
@@ -351,14 +343,24 @@
 						  <div class="panel-heading">Понедельник<div class="pull-right">23 Сен</div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<li class="list-group-item day-item">
-								<!-- <div class="time"><div id="begin">13:30</div><div id="end">15:00</div></div>
-								<div class="lectureinfo">Лабораторная работа <br>Алгорит обработ данных<br>1ИВТпб-01-11оп<br>218а Сов.8</div> --> sddsfdfs
-							</li>
-							<li class="list-group-item">Dapibus ac facilisis in</li>
-							<li class="list-group-item">Morbi leo risus</li>
-							<li class="list-group-item">Porta ac consectetur ac</li>
-							<li class="list-group-item">Vestibulum at eros</li>
+							<? for  ($i=1; $i<$rasp[max];$i++)
+									{
+										echo"<li class='list-group-item'>";
+										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
+										echo "<div class='time'>
+												<div id='begin'>".$rasp[1][$i][start_time]."</div>
+												<div id='end'>".$rasp[1][$i][end_time]."</div>
+											</div>";
+											
+										echo"<div class='lectureinfo'>
+												<div id='lecture'>".$rasp[1][$i][discip]."</div>
+												<div id='with'>".$rasp[1][$i][lecturer]."</div>
+												<div id='addr'>".$rasp[1][$i][address]."</div>
+											</div>";
+											
+										echo"</li>";
+									}								
+								?>
 						  </ul>
 						</div>
 					</td>
@@ -367,11 +369,24 @@
 						  <div class="panel-heading">Вторник<div class="pull-right">23 Сен</div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<li class="list-group-item">Cras justo odio</li>
-							<li class="list-group-item">Dapibus ac facilisis in</li>
-							<li class="list-group-item">Morbi leo risus</li>
-							<li class="list-group-item">Porta ac consectetur ac</li>
-							<li class="list-group-item">Vestibulum at eros</li>
+							<? for  ($i=1; $i<$rasp[max];$i++)
+									{
+										echo"<li class='list-group-item'>";
+										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
+										echo "<div class='time'>
+												<div id='begin'>".$rasp[2][$i][start_time]."</div>
+												<div id='end'>".$rasp[2][$i][end_time]."</div>
+											</div>";
+											
+										echo"<div class='lectureinfo'>
+												<div id='lecture'>".$rasp[2][$i][discip]."</div>
+												<div id='with'>".$rasp[2][$i][lecturer]."</div>
+												<div id='addr'>".$rasp[2][$i][address]."</div>
+											</div>";
+											
+										echo"</li>";
+									}								
+								?>
 						  </ul>
 						</div>
 					</td>
@@ -382,14 +397,24 @@
 						  <div class="panel-heading">Среда<div class="pull-right">23 Сен</div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<li class="list-group-item day-item">
-								<!-- <div class="time"><div id="begin">13:30</div><div id="end">15:00</div></div>
-								<div class="lectureinfo">Лабораторная работа <br>Алгорит обработ данных<br>1ИВТпб-01-11оп<br>218а Сов.8</div> --> sddsfdfs
-							</li>
-							<li class="list-group-item">Dapibus ac facilisis in</li>
-							<li class="list-group-item">Morbi leo risus</li>
-							<li class="list-group-item">Porta ac consectetur ac</li>
-							<li class="list-group-item">Vestibulum at eros</li>
+							<? for  ($i=1; $i<$rasp[max];$i++)
+									{
+										echo"<li class='list-group-item'>";
+										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
+										echo "<div class='time'>
+												<div id='begin'>".$rasp[3][$i][start_time]."</div>
+												<div id='end'>".$rasp[3][$i][end_time]."</div>
+											</div>";
+											
+										echo"<div class='lectureinfo'>
+												<div id='lecture'>".$rasp[3][$i][discip]."</div>
+												<div id='with'>".$rasp[3][$i][lecturer]."</div>
+												<div id='addr'>".$rasp[3][$i][address]."</div>
+											</div>";
+											
+										echo"</li>";
+									}								
+								?>
 						  </ul>
 						</div>
 					</td>
@@ -398,11 +423,24 @@
 						  <div class="panel-heading">Четверг<div class="pull-right">23 Сен</div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<li class="list-group-item">Cras justo odio</li>
-							<li class="list-group-item">Dapibus ac facilisis in</li>
-							<li class="list-group-item">Morbi leo risus</li>
-							<li class="list-group-item">Porta ac consectetur ac</li>
-							<li class="list-group-item">Vestibulum at eros</li>
+							<? for  ($i=1; $i<$rasp[max];$i++)
+									{
+										echo"<li class='list-group-item'>";
+										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
+										echo "<div class='time'>
+												<div id='begin'>".$rasp[4][$i][start_time]."</div>
+												<div id='end'>".$rasp[4][$i][end_time]."</div>
+											</div>";
+											
+										echo"<div class='lectureinfo'>
+												<div id='lecture'>".$rasp[4][$i][discip]."</div>
+												<div id='with'>".$rasp[4][$i][lecturer]."</div>
+												<div id='addr'>".$rasp[4][$i][address]."</div>
+											</div>";
+											
+										echo"</li>";
+									}								
+								?>
 						  </ul>
 						</div>
 					</td>
@@ -413,14 +451,24 @@
 						  <div class="panel-heading">Пятница<div class="pull-right">23 Сен</div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<li class="list-group-item day-item">
-								<!-- <div class="time"><div id="begin">13:30</div><div id="end">15:00</div></div>
-								<div class="lectureinfo">Лабораторная работа <br>Алгорит обработ данных<br>1ИВТпб-01-11оп<br>218а Сов.8</div> --> sddsfdfs
-							</li>
-							<li class="list-group-item">Dapibus ac facilisis in</li>
-							<li class="list-group-item">Morbi leo risus</li>
-							<li class="list-group-item">Porta ac consectetur ac</li>
-							<li class="list-group-item">Vestibulum at eros</li>
+							<? for  ($i=1; $i<$rasp[max];$i++)
+									{
+										echo"<li class='list-group-item'>";
+										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
+										echo "<div class='time'>
+												<div id='begin'>".$rasp[5][$i][start_time]."</div>
+												<div id='end'>".$rasp[5][$i][end_time]."</div>
+											</div>";
+											
+										echo"<div class='lectureinfo'>
+												<div id='lecture'>".$rasp[5][$i][discip]."</div>
+												<div id='with'>".$rasp[5][$i][lecturer]."</div>
+												<div id='addr'>".$rasp[5][$i][address]."</div>
+											</div>";
+											
+										echo"</li>";
+									}								
+								?>
 						  </ul>
 						</div>
 					</td>
@@ -429,11 +477,24 @@
 						  <div class="panel-heading">Суббота<div class="pull-right">23 Сен</div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<li class="list-group-item">Cras justo odio</li>
-							<li class="list-group-item">Dapibus ac facilisis in</li>
-							<li class="list-group-item">Morbi leo risus</li>
-							<li class="list-group-item">Porta ac consectetur ac</li>
-							<li class="list-group-item">Vestibulum at eros</li>
+							<? for  ($i=1; $i<$rasp[max];$i++)
+									{
+										echo"<li class='list-group-item'>";
+										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
+										echo "<div class='time'>
+												<div id='begin'>".$rasp[6][$i][start_time]."</div>
+												<div id='end'>".$rasp[6][$i][end_time]."</div>
+											</div>";
+											
+										echo"<div class='lectureinfo'>
+												<div id='lecture'>".$rasp[6][$i][discip]."</div>
+												<div id='with'>".$rasp[6][$i][lecturer]."</div>
+												<div id='addr'>".$rasp[6][$i][address]."</div>
+											</div>";
+											
+										echo"</li>";
+									}								
+								?>
 						  </ul>
 						</div>
 					</td>
@@ -442,3 +503,40 @@
 		</div>
 	</div>
 	
+	
+	<div class="modal fade followmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="myModalLabel">Подписка на расписание</h4>
+		  </div>
+		  <div class="modal-body">
+			<div>
+				<?if ($person != 'lecturer'):?>
+						<button type="button" class="btn btn-default" disabled="">Подписка на: <?=$sel_grup?></button>
+						<?else:?>
+						<button type="button" class="btn btn-default" disabled="">Подписка на: <?=$sel_lecturer?></button>
+						<?endif?>
+
+			</div>
+			<hr>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" onclick="checkAddress(this)">
+					Я хочу получать расписание в виде сообщения вконтакте.
+				</label>
+				<hr>
+				Присылать расписание в 
+				<select class="selectpicker" data-width="auto" id="time">
+					<? for($i=8; $i<=23; $i++) echo "<option value=\"{$i}\">{$i}:00</option>"; ?>
+				</select>
+			</div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+			<button type="button" class="btn btn-primary" id="saveFollow" data-loading-text="Сохраняем..." disabled>Сохранить настройки</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
