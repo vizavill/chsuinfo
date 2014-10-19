@@ -15,6 +15,7 @@
     <link href="/view/bootstrap2014/css/bootstrap.min.css" rel="stylesheet">
     <link href="/view/bootstrap2014/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="/view/bootstrap2014/css/bootstrap-switch.min.css" rel="stylesheet">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 	
 	<script type="text/javascript" src="http://vk.com/js/api/openapi.js"></script>
 	<script type="text/javascript">
