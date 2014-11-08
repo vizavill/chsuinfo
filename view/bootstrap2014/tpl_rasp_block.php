@@ -67,7 +67,7 @@
 				<?if ($person != 'lecturer'):?>
 					<a href="index.php?c=rasp&g=<?=$sel_grup?>&w=<?=($sel_week+1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-left"></span></a>
 				<?else:?>
-					<a href="index.php?c=rasp&l=<?=$sel_lecturer?>&w=<?=($sel_week+1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-left"></span></a>
+					<a href="index.php?c=rasp&l=<?=$sel_lecturer?>&w=<?=($sel_week+1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-right"></span></a>
 				<?endif?>
 				
 			</div>
@@ -77,7 +77,7 @@
 			</div>
 		
 			<div class="inline-block" style="margin-right:12px;">
-				<button type="button" class="btn btn-default visible-lg-inline visible-md-inline" disabled>Сейчас в ЧГУ <? echo $now_week; ?> неделя.</button>
+				<button type="button" class="btn btn-default visible-lg-inline visible-md-inline" disabled>В ЧГУ <? echo $now_week; ?> неделя.</button>
 			</div>
 		
 			<div class="inline-block" style="float:right">
@@ -115,7 +115,7 @@
 			-->
 			
 			<div class="follow">
-				<?if((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup) && $person == 'grup')):?>
+				<?if((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup) && $person == 'group')):?>
 				
 					<?if(!isset($vk)):?>
 						<a type="button" class="btn btn-primary followbtn" data-toggle="modal" data-target=".followmodal" style="margin-right:10px;">Подписаться на рассылку</a>
@@ -125,7 +125,7 @@
 					<?endif?>
 				<?endif?>
 				
-				<?if(!((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup))  && $person == 'grup')):?>
+				<?if(!((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup))  && $person == 'group')):?>
 					<div class="alert alert-info" role="alert">Отобразите ваше расписание</div>
 					
 				<?else:?>
@@ -169,7 +169,7 @@
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
 							
-								<? for  ($i=1; $i<$rasp[max];$i++)
+								<? for  ($i=1; $i<=$rasp[max];$i++)
 									{
 										echo"<li class='list-group-item'>";
 										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
@@ -199,7 +199,7 @@
 						  <div class="panel-heading">Вторник<div class="pull-right"><?=$rasp[2][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<? for  ($i=1; $i<$rasp[max];$i++)
+							<? for  ($i=1; $i<=$rasp[max];$i++)
 									{
 										echo"<li class='list-group-item'>";
 										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
@@ -226,7 +226,7 @@
 						  <div class="panel-heading">Среда<div class="pull-right"><?=$rasp[3][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<? for  ($i=1; $i<$rasp[max];$i++)
+							<? for  ($i=1; $i<=$rasp[max];$i++)
 									{
 										echo"<li class='list-group-item'>";
 										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
@@ -255,7 +255,7 @@
 						  <div class="panel-heading">Четверг<div class="pull-right"><?=$rasp[4][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<? for  ($i=1; $i<$rasp[max];$i++)
+							<? for  ($i=1; $i<=$rasp[max];$i++)
 									{
 										echo"<li class='list-group-item'>";
 										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
@@ -282,7 +282,7 @@
 						  <div class="panel-heading">Пятница<div class="pull-right"><?=$rasp[5][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<? for  ($i=1; $i<$rasp[max];$i++)
+							<? for  ($i=1; $i<=$rasp[max];$i++)
 									{
 										echo"<li class='list-group-item'>";
 										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
@@ -309,7 +309,7 @@
 						  <div class="panel-heading">Суббота<div class="pull-right"><?=$rasp[6][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<? for  ($i=1; $i<$rasp[max];$i++)
+							<? for  ($i=1; $i<=$rasp[max];$i++)
 									{
 										echo"<li class='list-group-item'>";
 										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
@@ -343,7 +343,7 @@
 						  <div class="panel-heading">Понедельник<div class="pull-right"><?=$rasp[1][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<? for  ($i=1; $i<$rasp[max];$i++)
+							<? for  ($i=1; $i<=$rasp[max];$i++)
 									{
 										echo"<li class='list-group-item'>";
 										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
@@ -369,7 +369,7 @@
 						  <div class="panel-heading">Вторник<div class="pull-right"><?=$rasp[2][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<? for  ($i=1; $i<$rasp[max];$i++)
+							<? for  ($i=1; $i<=$rasp[max];$i++)
 									{
 										echo"<li class='list-group-item'>";
 										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
@@ -397,7 +397,7 @@
 						  <div class="panel-heading">Среда<div class="pull-right"><?=$rasp[3][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<? for  ($i=1; $i<$rasp[max];$i++)
+							<? for  ($i=1; $i<=$rasp[max];$i++)
 									{
 										echo"<li class='list-group-item'>";
 										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
@@ -423,7 +423,7 @@
 						  <div class="panel-heading">Четверг<div class="pull-right"><?=$rasp[4][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<? for  ($i=1; $i<$rasp[max];$i++)
+							<? for  ($i=1; $i<=$rasp[max];$i++)
 									{
 										echo"<li class='list-group-item'>";
 										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
@@ -451,7 +451,7 @@
 						  <div class="panel-heading">Пятница<div class="pull-right"><?=$rasp[5][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<? for  ($i=1; $i<$rasp[max];$i++)
+							<? for  ($i=1; $i<=$rasp[max];$i++)
 									{
 										echo"<li class='list-group-item'>";
 										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";
@@ -477,7 +477,7 @@
 						  <div class="panel-heading">Суббота<div class="pull-right"><?=$rasp[6][date]?></div></div>
 						  <!-- <div class="panel-body"></div> -->
 						  <ul class="list-group">
-							<? for  ($i=1; $i<$rasp[max];$i++)
+							<? for  ($i=1; $i<=$rasp[max];$i++)
 									{
 										echo"<li class='list-group-item'>";
 										//echo"<li class='list-group-item day-item'>".$rasp[6][$i][discip]."</li>";

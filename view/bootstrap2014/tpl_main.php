@@ -2,14 +2,20 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8">
+	<meta name="description" content="Расписание ЧГУ. Расписание занятий и экзаменов для студентов Череповецкого Государственного Университета." />
+    <meta name="keywords" content="Чгу, Череповецкий Государственный Университет, Расписание, Экзамены" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	
     <title><?=$title?></title>
 
     <!-- Bootstrap -->
     <link href="/view/bootstrap2014/css/bootstrap.min.css" rel="stylesheet">
     <link href="/view/bootstrap2014/css/bootstrap-select.min.css" rel="stylesheet">
     <link href="/view/bootstrap2014/css/bootstrap-switch.min.css" rel="stylesheet">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 	
 	<script type="text/javascript" src="http://vk.com/js/api/openapi.js"></script>
 	<script type="text/javascript">
@@ -28,7 +34,7 @@
     <div class="navbar navbar-default navbar-static-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">ChsuInfo</a>
+          <a class="navbar-brand" href="index.php">ChsuInfo</a>
         </div>
 		
         <div class="navbar-collapse collapse">

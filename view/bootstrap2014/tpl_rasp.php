@@ -65,9 +65,9 @@
 					</select>
 								
 				<?if ($person != 'lecturer'):?>
-					<a href="index.php?c=rasp&g=<?=$sel_grup?>&w=<?=($sel_week+1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-left"></span></a>
+					<a href="index.php?c=rasp&g=<?=$sel_grup?>&w=<?=($sel_week+1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-right"></span></a>
 				<?else:?>
-					<a href="index.php?c=rasp&l=<?=$sel_lecturer?>&w=<?=($sel_week+1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-left"></span></a>
+					<a href="index.php?c=rasp&l=<?=$sel_lecturer?>&w=<?=($sel_week+1)?>&p=<?=($person)?>" type="button" class="btn btn-default btn-md" style="display:inline"><span class="glyphicon glyphicon-chevron-right"></span></a>
 				<?endif?>
 				
 			</div>
@@ -115,7 +115,7 @@
 			-->
 			
 			<div class="follow">
-				<?if((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup) && $person == 'grup')):?>
+				<?if((isset($sel_lecturer)  && $person == 'lecturer') || (isset($sel_grup) && $person == 'group')):?>
 				
 					<?if(!isset($vk)):?>
 						<a type="button" class="btn btn-primary followbtn" data-toggle="modal" data-target=".followmodal" style="margin-right:10px;">Подписаться на рассылку</a>
@@ -125,7 +125,7 @@
 					<?endif?>
 				<?endif?>
 				
-				<?if(!((isset($sel_lecturer)  && ($person == 'lecturer')) || (isset($sel_grup))  &&  ($person == 'grup'))):?>
+				<?if(!((isset($sel_lecturer)  && ($person == 'lecturer')) || (isset($sel_grup))  &&  ($person == 'group'))):?>
 					<div class="alert alert-info" role="alert">Отобразите ваше расписание</div>
 					
 				<?else:?>

@@ -1,6 +1,5 @@
 <?php
 include_once('controller/C_Base.php');
-include_once('lib/comment.class.php');
 //
 // Конттроллер страницы показа расписания.
 //
@@ -56,7 +55,7 @@ class C_Rasp extends C_Base {
 			{
 				$this->view = $_COOKIE['view'];
 			}
-			
+			 
 			
 			//Обработка основных параметров формы
 			//Группа...
@@ -115,7 +114,7 @@ class C_Rasp extends C_Base {
 					$this->person = $_COOKIE['person'];
 				else
 				{
-					$this->person = "grup";
+					$this->person = "group";
 					$_COOKIE['person'] = $this->person;
 					setcookie("person", $this->person, time()+$expire);
 				}
