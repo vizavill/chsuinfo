@@ -10,7 +10,7 @@ include_once('model/M_Setting.php');
 include_once('model/M_Sender.php');
 include_once('model/M_VK.php');
 include_once('model/M_Comment.php');
-include_once('lib/parsernews.class.php');
+//include_once('lib/parsernews.class.php');
 //
 // Базовый контроллер сайта.
 //
@@ -68,8 +68,8 @@ abstract class C_Base extends Controller
 	//	
 	protected function OnOutput()
 	{
-		$parser = new parser();
-		$chsu_news = $parser->parseNews();
+		//$parser = new parser();
+		//$chsu_news = $parser->parseNews();
 	    // Основной шаблон всех страниц.
 		$vars = array('content' => $this->content,
 					'user'=>$this->user,

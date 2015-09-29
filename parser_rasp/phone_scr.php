@@ -7,7 +7,6 @@ While($row=mysql_fetch_array($q)){
 $phone=substr($row['phone_number'],1,strlen($row['phone_number'])-1);
 echo $phone."<br/>";  
 mysql_query("UPDATE users SET phone_number=$phone WHERE id_user=$row[id_user]");
-
 }
 
 ?>

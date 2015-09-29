@@ -5,10 +5,10 @@ class Parsesr_html
 	//
 	// Конструктор
 	//
-	public  function Parsesr_html($host,$user,$pas)
+	public  function Parsesr_html($host,$user,$dbname, $pas)
 	{
 		$id=mysql_connect($host,$user,$pas);
-		mysql_select_db($user,$id);
+		mysql_select_db($dbname,$id);
 		mysql_query("SET NAMES cp1251") or die( mysql_error());
 		//mysql_query("SET SESSION wait_timeout = 1800") or die( mysql_error());
 	}

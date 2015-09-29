@@ -3,7 +3,7 @@ include_once("class.php");
 include_once("config.php");
 
 //объявляем экзэмпляр класса
-$pars=new Parsesr_html($dbhost2,$dbuser2,$dbpas2);
+$pars=new Parsesr_html($dbhost,$dbuser,$dbname,$dbpas);
 
 
 
