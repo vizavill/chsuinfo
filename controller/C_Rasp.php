@@ -1,6 +1,6 @@
 <?php
 include_once('controller/C_Base.php');
-include_once('lib/comment.class.php');
+
 //
 // Конттроллер страницы показа расписания.
 //
@@ -114,31 +114,7 @@ class C_Rasp extends C_Base {
 		 
 		$this->mas_rasp=$this->mRasp->rasp($this->sel_week, 'week', $this->person, $sel_person);
 		$this->title = "Расписание ".$sel_person." на ".$this->sel_week." неделю.";
-		
-		/* Не требуется так как подгрузка будет осуществляться с помощью ajax
-		
-		//Последние 5 комментариев
-		$arrComments = $this->mRasp->get_comments();
-		$this->user =  $this->mUsers->Get();
-		$reverseAC = array_reverse($arrComments);
-		//$ttest = var_dump($arrComments);
-		$insertedComment = new Comment();
-		foreach($reverseAC as $comment){
-			$user = $this->mUsers->Get($comment['author_id']);
-			$comment_body = iconv("UTF-8", "WINDOWS-1251", $comment['body']);
-			
-			$commentData = array(
-								"body"=>$comment_body,
-								"id"=>$comment['id'],
-								"id_role"=>$this->user['id_role'],
-								"id_vk"=>$user['id_vk'],
-								"photo"=>$user['photo_200'],
-								"full_name"=>$user['first_name'].' '.$user['last_name']
-								);
-			$insertedComment->setData($commentData);		
-			$htmlComments .= $insertedComment->markup();
-		}
-		*/
+
 		
 		// Генерация содержимого страницы Rasp.
       
