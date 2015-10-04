@@ -1,0 +1,535 @@
+﻿*::-webkit-input-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*:-moz-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*::-moz-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*:-ms-input-placeholder {
+	color: #666;
+	opacity: 1;
+}
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid {
+	
+}
+body input:required:valid,
+body textarea:required:valid {
+	
+}
+html {
+	font-size: 1em;
+	font-family: "Verdana", sans-serif;
+	color: #222;
+}
+
+body {
+	font-size: 1em;
+	min-width: 1121px;
+	position: relative;
+	min-height: 100%;
+}
+.hidden {
+	display: none;
+}
+.carousel img {
+	width: 100%;
+	height: auto;
+}
+.parallax {
+	background-attachment: fixed;
+	background-position: 50% 0;
+	position: relative;
+}
+
+/* Шапка */
+header {
+	background: #eee;
+	text-align: left;
+	white-space: normal;
+}
+
+a.logo {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	font-size: 2em;
+	padding: 0.5em 0 0.5em 1em;
+	font-weight: 300;
+}
+
+a.logo h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
+}
+
+a.logo h1:before {
+	content: " ";
+	display: inline-block;
+	width: 2em;
+	height: 2em;
+	background: url(l.svg);
+	background-size: 2em 2em;
+	margin-right: 0.5em;
+	float: left;
+}
+
+a.logo h1 span {
+	display: inline-block;
+	float: right;
+	font-family: 'Calibri', sans-serif;
+	font-weight: 700;
+	margin-top: 0.4em;
+	font-size: 0.7em;
+	text-transform: uppercase;
+	color: #6C6D70;
+	text-align: left;
+}
+
+a.logo:hover > h1 span {
+	color: #555;
+}
+
+.nav {
+	display: inline-block;
+	/*margin-right: 1em;*/
+}
+
+.top-menu {
+	display: inline-block;
+	position: relative;
+	margin-bottom: 2em;
+	overflow: hidden;
+	padding-left: 1em;
+}
+
+
+/* Основа */
+
+.main {
+
+}
+
+/* /Основа */
+
+
+
+/* Рабочее пространство */
+.workplace {
+	display: inline-block;
+	float: right;
+	width: calc(100% - 321px - 2em);
+	height: 100%;
+	padding-bottom: 2em;
+}
+
+.workplace-full-width {
+	width: calc(100% - 2em) !important;
+}
+
+/* /Рабочее пространство */
+
+
+/* Управляющая панель */
+
+
+.side {
+	float: left;
+	display: inline-block;
+	/*background: #337ab7;*/
+	margin:0;
+	padding: 0;	
+	border-right: 1px solid #e5e5e5;
+	min-height: 12em;
+}
+
+.sidebar {
+	display: inline-block;
+	float: left;
+	padding-right: 1em;
+	padding-left: 1em;
+	width: 320px;
+	padding-top: 1em;
+}
+
+#informer1 {
+	width: 100%;
+	margin-bottom: 0;
+}
+
+#informer1 .alert {
+	margin-bottom: 1em !important;
+}
+
+.alert {
+	margin-bottom: 0 !important;
+}
+
+.item {
+		margin-bottom: 1em;
+}
+
+.item p.bg-success {
+	font-size: 0.8em;
+	padding: 0.5em;
+	border-radius: 0.5em;
+}
+
+h2 {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	top: 0;
+	left: 0;
+	font-size: 1em;
+	font-weight: 300;
+	margin-bottom: 0.5em;
+	width: 100%;
+}
+/* Выбор группы */
+.bootstrap-select {
+	width: 100% !important;
+}
+
+/* Календарь */
+
+.small_datepicker {
+	width: 100%;
+}
+
+.small_datepicker input {
+	height: 2.5em;
+}
+
+.desks {
+	padding: 0;
+	border: none !important;
+}
+
+.datepicker {
+	background: #fff;
+	border: 1px solid #eee;
+	width: 100%;
+}
+
+.today {
+	background: #ddd !important;
+}
+
+.datepicker-months table, 
+.datepicker-years table, 
+.datepicker-days table {
+	width: 100%;
+}
+
+/* Дополнительные настройки показа */
+.dop-menu {
+	width: 100%;
+}
+.dop-menu button.btn {
+	/*width: 100%  !important;*/
+	display: inline-block;
+}
+
+
+/* Отправить */
+
+.gogogo {
+	/*width: 100%;*/
+	/*font-size: 1.2em;*/
+	/*font-weight: 700;*/
+}
+
+
+/* Свернуть */
+.side-hide {
+	width: 0 !important;
+	overflow: hidden;
+	/*margin-left: -3em;*/
+	padding: 0 !important;
+	margin: 0;
+}
+
+.side-btn {
+	height: 50em;
+	width: 1em;
+	float: right;
+	text-align: center;
+}
+
+
+.side-btn span:before {
+	content: "〈";
+	display:inline-block;
+	margin-top: 24em;
+	height: 5em;
+	width: 100%;
+	background: #eee;
+	padding-top: 2em;
+	font-size: 1em;
+	border-radius: 0.5em 0 0 0.5em;
+}
+
+.side-btn-re span:before {
+	content: "〉" !important;
+	background: #d9534f;
+	color: #fff;
+	border-radius:  0 0.5em 0.5em 0 ;
+}
+.side-btn-re {
+	position: fixed;
+}
+
+.side-btn:hover {
+	cursor: pointer;
+	font-weight: 700;
+}
+
+
+/* /Управляющая панель */
+
+/* Подвал */
+
+footer {
+	margin: 0;
+	padding: 0;
+	color: #555;
+	border-top: 1px solid #eee;
+	padding-left: 2em;
+	min-height: 6em;
+	height: auto;
+	max-width: 100%;
+	font-size: 0.8em;
+}
+
+footer ul {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	margin-top: 1em;
+	list-style: none;
+}
+
+footer ul li {
+	display: inline-block;
+	margin-right: 1em;
+	margin-top: 1em;
+}
+
+footer ul li span {
+	display: block;
+}
+
+/* Стили таблиц */
+
+table caption {
+	padding: 1em 0.5em 0.5em 0.5em;
+	color: #222;
+	font-size: 1.2em;
+	font-weight: 700;
+}  
+
+.table {
+	margin-bottom: 0;
+	white-space: nowrap;
+	font-size: 0.9em;
+}
+.table-day td:nth-child(3),
+.table-day td:nth-child(4),
+.table-day td:nth-child(5),
+.table-day td:nth-child(6),
+.table-week td:nth-child(3),
+.table-week td:nth-child(4),
+.table-week td:nth-child(5),
+.table-week td:nth-child(6) {
+	text-align: center;
+}
+
+.table-day td:nth-child(1), 
+.table-week td:nth-child(1){
+	width: 5em;
+}
+
+.table-day td:nth-child(3), 
+.table-week td:nth-child(3) {
+	width: 5em;
+}
+
+.table-day td:nth-child(4), 
+.table-week td:nth-child(4) {
+	width: 5em;
+}
+
+.table-day td:nth-child(2), 
+.table-week td:nth-child(2) {
+	max-width: 20em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.table-day, .table-week {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.table-day table, .table-week table {
+	max-width: 850px; /*750*/
+}
+
+.table-day-date {
+	font-weight: 400;
+	text-decoration: underline;
+}
+
+.table-day tr th, .table-week tr th,.table-month tr th {
+	background:#d9534f;
+	color: #fff;
+	border-color: #AD3430 !important;
+	font-weight: 400;
+	text-align: center;
+}
+
+.table-week tbody tr:nth-of-type(even) {
+	background: #efefef;
+}
+
+.table-week thead th {
+	border:1px solid #AD3430 !important;
+}
+
+.table-week tbody {
+	border-top: none !important;
+}
+
+table h3, table h4 {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
+}
+
+table h3 {
+	float: left;
+}
+
+table h4 {
+	float: right;
+}
+
+.table-month {
+	margin-top: 1em;
+}
+
+.table-month .table-responsive {
+
+}
+
+.table-month h3 {
+	font-weight: 700;
+}
+
+.table-month table {
+	border: none !important;
+	font-size: 0.8em;
+}
+
+.table-month .table {
+		width: 99% !important;
+		min-width: 500px;
+}
+
+.table-month thead th {
+	background: none;
+	color: #222;
+	width: 16.666%;
+	padding: 0 !important;
+	border: none !important;
+	border-right: 1px solid #ddd !important;
+}
+
+.table-month thead th:last-child {
+	/*border-right: none !important;*/
+}
+
+
+.m-h {
+	border-top: 1px solid #ddd;
+}
+
+.table-month tr {
+	border-left: 1px solid #ddd;
+}
+
+.table-month .m-w:last-child {
+	border-bottom: 1px solid #ddd;
+}
+
+.m-h th {
+	display: inline-block;
+	width: 16.666%;
+}
+
+.m-h th:last-child {
+	border-right: 1px solid #ddd !important;
+}
+
+.m-d {
+	display: inline-block;
+	padding: 0 !important;
+	width: 16.666%;
+	height: 14em;
+	border-left: none !important;
+	border-bottom: none !important;
+
+}
+
+.m-d-date {
+	display: block;
+	width: 2em;
+	height: 2em;
+	border-right: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	text-align: center;
+	padding-top: 0.3em;
+}
+
+.m-d-pars {
+	display: inline-block;
+	padding:0;
+	margin:0;
+	list-style: none;
+	max-width: 100%;
+	overflow: auto !important;
+	height: 11.5em;
+	padding-top: 0.5em;
+	padding-left: 0.5em;
+}
+
+
+.m-d-pars li {
+	display: block;
+	height: 2em;
+	width: 100%;
+	overflow: hidden !important;
+	text-overflow: ellipsis;
+}
+
+.m-d-pars li span:nth-child(1) {
+	display: inline-block;
+	width: 2.5em;
+}
+
+.datepicker-dropdown {
+	width: 240px !important;
+}
+
+.tablets {
+	display: none;
+}

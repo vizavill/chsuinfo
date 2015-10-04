@@ -1,0 +1,199 @@
+/* Планшеты и телефоны с широким экраном */
+@media only screen and (min-width : 640px) {
+
+.side, .workplace {
+	display: block;
+	float: none;
+}
+
+.sidebar {
+	width: 100%;
+	text-align: center;
+	border-bottom: 2px solid #eee;
+}
+
+.sidebar .item h2 {
+	text-align: left;
+}
+
+.side-btn { display: none;}
+
+
+.desks {display: none;}
+.tablets {display: inline-block;}
+.dop-menu {
+	white-space: nowrap;
+}
+.dop-menu .btn {
+	display: inline-block;
+	width: 50%;
+	border-radius: 0.3em !important;
+}
+.dop-menu .btn:nth-child(2){
+	margin-top: 0 !important;
+}
+
+.workplace {
+	height: auto;
+	position: relative;
+	width: 100%;
+}
+
+.table-day, .table-week {
+	margin: 0;
+}
+
+.table-day tr td:nth-child(3),
+.table-day tr th:nth-child(3),
+.table-day tr td:nth-child(4),
+.table-day tr th:nth-child(4),
+.table-week tr td:nth-child(3),
+.table-week tr th:nth-child(3),
+.table-week tr td:nth-child(4),
+.table-week tr th:nth-child(4) {
+	display:none;
+}
+
+
+.sidebar .item {
+	width: calc(33% - 1px);
+	display: inline-block;
+}
+
+.sidebar .item:last-child  {
+	width: calc(33% - 1px);
+}
+
+.sidebar .item:last-child h2 {
+	display: inline-block;
+}
+
+
+}
+
+/* Планшеты и телефоны с широким экраном */
+@media only screen and (min-width : 800px) {
+
+.table-day, .table-week {
+	margin: 0 1em;
+}
+
+.table-day table, .table-week table {
+	margin: 0 auto;
+}
+
+.table-day tr td:nth-child(3),
+.table-day tr th:nth-child(3),
+.table-day tr td:nth-child(4),
+.table-day tr th:nth-child(4),
+.table-week tr td:nth-child(3),
+.table-week tr th:nth-child(3),
+.table-week tr td:nth-child(4),
+.table-week tr th:nth-child(4)
+	{
+	display:table-cell;
+}
+
+}
+
+/* Планшеты и ноутбуки с небольшим экраном */
+@media only screen and (min-width : 1024px) {
+
+.side, .workplace {
+	display: inline-block;
+}
+
+.side { 
+	float: left;
+}
+
+.table-day table, .table-week table {
+	margin: 0;
+}
+
+.workplace { float: right;}
+
+.sidebar {
+	width: 250px;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	text-align: left;
+	border-bottom: none;
+}
+
+.side-btn { display: block;}
+
+.desks {
+	font-size: 0.8em;
+}
+.workplace {
+	width: calc(100% - 251px - 1.2em);
+	font-size: 0.9em;
+}
+
+.table-day td, .table-week td, .table-day th, .table-week th {
+	padding: 0.5em 0.2em !important;
+}
+
+.table-day, .table-week {
+	margin: 0.5em;
+}
+
+.sidebar .item, .sidebar .item:last-child {
+	display: block;
+	width: 100%;
+}
+
+
+.desks {display: inline-block;}
+.tablets {display: none;}
+.dop-menu {
+	white-space: normal;
+}
+.dop-menu button.btn {
+	width: 100%  !important;
+	display: inline-block;
+}
+
+.dop-menu .btn:nth-child(1){
+	border-radius: 0.3em 0.3em 0 0 !important;
+}
+
+.dop-menu .btn:nth-child(2){
+	margin-top: -1px !important;
+	border-radius: 0 0 0.3em 0.3em !important;
+}
+
+.table-day table, .table-week table {
+	max-width: none;
+}
+
+}
+
+ /* Компьютеры */
+@media only screen and (min-width : 1250px) {
+
+.sidebar {
+	width: 320px;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.desks {
+	font-size: 1em;
+}
+
+.workplace {
+	width: calc(100% - 321px - 2em);
+	font-size: 1em;
+}
+
+.table-day td, .table-week td, .table-day th, .table-week th {
+	padding: 0.5em !important;
+}
+
+.table-day table, .table-week table {
+	max-width: 850px;
+}
+
+}

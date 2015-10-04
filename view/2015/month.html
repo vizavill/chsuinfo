@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CCHSU</title>
+
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+  <link rel="stylesheet" href="lib/bselect/css/bootstrap-select.css">
+  <link rel="stylesheet" href="lib/datapicker/css/bootstrap-datepicker3.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <!--<link rel="stylesheet" href="css/media.css">-->
+
+</head>
+<body>
+<div class="container-fluid">
+		<div class="row">
+			<header>
+				<a class="logo" href=""><h1><span>расписание<br />университета</span></h1></a>
+				<div class="top-menu">
+					<div class="btn-group nav" role="group">
+	  					<button type="button" class="btn btn-default active">Студенты</button>
+	  					<button type="button" class="btn btn-default">Преподаватели</button>
+	  					<button type="button" class="btn btn-default">Аудитории</button>
+					</div>	
+					<div class="btn-group nav" role="group">
+	  					<button type="button" class="btn btn-primary">Получать расписание в личные сообщения</button>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div class="row main">
+			<div class="side">
+				<div id="sidebar1" class="sidebar">
+					<div  id="informer1" class="item">
+						<div class="alert alert-success alert-dismissible" role="alert">
+							  <button type="button" id="close-informer1" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							  <strong>Обновление:</strong> теперь вы можете посмотреть <a href="#">расписание аудиторий</a>.
+						</div>
+					</div>
+					<div class="item">
+						<h2>Группа:</h2>
+						<select class="selectpicker" data-live-search="true">
+							<option>4ПСб-00-41оп</option>
+							<option>Ketchup</option>
+							<option>Relish</option>
+				  		</select>
+					</div>
+					<div class="item">
+						<h2>Дата:</h2>
+						<div class="small_datepicker tablets">
+							<input type="date" class="form-control" value="2015-10-04" min="2015-09-01" max="2016-06-30">	
+						</div>
+						<div id="datepicker" class="datepicker  datepicker-inline desks"></div>
+					</div>
+					<div class="item">
+						<h2>Показать:</h2>
+						<div class="btn-group-vertical dop-menu">
+						  <button type="button" class="btn btn-default">Неделя</button>
+						  <button type="button" class="btn btn-danger gogogo">День</button>
+						</div>
+					</div>
+				</div>
+				<div id="btn-side-hide" class="side-btn"><span></span></div>
+			</div>
+			<div id="workplace1" class="workplace">
+				<div class="table-month">
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<caption><h3>Сентябрь</h3><h4>4ПСб-00-41оп</h4></caption>
+							<thead>
+								<tr class="m-h">
+			  						<th>Понедельник</th>
+			  						<th>Вторник</th>
+			  						<th>Среда</th>
+			  						<th>Четверг</th>
+			  						<th>Пятница</th>
+			  						<th>Суббота</th>
+			  					</tr>
+							</thead>
+		  					<tbody>
+			  					<tr class="m-w">
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины очень длинное из нескольких слов</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины очень длинное из нескольких слов</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины очень длинное из нескольких слов</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  					</tr>
+			  					<tr class="m-w">
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  					</tr>
+			  					<tr class="m-w">
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  					</tr>
+			  					<tr class="m-w">
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  					</tr>
+			  					<tr class="m-w">
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  					</tr>
+			  					<tr class="m-w">
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  						<td class="m-d">
+			  							<span class="m-d-date"><a href="#" target="_blank">1</a></span>
+			  							<ul class="m-d-pars">
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  								<li><span>10<sup>10</sup></span><span>пр Название дисциплины</span></li>
+			  							</ul>
+			  						</td>
+			  					</tr>
+		  					</tbody>
+						</table>
+						</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="row">
+			<footer>
+				<ul>
+					<li>
+						<span><strong>Проверяйте</strong> расписание на <a href="https://rasp.chsu.ru/">официальном сайте</a>.</span>
+						<span>Если вы обнаружили <strong>ошибку</strong>, то помогите другим, <a href="https://rasp.chsu.ru/">сообщив нам</a>.</span>
+					</li>
+					<li>
+						<span><em>Будет здорово, если вы поможете сделать ресурс ещё удобнее и функциональнее,</em></span>
+						<span><em>предложив нам свою <a href="">идею</a> или <a href="">помощь</a>.</em></span>
+					</li>
+				</ul>
+			</footer>
+		</div>
+	</div>
+</div>
+  	<script src="lib/jquery/jquery.js"></script>
+  	<script src="lib/bootstrap/bootstrap.js"></script>
+  	<script src="lib/bselect/js/bootstrap-select.min.js"></script>
+  	<script src="lib/datapicker/js/bootstrap-datepicker.js"></script>
+  	<script src="lib/jquery.cookie/jquery.cookie.js"></script>
+  	<script>
+
+  	$.fn.datepicker.dates['ru'] = {
+	    days: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
+	    daysShort: ["Вос", "Пон", "Вто", "Сре", "Чет", "Пят", "Суб"],
+	    daysMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+	    months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+	    monthsShort: ["Янв", "Фев", "Март", "Апр", "Май", "Июнь", "Июль", "Авг", "Сен", "Окт", "Ноя", "Дек"],
+	    today: "Сегодня",
+	    clear: "Сбросить",
+	    format: "mm/dd/yyyy",
+	    titleFormat: "MM yyyy",
+	    weekStart: 1
+	};
+
+	$('#datepicker').datepicker({
+	    language: "ru",
+	    forceParse: false,
+	    daysOfWeekDisabled: "0",
+	    calendarWeeks: true,
+	    autoclose: true,
+	    todayHighlight: true,
+	    startDate: "09/01/2015",
+    	endDate: "06/30/2016",
+	});
+
+	$("#btn-side-hide").click( function(){
+		$("#sidebar1").toggleClass("side-hide");
+		$("#workplace1").toggleClass("workplace-full-width");
+		$("#btn-side-hide").toggleClass("side-btn-re");
+	});
+
+	$("#close-informer1").click(function(){
+		$.cookie('name', 'value', { expires: 7 });
+	});
+
+
+	</script>
+</body>
+</html>
