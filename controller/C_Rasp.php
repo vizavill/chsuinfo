@@ -5,13 +5,16 @@ include_once('controller/C_Base.php');
 // Конттроллер страницы показа расписания.
 //
 class C_Rasp extends C_Base {
-	private $sel_week;             // выбранная неделя
-	private $sel_grup;             // выбранная группа
-	private $sel_lecturer;         // выбранный преподаватель
-	private $person;           		// (преподаватель или группа)
-	private $now_week;				//текущая учебная неделя
-	private $mas_rasp;	           // результат
-	protected $mRasp;              // функции расписания
+	private $sel_date;			//	выбранная дата
+	private $sel_range;			//	выбранный диапазон (день - d, неделя - w, месяц - m)
+
+	private $sel_week;			//	выбранная неделя
+	private $sel_grup;			//	выбранная группа
+	private $sel_lecturer;		//	выбранный преподаватель
+	private $person;			//	(преподаватель или группа)
+	private $now_week;			//	текущая учебная неделя
+	private $mas_rasp;			//	результат
+	protected $mRasp;			//	функции расписания
 
 	//
     // Конструктор.
@@ -65,6 +68,7 @@ class C_Rasp extends C_Base {
 			
 				$this->sel_lecturer = $_COOKIE['sel_lecturer'];
 			}
+
 			//Неделя
 			if(isset($_GET['w'])){
 				$this->sel_week = $_GET['w'];
@@ -94,7 +98,17 @@ class C_Rasp extends C_Base {
 			{
 				
 				$this->person = $_COOKIE['person'];
-			}		
+			}
+
+			//Обработка даты
+			if(isset($_GET['d'])){
+				
+				$this->sel_date = $_GET['d'];
+				
+				if(isset($_GET['v'])) $this->sel_range = $_GET['v'];	
+				//Если диапазон не указан, то показываем "день"
+				else $this->sel_range = 'd';	
+			}	
 		}
 	}
 
@@ -112,8 +126,9 @@ class C_Rasp extends C_Base {
 			$sel_person=$this->sel_grup;
 		}
 		 
-		$this->mas_rasp=$this->mRasp->rasp($this->sel_week, 'week', $this->person, $sel_person);
-		$this->title = "Расписание ".$sel_person." на ".$this->sel_week." неделю.";
+
+		$this->mas_rasp=$this->mRasp->rasp($this->sel_date, $this->sel_range, $this->person, $sel_person);
+		$this->title = "Расписание ".$sel_person;
 
 		
 		// Генерация содержимого страницы Rasp.

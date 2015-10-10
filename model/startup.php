@@ -39,7 +39,7 @@ function startup()
 	define("PATH", "http://cchsu.ru/");
 	
 	
-	define("THEME", "/bootstrap2014");
+	define("THEME", "/2015");
 	
 	
 	
