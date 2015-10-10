@@ -253,7 +253,9 @@ h2 {
 	/*font-weight: 700;*/
 	background-color: #d43f3a !important;
 }
-
+.gogogo:hover {
+	background-color: #d9534f !important;
+}
 
 /* Свернуть */
 .side-hide {
@@ -393,6 +395,7 @@ table caption {
 .table-day-date {
 	font-weight: 400;
 	text-decoration: underline;
+	margin-left: 1em;
 }
 
 .table-day tr th, .table-week tr th,.table-month tr th {
@@ -408,7 +411,7 @@ table caption {
 }
 
 .table-week thead th {
-	border:1px solid #AD3430 !important;
+	border:1px solid #BF4A46 !important;
 }
 
 .table-week tbody {
