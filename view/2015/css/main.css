@@ -226,7 +226,7 @@ h2 {
 }
 
 .today {
-	background: #ddd !important;
+	/*background: #ddd !important;*/
 }
 
 .datepicker-months table, 
@@ -251,6 +251,7 @@ h2 {
 	/*width: 100%;*/
 	/*font-size: 1.2em;*/
 	/*font-weight: 700;*/
+	background-color: #d43f3a !important;
 }
 
 
