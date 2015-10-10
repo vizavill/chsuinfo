@@ -74,8 +74,8 @@
 											if($i == 5)	$day = "Пятница";
 											if($i == 6)	$day = "Суббота";
 
-											//Определяем дату дня
-											//$date_day = date_of_week($sel_week,$i);
+											#Определяем дату дня
+											foreach ($rasp[$i] as $value){$date_day = $value[date];}
 
 											echo '<tbody><tr><td colspan="6"><strong>'.$day.'</strong> <span class="table-day-date">'.$date_day.'</span></td></tr>';
 											foreach($rasp[$i] as $value)

@@ -138,7 +138,7 @@ class C_Rasp extends C_Base {
 			//'comments'=>$this->mRasp->get_comments(),
 			'sel_grup'=>$this->sel_grup,
 			'sel_lecturer'=>$this->sel_lecturer,
-			'sel_week'=>$this->sel_week,
+			'sel_week'=>$this->mRasp->get_num_edu_week($this->sel_date),
 			'sel_person'=>$sel_person,
 			'person'=>$_COOKIE['person'],
 			'grup'=>$this->mRasp->all_grup(),
@@ -147,6 +147,7 @@ class C_Rasp extends C_Base {
             'day1'=>$this->day1,            
 			'week'=>52,
 			'now_week'=>$this->now_week,
+			//'date'=>$this->mas_rasp -> date //'50000',
             );
 		
 			$this->content = $this->View(THEME.'/tpl_rasp.php', $vars);
