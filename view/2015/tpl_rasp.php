@@ -1,12 +1,15 @@
 <div class="row main">
 			<div class="side">
 				<div id="sidebar1" class="sidebar">
+					<?if ($_COOKIE['informer1'] != 'close'):?>
 					<div  id="informer1" class="item">
 						<div class="alert alert-success alert-dismissible" role="alert">
 							  <button type="button" id="close-informer1" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							  <strong>Обновление:</strong> теперь вы можете посмотреть <a href="#">расписание аудиторий</a>.
 						</div>
 					</div>
+					<?else:?>
+					<?endif?>
 					<div class="item">
 						<?if ($person != 'lecturer'):?>
 							<h2>Группа:</h2>
@@ -49,7 +52,6 @@
 			</div>
 			<div id="workplace1" class="workplace">
 				<div class="table-week">
-					<div class="table-responsive">
 						<table class="table table-bordered">
 							<caption><h3><?=$sel_week?> учебная неделя</h3><?if ($person != 'lecturer'):?><h4><?=$sel_grup?></h4><?else:?><h4><?=$sel_lecturer?></h4><?endif?></caption>
 							<thead>
@@ -83,7 +85,7 @@
 													if($value == 0)
 														continue;
 													echo "<tr>
-															<td>".$value[start_time]."-".$value[end_time]."</td>
+															<td>".$value[start_time]."</sup>-".$value[end_time]."</sup></td>
 															<td>".$value[discip]."</td>
 															<td>3 - 5</td>
 															<td>нечет</td>
@@ -96,7 +98,6 @@
 			  					?>
 			  				</tbody>
 						</table>
-					</div>
 				</div>
 
 			</div>
