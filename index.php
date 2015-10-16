@@ -35,9 +35,6 @@ case 'setting':
 	$controller = new C_Setting();
 	break;
 	//Профиль пользователя
-case 'starosta':
-	$controller = new C_Starosta();
-	break;
 case 'sms_vk_rasp':
 	$controller = new C_VKSmsRasp();
 	break;

@@ -9,6 +9,7 @@ include_once('model/M_Example.php');
 include_once('model/M_Setting.php');
 include_once('model/M_Sender.php');
 include_once('model/M_VK.php');
+include_once('model/M_VK2.php');
 include_once('model/M_Comment.php');
 //include_once('lib/parsernews.class.php');
 //
@@ -76,7 +77,7 @@ abstract class C_Base extends Controller
 					'chsu_news'=>$chsu_news,
 					'title'=>$this->title,
 					'_VKMailing'=>$this->mSmsRasp->verVKMailing($user[id_user]),
-					'linkAuthVk'=>"https://oauth.vk.com/authorize?client_id=".CLIENT_ID."&scope=".SCOPE."&redirect_uri=".PATH.OAUTH_CALLBACK."&response_type=code&v=5.24");						
+					'linkAuthVk'=>"https://oauth.vk.com/authorize?client_id=".CLIENT_ID."&scope=".SCOPE."&redirect_uri=".PATH.OAUTH_CALLBACK."&response_type=code&v=5.24&revoke=1");
 			
 		$page = $this->View(THEME.'/tpl_main.php', $vars);
 						

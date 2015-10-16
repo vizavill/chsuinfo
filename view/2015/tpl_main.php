@@ -41,6 +41,13 @@
 			<header>
 				<a class="logo" href=""><h1><span>расписание<br />университета</span></h1></a>
 				<div class="top-menu">
+					<? if (isset($user)): ?>
+						<li><img src="<?=$user[photo_200]?>" class="img-thumbnail ava-head" width="40"></li>
+						<li><a href="index.php?c=login">Выйти</a></li>
+					<?else:?>
+						<li><a href="<?=$linkAuthVk?>">Войти в профиль</a></li>
+
+					<?endif?>
 					<div class="btn-group nav" role="group">
 					<?php
 						if((strpos($_SERVER['REQUEST_URI'], "p=lecturer") != false) || ( (strpos($_SERVER['REQUEST_URI'], "p=lecturer") == false) && ($_COOKIE['person'] == 'lecturer')))
