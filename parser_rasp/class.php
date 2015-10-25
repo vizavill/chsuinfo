@@ -42,7 +42,7 @@ class Parsesr_html
 	//
 	public function verify_html($html)
 	{
-		return strpos($html,'<title>Расписание</title>');
+		return strpos($html,'<title>Расписание');
 	}
 	
 	public function pars_html($html,$table,$pole){
@@ -53,6 +53,7 @@ class Parsesr_html
 			$str=(substr($str, strpos($str,'> ')+2,$kc));
 			$html=substr($html, $kc+10, strlen($html)-$kc+10);	
 			$query="INSERT INTO $table ($pole) VALUES ('$str')";
+	
 			mysql_query($query) or die( mysql_error());
 		}
 		while ((strpos($html,'<option value="'))==true);	
@@ -75,7 +76,7 @@ class Parsesr_html
 	
 	public function parser_rasp($html,$table,$grup, $semestr)	
 		{
-		
+	
 			
 		do
 		{
