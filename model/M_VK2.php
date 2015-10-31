@@ -67,9 +67,37 @@ class M_VK2
     // А эта функция доступна тем, у кого есть привилегия USE_SECRET_FUNCTIONS.
     //
     public function send($link)
-    {
-        return file_get_contents($link);
-    }
+    {	
+		if ( file_exists( $link ) )
+		{
+			// если существует и файл не пустой, то открываем как файл
+			if( filesize( $link ) )
+			{
+				$handle = fopen( $link, "r" );
+				$contents = fread( $handle, filesize( $link ) );
+				fclose($handle);
+			}
+			else
+			{
+				return '';
+			}
+		}
+		else
+		{
+			// Открываем при помощи Curl
+			// и настраиваем курл
+			$curl = curl_init();
+			curl_setopt( $curl, CURLOPT_RETURNTRANSFER, 1 );
+			curl_setopt( $curl, CURLOPT_TIMEOUT, 30 );
+			curl_setopt( $curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 6.0; en; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1' );
+			curl_setopt( $curl, CURLOPT_FOLLOWLOCATION, 1 );
+			curl_setopt( $curl, CURLOPT_REFERER, 'http://google.com/' );
+			curl_setopt( $curl, CURLOPT_URL, $link );
+			$contents = curl_exec( $curl );
+			curl_close($curl); // теперь закрываем курл
+		}
+		return $contents;
+	}
 
 
 }
